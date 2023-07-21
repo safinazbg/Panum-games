@@ -16,7 +16,7 @@
           class="progresbar relative bg-slate-50 border border-slate-300 shadow-md w-[99%] sm:w-full h-8 rounded-r-full"
         >
           <div
-            class="bg-cyan-300 flex items-center h-8 rounded-r-sm duration-300 ease-linear"
+            class="bg-cyan-300 flex items-center h-8 rounded-r-sm duration-300 ease-linear border-2 border-cyan-300"
             :style="{ width: progresBarWidth }"
           >
             <div class="absolute top-1 left-2 sm:left-1/2 sm:-translate-x-1/2">
@@ -29,7 +29,7 @@
 
                 <p class="font-light">FROM 36</p>
 
-                <p class="">
+                <p class="">PROGRES
                   (<span class="font-bold"> {{ progressPercentage }}%</span>)
                 </p>
               </div>
