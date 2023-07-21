@@ -93,5 +93,94 @@
     "answers": ["decisive", "amused", "aghast", "bored"],
     "index": 19,
     "image": "images/18.jpg"
+  },
+  {
+    "answers": ["arrogant", "grateful", "sarcastic", "tentative"],
+    "index": 20,
+    "image": "images/19.jpg"
+  },
+  {
+    "answers": ["dominant", "friendly", "guilty", "horrified"],
+    "index": 21,
+    "image": "images/20.jpg"
+  },
+  {
+    "answers": ["preoccupied", "grateful", "insisting ", "imploring"],
+    "index": 22,
+    "image": "images/21.jpg"
+  },
+  {
+    "answers": ["contented", "apologetic", "defiant", "curious"],
+    "index": 23,
+    "image": "images/22.jpg"
+  },
+  {
+    "answers": ["pensive", "irritated", "excited", "hostile"],
+    "index": 24,
+    "image": "images/23.jpg"
+  },
+  {
+    "answers": ["panicked", "incredulous", "despondent", "interested"],
+    "index": 25,
+    "image": "images/24.jpg"
+  },
+  {
+    "answers": ["alarmed", "shy", "hostile", "anxious"],
+    "index": 26,
+    "image": "images/25.jpg"
+  },
+  {
+    "answers": ["joking", "cautious", "arrogant ", "reassuring"],
+    "index": 27,
+    "image": "images/26.jpg"
+  },
+  {
+    "answers": ["interested", "joking", "affectionate", "contented"],
+    "index": 28,
+    "image": "images/27.jpg"
+  },
+  {
+    "answers": ["impatient", "aghast", "irritated", "reflective"],
+    "index": 29,
+    "image": "images/28.jpg"
+  },
+  {
+    "answers": ["grateful", "flirtatious", "hostile", "disappointed"],
+    "index": 30,
+    "image": "images/29.jpg"
+  },
+  {
+    "answers": ["ashamed", "confident", "joking", "dispirited"],
+    "index": 31,
+    "image": "images/30.jpg"
+  },
+  {
+    "answers": ["serious", "ashamed", "bewildered", "alarmed"],
+    "index": 32,
+    "image": "images/31.jpg"
+  },
+  {
+    "answers": ["embarrassed", "guilty", "fantasizing", "concerned"],
+    "index": 33,
+    "image": "images/32.jpg"
+  },
+  {
+    "answers": ["aghast", "baffled", "distrustful", "terrified"],
+    "index": 34,
+    "image": "images/33.jpg"
+  },
+  {
+    "answers": ["puzzled", "nervous", "insisting", "contemplative"],
+    "index": 35,
+    "image": "images/34.jpg"
+  },
+  {
+    "answers": ["ashamed ", "nervous", "suspicious", "indecisive"],
+    "index": 36,
+    "image": "images/35.jpg"
   }
+
+
+
+
 ]
