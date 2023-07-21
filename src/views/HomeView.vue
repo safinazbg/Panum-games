@@ -80,9 +80,9 @@
       <div class="flex flex-col items-center mt-4">
         <p class="">Testi tekrarlamak istermisiniz?</p>
 
-        <button @click="resetBtn" class="px-6 py-4 bg-cyan-300 mt-2">
-          EVET
-        </button>
+          <button @click="resetBtn" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 w-44 h-12 mt-8">EVET</button>
+          
+        
       </div>
     </div>
   </div>
