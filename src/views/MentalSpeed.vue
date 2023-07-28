@@ -112,6 +112,10 @@
       </div>
       <div class="col5 border-black"></div>
     </div>
+    <div class="mx-auto my-6">
+      <img src="https://www.digiq.eu/img/Aarhus_University_logo.svg.a8533700.png" class="h-12 mx-auto grayscale" alt="">
+
+    </div>
   </div>
 </template>
 
