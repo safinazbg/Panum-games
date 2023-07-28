@@ -97,6 +97,7 @@
         class="col3 border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
+          <!-- box içine icon eklenecekse p etiketi içindeki margin silinecek -->
           <p class="font-semibold mt-24">Mental Speed</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
@@ -109,47 +110,7 @@
       <div class="col5 border-black"></div>
     </div>
   </div>
-  <!-- <div class="col6 border-r-2 border-black"></div>
-<div
-  class="col7 border-r-2 border-t-2 flex flex-col py-10 items-center justify-end border-black"
->
-  <div class="icon flex flex-col items-center justify-center">
-    <p class="mb-4">Working Memory Test</p>
-    <button
-      class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
-    >
-      Play
-      <span class="ml-3"><arrowUp class="h-4 w-4"></arrowUp></span>
-    </button>
-  </div>
-</div>
-<div
-  class="col9 border-r-2 border-t-2 flex flex-col py-10 items-center justify-end border-black"
->
-  <div class="icon flex flex-col items-center justify-center">
-    <p class="mb-4">Working Memory Test</p>
-    <button
-      class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
-    >
-      Play
-      <span class="ml-3"><arrowUp class="h-4 w-4"></arrowUp></span>
-    </button>
-  </div>
-</div>
-<div
-  class="col8 border-r-2 border-t-2 flex flex-col py-10 items-center justify-end border-black"
->
-  <div class="icon flex flex-col items-center justify-center">
-    <p class="mb-4">Working Memory Test</p>
-    <button
-      class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
-    >
-      Play
-      <span class="ml-3"><arrowUp class="h-4 w-4"></arrowUp></span>
-    </button>
-  </div>
-</div> -->
-  <!-- <div class="col10 border-r-2 border-black"></div> -->
+  
 </template>
 
 <script>
