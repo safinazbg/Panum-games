@@ -53,10 +53,9 @@
         class="col4 md:border-r-2 p-8 border-black flex items-end justify-center cursor-pointer hover:bg-gray-100"
       >
         <div class="icon flex flex-col items-center justify-center">
-          <p class="font-semibold text-lg">Mental Speed</p>
+          <p class="font-semibold text-lg"> Reading the Mind in the Eyes Test</p>
           <p class="mb-4">
-            Verbal fluency is the ability to rapidly retreive words from your
-            mental vocabulary
+            
           </p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
