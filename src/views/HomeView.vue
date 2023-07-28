@@ -56,23 +56,7 @@
           {{ answer }}
         </butto>
 
-        <!-- <button
-          class="px-8 py-4 bg-slate-50 border border-slate-300 rounded-xl shadow-md hover:bg-white hover:shadow-lg hover:border-b-slate-400 mb-3 duration-300 ease-linear capitalize"
-        >
-          jealous
-        </button>
-
-        <button
-          class="px-8 py-4 bg-slate-50 border border-slate-300 rounded-xl shadow-md hover:bg-white hover:shadow-lg hover:border-b-slate-400 mb-3 duration-300 ease-linear capitalize"
-        >
-          jealous
-        </button>
-
-        <button
-          class="px-8 py-4 bg-slate-50 border border-slate-300 rounded-xl shadow-md hover:bg-white hover:shadow-lg hover:border-b-slate-400 mb-3 duration-300 ease-linear capitalize"
-        >
-          jealous
-        </button> -->
+        
       </div>
     </div>
 
