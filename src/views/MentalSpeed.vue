@@ -1,14 +1,14 @@
 <template>
   <div class="container mx-auto w-full flex border-b-2 border-black">
-    <div class="w-4/5 h-16 ml-44">
+    <div class="w-4/5 h-16 md:ml-44 mx-4">
       <p class="w-1/2 text-2xl font-bold">Panum</p>
-      <p class="text-sm text-gray-500 font-n">Designed to train your brain</p>
+      <p class="text-sm text-gray-500 ">Designed to train your brain</p>
     </div>
     <div
-      class="w-1/5 h-16 border-l-2 border-black flex justify-center items-center"
+      class="w-1/5 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"
     >
       <button
-        class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
+        class="border-2 border-black rounded-full text-center mx-2 w-36 h-8 flex justify-center items-center"
       >
         Log in
         <span class="ml-3"><arrowTop class="h-4 w-4"></arrowTop></span>
@@ -16,10 +16,10 @@
     </div>
   </div>
   <div class="container mx-auto w-full mt-14">
-    <div class="grid-group grid grid-cols-5 border-b-2 border-t-2 border-black">
-      <div class="col1 border-r-2 border-black"></div>
+    <div class="grid-group md:grid grid-cols-5 border-b-2 md:border-t-2 border-black">
+      <div class="col1 md:border-r-2 border-black"></div>
       <div
-        class="col2 border-r-2 p-8 border-black flex items-end justify-center"
+        class="col2  border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <gridIcon class="w-12 h-12" />
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div
-        class="col3 border-r-2 p-8 border-black flex items-end justify-center"
+        class="col3 md:border-r-2 md:border-b-0 p-8 border-black flex items-end justify-center border-b-2"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <peopleIcon class="w-12 h-12" />
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div
-        class="col4 border-r-2 p-8 border-black flex items-end justify-center"
+        class="col4 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center justify-center">
           <p class="font-semibold text-lg">Mental Speed</p>
@@ -65,10 +65,10 @@
       </div>
       <div class="col5 border-black"></div>
     </div>
-    <div class="grid-group grid grid-cols-5 border-b-2 border-black">
+    <div class="grid-group md:grid grid-cols-5 border-b-2 border-black">
       <div class="col1 border-r-2 border-black"></div>
       <div
-        class="col2 border-r-2 p-8 border-black flex items-end justify-center"
+        class="col2 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <p class="font-semibold">Working Memory Test</p>
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div
-        class="col3 border-r-2 p-8 border-black flex items-end justify-center"
+        class="col3 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <p class="font-semibold">Mental Speed</p>
@@ -94,11 +94,11 @@
         </div>
       </div>
       <div
-        class="col3 border-r-2 p-8 border-black flex items-end justify-center"
+        class="col3 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <!-- box içine icon eklenecekse p etiketi içindeki margin silinecek -->
-          <p class="font-semibold mt-24">Mental Speed</p>
+          <p class="font-semibold md:mt-24">Mental Speed</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
