@@ -2,10 +2,10 @@
   <div class="container mx-auto w-full flex border-b-2 border-black">
     <div class="w-4/5 h-16 md:ml-44 mx-4">
       <p class="w-1/2 text-2xl font-bold">Panum</p>
-      <p class="text-sm text-gray-500 ">Designed to train your brain</p>
+      <p class="text-sm text-gray-500">Designed to train your brain</p>
     </div>
     <div
-      class="w-1/5 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"
+      class="w-32 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"
     >
       <button
         class="border-2 border-black rounded-full text-center mx-2 w-36 h-8 flex justify-center items-center"
@@ -16,10 +16,12 @@
     </div>
   </div>
   <div class="container mx-auto w-full mt-14">
-    <div class="grid-group md:grid grid-cols-5 border-b-2 md:border-t-2 border-black">
+    <div
+      class="grid-group md:grid grid-cols-5 border-b-2 md:border-t-2 border-black"
+    >
       <div class="col1 md:border-r-2 border-black"></div>
       <div
-        class="col2  border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center"
+        class="col2 border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <gridIcon class="w-12 h-12" />
@@ -47,7 +49,8 @@
         </div>
       </div>
       <div
-        class="col4 md:border-r-2 p-8 border-black flex items-end justify-center"
+        @click="attention"
+        class="col4 md:border-r-2 p-8 border-black flex items-end justify-center cursor-pointer hover:bg-gray-100"
       >
         <div class="icon flex flex-col items-center justify-center">
           <p class="font-semibold text-lg">Mental Speed</p>
@@ -110,7 +113,6 @@
       <div class="col5 border-black"></div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -118,8 +120,19 @@ import arrowTop from "@/components/Icons/arrowTop.vue";
 import arrowUp from "@/components/Icons/arrowUp.vue";
 import gridIcon from "@/components/Icons/gridIcon.vue";
 import peopleIcon from "@/components/Icons/peopleIcon.vue";
+import { useRouter } from "vue-router";
 
 export default {
   components: { arrowTop, gridIcon, arrowUp, peopleIcon },
+
+  setup() {
+    const router = useRouter();
+
+    const attention = () => {
+      router.push("/");
+    };
+
+    return { router, attention };
+  },
 };
 </script>
