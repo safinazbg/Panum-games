@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MentalSpeed from '../views/MentalSpeed.vue'
+import MentalTest from '../views/MentalTest.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/MentalSpeed',
     name: 'MentalSpeed',
     component: MentalSpeed
+  },
+  {
+    path: '/MentalTest',
+    name: 'MentalTest',
+    component: MentalTest
   },
   {
     path: '/about',

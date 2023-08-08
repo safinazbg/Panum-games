@@ -35,8 +35,9 @@
         </div>
       </div>
       <div
-        class="col3 md:border-r-2 md:border-b-0 p-8 border-black flex items-end justify-center border-b-2"
-      >
+        class="col3 md:border-r-2 md:border-b-0 p-8 border-black hover:bg-gray-100 flex items-end justify-center border-b-2"
+       >
+      <RouterLink to="MentalTest">
         <div class="icon flex flex-col items-center space-y-5">
           <peopleIcon class="w-12 h-12" />
           <p class="font-semibold">Mental Speed</p>
@@ -47,7 +48,8 @@
             <span class="ml-3"><arrowUp class="h-4 w-4"></arrowUp></span>
           </button>
         </div>
-      </div>
+      </RouterLink>
+    </div>
       <div
         @click="attention"
         class="col4 md:border-r-2 p-8 border-black flex items-end justify-center cursor-pointer hover:bg-gray-100"
@@ -82,9 +84,11 @@
           </button>
         </div>
       </div>
-      <div
+      
+        <div
         class="col3 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
+      
         <div class="icon flex flex-col items-center space-y-5">
           <p class="font-semibold">Mental Speed</p>
           <button
@@ -94,7 +98,10 @@
             <span class="ml-3"><arrowUp class="h-4 w-4"></arrowUp></span>
           </button>
         </div>
+      
       </div>
+      
+      
       <div
         class="col3 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
