@@ -1,0 +1,23 @@
+[
+  {
+    "index": 0,
+    "textName": "Selected task",
+    "viewBox": "6",
+    "btnLeft": "6",
+    "btnRight": "Not 6"
+  },
+  {
+    "index": 1,
+    "textName": "Selected task",
+    "viewBox": "A",
+    "btnLeft": "A",
+    "btnRight": "Not A"
+  },
+  {
+    "index": 2,
+    "textName": "Selected task",
+    "viewBox": ":(",
+    "btnLeft": ":)",
+    "btnRight": "Not :)"
+  }
+]
