@@ -127,7 +127,12 @@
       <div
         class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center"
       >
-        <p class="text-xl font-medium">{{ currentTaskQuestion.viewBox }}</p>
+        <p class="text-xl font-medium">
+          {{ currentTaskQuestion.viewBox }}
+          <span v-if="currentTaskQuestion.index > 9" class="ml-8">{{
+            currentTaskQuestion.viewBox2
+          }}</span>
+        </p>
       </div>
       <div class="buttons flex space-x-8 mt-14">
         <div class="text-center">
@@ -235,8 +240,10 @@ export default {
         currentTask.value++;
         if (currentTask.value >= 10) {
           level2.value = true;
+          isGameStart.value = false;
           if (currentTask.value >= 11) {
             level2.value = false;
+            isGameStart.value = true;
           }
           currentTaskQuestion.value = task[currentTask.value + 1];
         }

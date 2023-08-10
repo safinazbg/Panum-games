@@ -72,72 +72,81 @@
   {
     "index": 10,
     "textName": "Selected task",
-    "viewBox": "",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "ABC",
+    "viewBox2": "ADC",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 11,
     "textName": "Selected task",
-    "viewBox": "Yasin",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "123",
+    "viewBox2": "128",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 12,
     "textName": "Selected task",
-    "viewBox": "Safinaz",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "⎔☆⎚",
+    "viewBox2": "⎔☆⎚",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 13,
     "textName": "Selected task",
-    "viewBox": "Büyükgüzel",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "〠",
+    "viewBox2": "☠︎",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 14,
     "textName": "Selected task",
-    "viewBox": "Lorem ipsum",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "❅✿✺",
+    "viewBox2": "✶✣❀",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 15,
     "textName": "Selected task",
-    "viewBox": "Lalalalalal",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "SUN",
+    "viewBox2": "SUM",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 16,
     "textName": "Selected task",
-    "viewBox": "fkfkfkfkfkfk",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "♘♖♕",
+    "viewBox2": "♘♖♕",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 17,
     "textName": "Selected task",
-    "viewBox": "xmxmxmm",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "993",
+    "viewBox2": "963",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 18,
     "textName": "Selected task",
-    "viewBox": "asasasasas",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "♠︎♣︎♥︎♦︎",
+    "viewBox2": "♠︎♞♥︎♦︎",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   },
   {
     "index": 19,
     "textName": "Selected task",
-    "viewBox": "newwww gamee",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "Printer",
+    "viewBox2": "Printier",
+    "btnLeft": "Different",
+    "btnRight": "Same"
   }
-  
 ]
