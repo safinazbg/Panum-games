@@ -25,7 +25,7 @@
       >
         <div class="icon flex flex-col items-center space-y-5">
           <gridIcon class="w-12 h-12" />
-          <p class="font-semibold">Working Memory Test</p>
+          <p class="font-semibold">Working Memory</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -54,8 +54,9 @@
         @click="attention"
         class="col4 md:border-r-2 p-8 border-black flex items-end justify-center cursor-pointer hover:bg-gray-100"
       >
-        <div class="icon flex flex-col items-center justify-center">
-          <p class="font-semibold text-lg"> Reading the Mind in the Eyes Test</p>
+        <div class="icon flex flex-col items-center justify-center space-y-2">
+          <MindIcon class="w-12 h-12"></MindIcon>
+          <p class="font-semibold text-lg"> Mind in the Eye</p>
           <p class="mb-4">
             
           </p>
@@ -75,7 +76,7 @@
         class="col2 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
-          <p class="font-semibold">Working Memory Test</p>
+          <p class="font-semibold">Declarative knowledge</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -90,7 +91,7 @@
       >
       
         <div class="icon flex flex-col items-center space-y-5">
-          <p class="font-semibold">Mental Speed</p>
+          <p class="font-semibold">Semdis Links</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -107,7 +108,7 @@
       >
         <div class="icon flex flex-col items-center space-y-5">
           <!-- box içine icon eklenecekse p etiketi içindeki margin silinecek -->
-          <p class="font-semibold md:mt-24">Mental Speed</p>
+          <p class="font-semibold md:mt-24">Prosody</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -134,9 +135,10 @@ import arrowUp from "@/components/Icons/arrowUp.vue";
 import gridIcon from "@/components/Icons/gridIcon.vue";
 import peopleIcon from "@/components/Icons/peopleIcon.vue";
 import { useRouter } from "vue-router";
+import MindIcon from "@/components/Icons/MindIcon.vue";
 
 export default {
-  components: { arrowTop, gridIcon, arrowUp, peopleIcon },
+  components: {MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
 
   setup() {
     const router = useRouter();
