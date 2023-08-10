@@ -19,8 +19,9 @@
     <div
       class="grid-group md:grid grid-cols-5 border-b-2 md:border-t-2 border-black"
     >
+
       <div class="col1 md:border-r-2 border-black"></div>
-      <div
+      <div @click="workingMemory"
         class="col2 border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
@@ -76,7 +77,7 @@
         class="col2 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
-          <p class="font-semibold">Declarative knowledge</p>
+          <p class="font-semibold">Declarative Knowledge</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -91,7 +92,7 @@
       >
       
         <div class="icon flex flex-col items-center space-y-5">
-          <p class="font-semibold">Semdis Links</p>
+          <p class="font-semibold">Links Game</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -147,7 +148,11 @@ export default {
       router.push("/MentalSpeed");
     };
 
-    return { router, attention };
+    const workingMemory = () => {
+      router.push("/WorkingMemory");
+    };
+
+    return { router, attention, workingMemory };
   },
 };
 </script>
