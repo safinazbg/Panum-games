@@ -23,56 +23,56 @@
   {
     "index": 3,
     "textName": "Selected task",
-    "viewBox": ":sss(",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "aBc",
+    "btnLeft": "aBc",
+    "btnRight": "Not aBc"
   },
   {
     "index": 4,
     "textName": "Selected task",
-    "viewBox": ":DDD",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "xyz",
+    "btnLeft": "xyZ",
+    "btnRight": "Not xyZ"
   },
   {
     "index": 5,
     "textName": "Selected task",
-    "viewBox": ":/ **",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "Com",
+    "btnLeft": "CoM",
+    "btnRight": "Not CoM"
   },
   {
     "index": 6,
     "textName": "Selected task",
-    "viewBox": ":WW*",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "nEt",
+    "btnLeft": "nEt",
+    "btnRight": "Not nEt"
   },
   {
     "index": 7,
     "textName": "Selected task",
-    "viewBox": "Lorem **",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "gO",
+    "btnLeft": "go",
+    "btnRight": "Not go"
   },
   {
     "index": 8,
     "textName": "Selected task",
-    "viewBox": "Mustafa",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "COmE",
+    "btnLeft": "COmE",
+    "btnRight": "Not COmE"
   },
   {
     "index": 9,
     "textName": "Selected task",
-    "viewBox": "Kemal",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
+    "viewBox": "KmL",
+    "btnLeft": "Kml",
+    "btnRight": "Not Kml"
   },
   {
     "index": 10,
     "textName": "Selected task",
-    "viewBox": "Karadeniz",
+    "viewBox": "",
     "btnLeft": ":)",
     "btnRight": "Not :)"
   },
@@ -138,33 +138,6 @@
     "viewBox": "newwww gamee",
     "btnLeft": ":)",
     "btnRight": "Not :)"
-  },
-  {
-    "index": 20,
-    "textName": "Selected task",
-    "viewBox": "hava 38 derece",
-    "btnLeft": ":)",
-    "btnRight": "Not :) ☆"
-  },
-  {
-    "index": 21,
-    "textName": "Selected task",
-    "viewBox": "nem %81 :'(",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
-  },
-  {
-    "index": 22,
-    "textName": "Selected task",
-    "viewBox": "şu an nem %89 :'(",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
-  },
-  {
-    "index": 23,
-    "textName": "Selected task",
-    "viewBox": "yağmuuuurr yağ!",
-    "btnLeft": ":)",
-    "btnRight": "Not :)"
   }
+  
 ]
