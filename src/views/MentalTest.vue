@@ -169,7 +169,7 @@
       <h1 class="text-[min(10vw,3.75rem)] text-center flex">
         Thank you for playing!
       </h1>
-      <p class="text-3xl">You have completed the game. Well done!</p>
+      <p class="text-3xl mx-4">You have completed the game. Well done!</p>
       <!-- <div class="flex flex-col">
         <p class="text-center mb-14 animate-pulse">
           Press left or right arrow key to continue
