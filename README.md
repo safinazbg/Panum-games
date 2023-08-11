@@ -1,4 +1,4 @@
-# attention-test
+# Panum games
 
 ## Project setup
 ```
