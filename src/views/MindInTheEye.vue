@@ -28,7 +28,7 @@
                   <span class="font-bold">{{ currentItem + 1 }}</span>
                 </p>
 
-                <p class="font-light">FROM 36</p>
+                <p class="font-light">OF 36</p>
 
                 <p class="">
                   PROGRESS (<span class="font-bold">
