@@ -45,10 +45,10 @@
         <div class="flex flex-col  w-36 justify-center gap-8">
           <div class="flex flex-col items-center gap-1">
             <div class="" v-if="gamesBeforeLevel3 && gamesBeforeLevel3 >= 0">{{ gamesBeforeLevel3 }} Games left</div>
-            <button :class="level === 6 ? ' text-gray-200' : 'text-gray-800' " @click=" levelUp"
+            <button :class="level === 5 ? ' text-gray-200' : 'text-gray-800' " @click=" levelUp"
                     class="flex-col flex items-center ">
               <svg class="w-12 h-12 self-center dark:text-white border-2 p-2 rounded-lg "
-                   :class="level === 6 ? 'border-gray-200' : 'border-gray-800'"
+                   :class="level === 5 ? 'border-gray-200' : 'border-gray-800'"
                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                    fill="none" viewBox="0 0 10 12">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
