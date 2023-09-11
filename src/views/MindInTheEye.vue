@@ -41,21 +41,23 @@
         </div>
       </div>
 
-      <div class="questionImg w-full shadow-lg">
+      <div class="questionImg relative w-full shadow-lg">
         <img
             :src="currentQuestion.image"
             class="object-cover mx-auto rounded"
             alt=""
         />
+        <span class="absolute -right-20">{{correctAnswerCount}} / {{questionCount}}</span>
       </div>
+
       <div class="answerButton flex flex-col w-full mx-auto mt-4">
         <button
             class="px-8 py-4 bg-slate-50 border border-slate-300 rounded-xl shadow-md mb-3 duration-300 ease-linear capitalize"
             :class="{
               'hover:bg-white hover:shadow-lg hover:border-b-slate-400': !showCorrectAnswer,
               'bg-green-100 border-green-400': showCorrectAnswer && index == currentQuestion.answerIndex,
-              'bg-red-100 border-red-400': showCorrectAnswer && index == currentQuestion.answerIndex,
-              'opacity-30': showCorrectAnswer && index != currentQuestion.answerIndex
+              'bg-red-100 border-red-400': showCorrectAnswer && index != currentQuestion.answerIndex,
+              'opacity-30': showCorrectAnswer && index != currentAnswerIndex
             }"
             v-for="(answer, index) in currentQuestion.answers"
             :key="index"
@@ -68,7 +70,7 @@
 
     <div v-else class="">
       <div class="flex flex-col items-center mt-4">
-        <p class="">Your results</p>
+        <p class="">Dit resultat:</p>
 
         <div>Du svarede rigtigt <span>{{correctAnswerCount}} ud af {{questionCount}}</span> gange!</div>
         <!--        <button-->
@@ -132,12 +134,14 @@ export default {
   name: "MindInTheEye",
   components: {PanumNavigation},
   setup() {
+    const debug = true
     const questions = reactive(dataQuestions);
     const questionCount = questions.length;
 
     const totalQuestion = questions.length;
 
     const currentItem = ref(0);
+    const currentAnswerIndex = ref(null)
 
     const progresBarWidth = ref("0%");
 
@@ -165,7 +169,7 @@ export default {
     }
 
     const onAnswer = (index) => {
-      const selectedIndex.value = index
+      currentAnswerIndex.value = index
       const isCorrectIndex = index == currentQuestion.value.answerIndex
       if (isCorrectIndex) correctAnswerCount.value++
 
@@ -173,7 +177,7 @@ export default {
       setTimeout(() => {
         showCorrectAnswer.value = false
         showNextQuestion()
-      }, 3000)
+      }, debug ? 130 : 3000)
     }
     const goBack = () => {
       if (currentItem.value > 0) {
@@ -198,6 +202,7 @@ export default {
 
     return {
       correctAnswerCount,
+      currentAnswerIndex,
       currentItem,
       progresBarWidth,
       progressPercentage,
