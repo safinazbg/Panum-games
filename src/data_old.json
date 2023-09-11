@@ -2,185 +2,217 @@
   {
     "answers": ["jealous", "panicked", "arrogant", "hateful"],
     "index": 0,
+    "answerIndex": 1,
     "image": "images/0.jpg"
   },
   {
     "answers": ["playful", "comforting", "irritated", "bored"],
     "index": 1,
+    "answerIndex": 0,
     "image": "images/1.jpg"
   },
   {
     "answers": ["terrified", "upset", "arrogant", "annoyed"],
     "index": 2,
+    "answerIndex": 1,
     "image": "images/2.jpg"
   },
   {
     "answers": ["joking", "flustered", "desire", "convinced"],
     "index": 3,
+    "answerIndex": 2,
     "image": "images/3.jpg"
   },
   {
     "answers": ["joking", "insisting", "amused", "relaxed"],
     "index": 4,
+    "answerIndex": 1,
     "image": "images/4.jpg"
   },
   {
     "answers": ["irritated", "sarcastic", "worried", "friendly"],
     "index": 5,
+    "answerIndex": 2,
     "image": "images/5.jpg"
   },
   {
     "answers": ["aghast", "fantasizing", "impatient", "alarmed"],
     "index": 6,
+    "answerIndex": 1,
     "image": "images/6.jpg"
   },
   {
     "answers": ["apologetic", "friendly", "uneasy", "dispirited"],
     "index": 7,
+    "answerIndex": 2,
     "image": "images/7.jpg"
   },
   {
     "answers": ["despondent", "relieved", "shy", "excited"],
     "index": 8,
+    "answerIndex": 0,
     "image": "images/8.jpg"
   },
   {
     "answers": ["annoyed", "hostile", "horrified", "preoccupied"],
     "index": 9,
+    "answerIndex": 3,
     "image": "images/9.jpg"
   },
   {
     "answers": ["cautious", "insisting", "bored", "aghast"],
     "index": 10,
+    "answerIndex": 0,
     "image": "images/10.jpg"
   },
   {
     "answers": ["terrified", "amused", "regretful", "flirtatious"],
     "index": 12,
+    "answerIndex": 2,
     "image": "images/11.jpg"
   },
   {
     "answers": ["indifferent", "embarrassed", "sceptical", "dispirited"],
     "index": 13,
+    "answerIndex": 2,
     "image": "images/12.jpg"
   },
   {
     "answers": ["decisive", "anticipating", "threatening", "shy"],
     "index": 14,
+    "answerIndex": 1,
     "image": "images/13.jpg"
   },
   {
     "answers": ["irritated", "disappointed", "depressed", "accusing"],
     "index": 15,
+    "answerIndex": 3,
     "image": "images/14.jpg"
   },
   {
     "answers": ["contemplative", "flustered", "encouraging", "amused"],
     "index": 16,
+    "answerIndex": 0,
     "image": "images/15.jpg"
   },
   {
     "answers": ["irritated", "thoughtful", "encouraging", "sympathetic"],
     "index": 17,
+    "answerIndex": 1,
     "image": "images/16.jpg"
   },
   {
     "answers": ["doubtful", "affectionate", "playful", "aghast"],
     "index": 18,
+    "answerIndex": 0,
     "image": "images/17.jpg"
   },
   {
     "answers": ["decisive", "amused", "aghast", "bored"],
     "index": 19,
+    "answerIndex": 0,
     "image": "images/18.jpg"
   },
   {
     "answers": ["arrogant", "grateful", "sarcastic", "tentative"],
     "index": 20,
+    "answerIndex": 3,
     "image": "images/19.jpg"
   },
   {
     "answers": ["dominant", "friendly", "guilty", "horrified"],
     "index": 21,
+    "answerIndex": 1,
     "image": "images/20.jpg"
   },
   {
     "answers": ["preoccupied", "grateful", "insisting ", "imploring"],
     "index": 22,
+    "answerIndex": 1,
     "image": "images/21.jpg"
   },
   {
     "answers": ["contented", "apologetic", "defiant", "curious"],
     "index": 23,
+    "answerIndex": 0,
     "image": "images/22.jpg"
   },
   {
     "answers": ["pensive", "irritated", "excited", "hostile"],
     "index": 24,
+    "answerIndex": 2,
     "image": "images/23.jpg"
   },
   {
     "answers": ["panicked", "incredulous", "despondent", "interested"],
     "index": 25,
+    "answerIndex": 0,
     "image": "images/24.jpg"
   },
   {
     "answers": ["alarmed", "shy", "hostile", "anxious"],
     "index": 26,
+    "answerIndex": 3,
     "image": "images/25.jpg"
   },
   {
     "answers": ["joking", "cautious", "arrogant ", "reassuring"],
     "index": 27,
+    "answerIndex": 2,
     "image": "images/26.jpg"
   },
   {
     "answers": ["interested", "joking", "affectionate", "contented"],
     "index": 28,
+    "answerIndex": 1,
     "image": "images/27.jpg"
   },
   {
     "answers": ["impatient", "aghast", "irritated", "reflective"],
     "index": 29,
+    "answerIndex": 3,
     "image": "images/28.jpg"
   },
   {
     "answers": ["grateful", "flirtatious", "hostile", "disappointed"],
     "index": 30,
+    "answerIndex": 1,
     "image": "images/29.jpg"
   },
   {
     "answers": ["ashamed", "confident", "joking", "dispirited"],
     "index": 31,
+    "answerIndex": 1,
     "image": "images/30.jpg"
   },
   {
     "answers": ["serious", "ashamed", "bewildered", "alarmed"],
     "index": 32,
+    "answerIndex": 0,
     "image": "images/31.jpg"
   },
   {
     "answers": ["embarrassed", "guilty", "fantasizing", "concerned"],
     "index": 33,
+    "answerIndex": 3,
     "image": "images/32.jpg"
   },
   {
     "answers": ["aghast", "baffled", "distrustful", "terrified"],
     "index": 34,
+    "answerIndex": 2,
     "image": "images/33.jpg"
   },
   {
     "answers": ["puzzled", "nervous", "insisting", "contemplative"],
     "index": 35,
+    "answerIndex": 1,
     "image": "images/34.jpg"
   },
   {
     "answers": ["ashamed ", "nervous", "suspicious", "indecisive"],
     "index": 36,
+    "answerIndex": 2,
     "image": "images/35.jpg"
   }
-
-
-
-
 ]
