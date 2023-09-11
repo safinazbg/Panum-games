@@ -74,79 +74,79 @@
     "textName": "Selected task",
     "viewBox": "ABC",
     "viewBox2": "ADC",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 11,
     "textName": "Selected task",
     "viewBox": "123",
     "viewBox2": "128",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 12,
     "textName": "Selected task",
     "viewBox": "⎔☆⎚",
     "viewBox2": "⎔☆⎚",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 13,
     "textName": "Selected task",
     "viewBox": "〠",
     "viewBox2": "☠︎",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 14,
     "textName": "Selected task",
     "viewBox": "❅✿✺",
     "viewBox2": "✶✣❀",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 15,
     "textName": "Selected task",
     "viewBox": "SUN",
     "viewBox2": "SUM",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 16,
     "textName": "Selected task",
     "viewBox": "♘♖♕",
     "viewBox2": "♘♖♕",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 17,
     "textName": "Selected task",
     "viewBox": "993",
     "viewBox2": "963",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 18,
     "textName": "Selected task",
     "viewBox": "♠︎♣︎♥︎♦︎",
     "viewBox2": "♠︎♞♥︎♦︎",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   },
   {
     "index": 19,
     "textName": "Selected task",
     "viewBox": "Printer",
     "viewBox2": "Printier",
-    "btnLeft": "Different",
-    "btnRight": "Same"
+    "btnLeft": "Same",
+    "btnRight": "Different"
   }
 ]
