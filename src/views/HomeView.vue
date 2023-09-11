@@ -38,7 +38,7 @@
       <div
         class="col3 md:border-r-2 md:border-b-0 p-8 border-black hover:bg-gray-100 flex items-end justify-center border-b-2"
        >
-      <RouterLink to="MentalTest">
+      <RouterLink to="MentalSpeed">
         <div class="icon flex flex-col items-center space-y-5">
           <peopleIcon class="w-12 h-12" />
           <p class="font-semibold">Mental Speed</p>
@@ -145,7 +145,7 @@ export default {
     const router = useRouter();
 
     const attention = () => {
-      router.push("/MentalSpeed");
+      router.push("/MindInTheEye");
     };
 
     const workingMemory = () => {
