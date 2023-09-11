@@ -103,7 +103,7 @@
         </p>
         <div class="flex space-x-8">
           <button
-            @click="Level1Start"
+              @click="Level1Start"
             class="bg-green-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-green-400 duration-150 ease-linear"
           >
             <chevronIcon class="w-8 rotate-180" />
