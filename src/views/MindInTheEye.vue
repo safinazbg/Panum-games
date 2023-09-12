@@ -134,7 +134,6 @@ export default {
   name: "MindInTheEye",
   components: {PanumNavigation},
   setup() {
-    const debug = true
     const questions = reactive(dataQuestions);
     const questionCount = questions.length;
 
@@ -177,7 +176,7 @@ export default {
       setTimeout(() => {
         showCorrectAnswer.value = false
         showNextQuestion()
-      }, debug ? 130 : 3000)
+      },  3000)
     }
     const goBack = () => {
       if (currentItem.value > 0) {
