@@ -52,12 +52,12 @@
 
       <div class="answerButton flex flex-col w-full mx-auto mt-4">
         <button
-            class="px-8 py-4 bg-slate-50 border border-slate-300 rounded-xl shadow-md mb-3 duration-300 ease-linear capitalize"
+            class="px-8 py-4 border border-slate-300 rounded-xl shadow-md mb-3 duration-300 ease-linear capitalize"
             :class="{
               'hover:bg-white hover:shadow-lg hover:border-b-slate-400': !showCorrectAnswer,
               'bg-green-100 border-green-400': showCorrectAnswer && index == currentQuestion.answerIndex,
               'bg-red-100 border-red-400': showCorrectAnswer && index != currentQuestion.answerIndex,
-              'opacity-30': showCorrectAnswer && index != currentAnswerIndex
+              'opacity-50': showCorrectAnswer && index != currentAnswerIndex
             }"
             v-for="(answer, index) in currentQuestion.answers"
             :key="index"
@@ -65,6 +65,7 @@
         >
           {{ answer }}
         </button>
+
       </div>
     </div>
 
@@ -168,6 +169,9 @@ export default {
     }
 
     const onAnswer = (index) => {
+
+      if (showCorrectAnswer.value) return
+
       currentAnswerIndex.value = index
       const isCorrectIndex = index == currentQuestion.value.answerIndex
       if (isCorrectIndex) correctAnswerCount.value++
