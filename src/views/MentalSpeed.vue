@@ -281,7 +281,7 @@ export default {
       }
     });
 
-    const onLeft = e => {
+    const onLeft = () => {
       if (isWelcome.value) {
         startTest();
       } else if (isGameStart.value) {
@@ -290,7 +290,7 @@ export default {
         Level1Start()
       }
     }
-    const onRight = e => {
+    const onRight = () => {
       if (isWelcome.value) {
         startTest();
       } else if (isGameStart.value) {
