@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import MindInTheEye from '../views/MindInTheEye.vue'
 import WorkingMemory from "@/views/WorkingMemory.vue";
 import MentalSpeed from "@/views/MentalSpeed.vue";
+import SpeechRecognition from "@/views/SpeechRecognition.vue";
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     name: 'WorkingMemory',
     component: WorkingMemory
   },
+  {
+    path: '/SpeechRecognition',
+    name: 'SpeechRecognition',
+    component: SpeechRecognition
+  },
+
   {
     path: '/about',
     name: 'about',
