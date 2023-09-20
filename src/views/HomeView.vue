@@ -113,7 +113,6 @@
         class="col3 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
-          <!-- box içine icon eklenecekse p etiketi içindeki margin silinecek -->
           <p class="font-semibold md:mt-24">Game 6</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"

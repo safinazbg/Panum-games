@@ -29,8 +29,7 @@ export default {
 
     const canvasRef = ref(null);
 
-    const Recognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
 
     onMounted(() => {
@@ -115,8 +114,7 @@ export default {
             audio: true,
           });
 
-          audioContext.value = new (window.AudioContext ||
-              window.webkitAudioContext)();
+          audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
           analyser.value = audioContext.value.createAnalyser();
           const source = audioContext.value.createMediaStreamSource(stream);
           source.connect(analyser.value);
