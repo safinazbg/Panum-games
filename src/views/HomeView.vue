@@ -158,7 +158,7 @@ export default {
     };
 
     const speak = () => {
-      router.push("/SpeechRecognition");
+      router.push("/SpeechRecognitionGame");
     };
 
     return { router, attention, speak, workingMemory };
