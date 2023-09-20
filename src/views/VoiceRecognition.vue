@@ -1,5 +1,6 @@
 <template>
   <!-- Welcome Page -->
+  <PanumNavigation/>
   <div class="welcome-page" v-if="firstPage">
     <div
         class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20 space-y-2 leading-6"
@@ -89,12 +90,15 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import MicActive from "@/components/icons/MicActive.vue";
-import MicInActive from "@/components/icons/MicInActive.vue";
+import MicActive from "@/components/Icons/MicActive.vue";
+import MicInActive from "@/components/Icons/MicInActive.vue";
+import PanumNavigation from "@/components/PanumNavigation.vue";
+
 export default {
   components: {
     MicActive,
     MicInActive,
+    PanumNavigation
   },
   setup() {
     const isRecording = ref(false);
