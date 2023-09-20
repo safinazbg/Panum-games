@@ -4,6 +4,8 @@ import MindInTheEye from '../views/MindInTheEye.vue'
 import WorkingMemory from "@/views/WorkingMemory.vue";
 import MentalSpeed from "@/views/MentalSpeed.vue";
 import SpeechRecognition from "@/views/SpeechRecognition.vue";
+import RecordTwo from "@/components/RecordTwo.vue";
+import RecordThree from "@/components/RecordThree.vue";
 
 const routes = [
   {
@@ -29,6 +31,15 @@ const routes = [
     path: '/SpeechRecognition',
     name: 'SpeechRecognition',
     component: SpeechRecognition
+  },
+  {
+    path: '/RecordTwo',
+    name: 'RecordTwo',
+    component: RecordTwo
+  },{
+    path: '/RecordThree',
+    name: 'RecordThree',
+    component: RecordThree
   },
 
   {
