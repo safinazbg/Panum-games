@@ -6,11 +6,11 @@
         class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20 space-y-2 leading-6"
     >
       <h1 class="font-semibold text-xl">
-        Welcome to the Speech recognition game
+        Welcome to the Speech recognition game!
       </h1>
       <h5 class="font-semibold text-base">
         Your task is just to record yourself speaking freely and then reading a
-        text aloud for 1 munite
+        text aloud for 1 minute.
       </h5>
       <p>
         Please ensure that you are in a quiet environment when playing the game.
@@ -21,9 +21,9 @@
       </p>
       <p>Click 'Start game' to start playing! :)</p>
     </div>
-    <div class="button mt-10">
+    <div class="flex mt-10 items-center justify-center w-full">
       <button
-          class="px-10 py-7 border-4 border-black bg-green-500 bg-opacity-80 rounded-xl font-bold text-lg"
+          class="px-10 py-7 border-4 border-black bg-opacity-80 rounded-xl font-bold text-lg"
           @click="startGame"
       >
         Start Game
@@ -38,16 +38,14 @@
     <div class="Recording-Wave">
       <div class="Record-text space-y-2 leading-6">
         <h1 class="font-semibold text-xl">
-          Before we start, let's your microphone!
+          Before we start, let's test your microphone!
         </h1>
-        <h5 class="font-semibold text-base">Please follow the instructions</h5>
-        <p><strong>1.</strong> Click the 'mic test' button.</p>
-        <p>
-          <strong>2.</strong> Click 'allow' if you see a question in the
+        <h2 class="font-semibold text-lg text-center my-8">Please follow these instructions:</h2>
+        <p> 1. Click the 'mic test' button.</p>
+        <p> 2. Click 'allow' if you see a question in the
           browser.
         </p>
-        <p>
-          <strong>3.</strong> The line should move when you talk into the mic!
+        <p> 3. The line should move when you talk into the mic!
         </p>
       </div>
       <!-- Mic Record -->
