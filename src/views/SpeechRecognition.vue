@@ -1,35 +1,31 @@
-
 <template>
-  <div class="container mx-auto flex flex-col items-center">
-    <div class="recordMicContainer">
-      <button
-          :class="`mic${isRecording ? ' recording' : ''}`"
-          @click="ToggleMic"
-      >
-        {{ isRecording ? "Stop Recording" : "Start Recording" }}
-      </button>
-      <div class="transcript" v-text="transcript"></div>
-    </div>
-    <div class="sound-wave">
-      <canvas ref="canvas" class="canvas"></canvas>
-      <!-- <button @click="toggleAudioContext">
-        {{ audioContextStarted ? "Record Stop" : "Record Start" }}
-      </button> -->
-    </div>
+  <div class="recordMicContainer">
+    <button :class="`mic${isRecording ? ' recording' : ''}`"
+            @click="ToggleMic">
+      {{ isRecording ? "Stop Recording" : "Start Recording" }}
+    </button>
+    <div class="transcript" v-text="transcript"></div>
+  </div>
+  <div class="sound-wave">
+    <canvas ref="canvas" class="canvas"></canvas>
+    <!-- <button @click="toggleAudioContext">
+      {{ audioContextStarted ? "Record Stop" : "Record Start" }}
+    </button> -->
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import {ref, onMounted} from "vue";
+
 export default {
-  name: "SpeechRecognition",
   setup() {
     const transcript = ref("");
     const isRecording = ref(false);
 
     const canvasRef = ref(null);
 
-    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const Recognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
 
     onMounted(() => {
@@ -114,7 +110,8 @@ export default {
             audio: true,
           });
 
-          audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
+          audioContext.value = new (window.AudioContext ||
+              window.webkitAudioContext)();
           analyser.value = audioContext.value.createAnalyser();
           const source = audioContext.value.createMediaStreamSource(stream);
           source.connect(analyser.value);
