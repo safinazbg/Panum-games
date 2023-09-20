@@ -159,7 +159,7 @@ export default {
     };
 
     const speak = () => {
-      router.push("/VoiceRecognition");
+      router.push("/SpeechRecognition");
     };
 
     return { router, attention, speak, workingMemory };
