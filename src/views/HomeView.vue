@@ -82,6 +82,7 @@
           class="col2 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
+          <SpeechIcon class="w-12 h-12"></SpeechIcon>
           <p class="font-semibold">Speech Recognition</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
@@ -141,9 +142,10 @@ import gridIcon from "@/components/Icons/gridIcon.vue";
 import peopleIcon from "@/components/Icons/peopleIcon.vue";
 import { useRouter } from "vue-router";
 import MindIcon from "@/components/Icons/MindIcon.vue";
+import SpeechIcon from "@/components/Icons/SpeechIcon.vue";
 
 export default {
-  components: {MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
+  components: {SpeechIcon, MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
 
   setup() {
     const router = useRouter();
