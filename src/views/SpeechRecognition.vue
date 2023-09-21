@@ -60,11 +60,13 @@
         <canvas ref="canvas" class="canvas"></canvas>
       </div>
       <div class="mic-check my-6">
-        <p v-if="showMicWorkingMessage">
+        <p v-if="showMicWorkingMessage"
+        class="text-green-800">
           Yay! Your mic is working perfectly! <br />
           Please click the 'Next' button to proceed.
         </p>
-        <p v-if="showMicError">
+        <p v-if="showMicError"
+        class="text-red-700">
           Oh, no! Your mic appears to have some problems :( <br />
           Please try again!
         </p>
