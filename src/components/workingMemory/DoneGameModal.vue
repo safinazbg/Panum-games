@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import LInfo from "@/components/layout/LInfo.vue";
+import LInfo from "@/components/workingMemory/LInfo.vue";
 import router from "@/router";
 
 export default {

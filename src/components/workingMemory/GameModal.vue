@@ -1,7 +1,7 @@
 <template>
-  <LInfo :show="show">
+  <LInfo :show="show" class="text-center">
     <template #title>
-      <h1 class="self-center">
+      <h1 class="self-center text-4xl">
         Well done!
       </h1>
     </template>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import LInfo from "@/components/layout/LInfo.vue";
+import LInfo from "@/components/workingMemory/LInfo.vue";
 
 export default {
   name: "GameModal",
