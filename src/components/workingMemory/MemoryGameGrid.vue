@@ -121,7 +121,7 @@
 
 <script>
 import {ref, computed, watch} from 'vue';
-import Square from '@/components/MemoryGameSquare.vue';
+import Square from '@/components/workingMemory/MemoryGameSquare.vue';
 
 export default {
   name: 'MemoryGameGrid',
