@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center min-h-screen">
     <div class="flex flex-col gap-2 items-center">
-      <h2 class="k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold">Practice Round</h2>
+      <h2 class="headline k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold">Practice Round</h2>
 
       <div class="w-36 flex justify-center items-center ">
         <p class="transition-transform duration-200 transform font-bold text-2xl"
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import Square from '@/components/MemoryGameSquare.vue';
+import Square from '@/components/workingMemory/MemoryGameSquare.vue';
 import {ref, watch} from "vue";
 
 
@@ -228,5 +228,12 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 1000px) {
+  .headline { /* replaces k1:mt-8 */
+    margin-top: 2rem;
+    font-size: 3rem; /* 48px */
+    line-height: 1;
+  }
+}
 
 </style>

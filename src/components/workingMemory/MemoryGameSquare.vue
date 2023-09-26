@@ -7,10 +7,11 @@
       :disabled="disabled"
   >
     <span class=" opacity-0 transition-all duration-200 scale-50" :class=" {'opacity-100 scale-100': isCorrect && index === chosenIndex }">
-          <img src="../assets/Correct.png" alt="" class="p-4 absolute inset-0">
+          <img src="../../assets/Correct.png" alt="" class="p-4 absolute inset-0">
     </span>
     <span class=" opacity-0 transition-all duration-200 scale-50" :class=" {'opacity-100 scale-100': isFalse & index === chosenIndex }">
-          <img src="../assets/Wrong.png" alt="" class="p-4 absolute inset-0">
+          <img src="../../assets/Wrong.png" alt="" class="p-4 absolute inset-0">
+
     </span>
   </button>
 </template>
