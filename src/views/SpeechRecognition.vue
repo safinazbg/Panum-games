@@ -12,9 +12,10 @@
         In this game, you will record yourself talking and reading.
 
       </h5>
-      <p>
-        Please ensure that you are in a quiet environment. You should just speak like you naturally would without thinking too much about it.
-      </p>
+      <p class="text-center">
+        Please ensure that you are in a quiet environment. You should just speak like
+        <br>
+        you naturally would without thinking too much about it.</p>
       <p>If anything goes wrong, you can redo the recording.</p>
       <p>Click 'Start game' to start playing! :)</p>
     </div>
@@ -34,7 +35,7 @@
   >
     <div class="Recording-Wave">
       <div class="Record-text space-y-2 leading-6">
-        <h1 class="font-semibold text-xl">
+        <h1 class="font-semibold text-xl text-center">
           Before we start, let's test your microphone!
         </h1>
         <h2 class="font-semibold text-lg text-center my-8">Please follow these instructions:</h2>
@@ -59,8 +60,9 @@
       <div class="mic-check my-6">
         <p v-if="showMicWorkingMessage"
         class="text-green-800">
-          Yay! Your mic is working perfectly! <br />
-          Please click the 'Next' button to proceed.
+          Sounds good - your microphone is working!
+          <br />
+          Please click the ‘Next’ button to continue.
         </p>
         <p v-if="showMicError"
         class="text-red-700">
@@ -99,7 +101,8 @@ export default {
   },
   setup() {
     const isRecording = ref(false);
-
+    const showGamePage = ref(true);
+    const showFinalPage = ref(false);
     const canvasRef = ref(null);
 
     const showMicWorkingMessage = ref(false);
@@ -205,30 +208,53 @@ export default {
       canvasContext.value = canvas.getContext("2d");
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
+
+      const barCount = 60;
+      const barWidth = 10;
+      const barSpacing = 5;
+      const initialColor = "#fff";
+
+      for (let i = 0; i < barCount; i++) {
+        const x = (barWidth + barSpacing) * i;
+        canvasContext.value.fillStyle = initialColor;
+        canvasContext.value.fillRect(x, 0, barWidth, canvasHeight);
+      }
     };
+
 
     const drawSoundWave = () => {
       const dataArray = new Uint8Array(analyser.value.frequencyBinCount);
       const draw = () => {
-        analyser.value.getByteTimeDomainData(dataArray);
+        analyser.value.getByteFrequencyData(dataArray);
         canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
-        canvasContext.value.lineWidth = 4;
-        canvasContext.value.strokeStyle = "red";
-        canvasContext.value.beginPath();
-        const sliceWidth = canvasWidth / dataArray.length;
-        let x = 0;
-        for (let i = 0; i < dataArray.length; i++) {
-          const v = dataArray[i] / 128.0;
-          const y = (v * canvasHeight) / 2;
-          if (i === 0) {
-            canvasContext.value.moveTo(x, y);
+
+        const barCount = 100;
+        const barWidth = 10;
+        const barSpacing = 5;
+        const maxBarHeight = canvasHeight;
+
+        for (let i = 0; i < barCount; i++) {
+          const x = (barWidth + barSpacing) * i;
+          const barHeight = (dataArray[i] / 255) * maxBarHeight;
+
+          let barColor = "B2B1B9";
+          if (barHeight > 190) {
+            barColor = "#D72323";
+          } else if (barHeight > 175) {
+            barColor = "#F4A442";
           } else {
-            canvasContext.value.lineTo(x, y);
+            barColor = "#3E7C17";
           }
-          x += sliceWidth;
+
+          canvasContext.value.fillStyle = barColor;
+          canvasContext.value.fillRect(
+              x,
+              canvasHeight - barHeight,
+              barWidth,
+              barHeight
+          );
         }
-        canvasContext.value.lineTo(canvasWidth, canvasHeight / 2);
-        canvasContext.value.stroke();
+
         requestAnimationFrame(draw);
       };
       draw();
@@ -255,6 +281,8 @@ export default {
       startGame,
       showMicWorkingMessage,
       showMicError,
+      showGamePage,
+      showFinalPage,
     };
   },
 };
