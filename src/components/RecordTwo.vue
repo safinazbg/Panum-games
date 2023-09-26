@@ -5,10 +5,12 @@
   >
     <div class="Recording-Wave flex flex-col justify-center">
       <div class="Record-text space-y-2 leading-6">
-
-        <p>Now let's record some background noise. This helps us analyze your speech more accurately.</p>
-        <p>
-          Press the "mic" button to begin. Make sure to stay silent during this process.
+        <h1 class="font-semibold text-xl text-center">
+          Record background noise
+        </h1>
+        <p class="text-center">Now let's record some background noise.</p>
+        <p class="text-center">
+          Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.
         </p>
 
       </div>
@@ -25,8 +27,10 @@
       </div>
       <div class="mic-check my-6">
         <p v-if="showMicWorkingMessage">
-          Thank you! You may proceed to the next step by <br>
-          clicking the 'Next' button.
+          Recording done! Click the microphone button to redo
+          <br>
+          the recording, or click the button below to continue.
+
         </p>
         <p v-if="showMicError">
           Oh, no! Your mic appears to have some problems :( <br/>
@@ -167,30 +171,53 @@ export default {
       canvasContext.value = canvas.getContext("2d");
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
+
+      const barCount = 60;
+      const barWidth = 10;
+      const barSpacing = 5;
+      const initialColor = "#fff";
+
+      for (let i = 0; i < barCount; i++) {
+        const x = (barWidth + barSpacing) * i;
+        canvasContext.value.fillStyle = initialColor;
+        canvasContext.value.fillRect(x, 0, barWidth, canvasHeight);
+      }
     };
+
 
     const drawSoundWave = () => {
       const dataArray = new Uint8Array(analyser.value.frequencyBinCount);
       const draw = () => {
-        analyser.value.getByteTimeDomainData(dataArray);
+        analyser.value.getByteFrequencyData(dataArray);
         canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
-        canvasContext.value.lineWidth = 4;
-        canvasContext.value.strokeStyle = "red";
-        canvasContext.value.beginPath();
-        const sliceWidth = canvasWidth / dataArray.length;
-        let x = 0;
-        for (let i = 0; i < dataArray.length; i++) {
-          const v = dataArray[i] / 128.0;
-          const y = (v * canvasHeight) / 2;
-          if (i === 0) {
-            canvasContext.value.moveTo(x, y);
+
+        const barCount = 100;
+        const barWidth = 10;
+        const barSpacing = 5;
+        const maxBarHeight = canvasHeight;
+
+        for (let i = 0; i < barCount; i++) {
+          const x = (barWidth + barSpacing) * i;
+          const barHeight = (dataArray[i] / 255) * maxBarHeight;
+
+          let barColor = "B2B1B9";
+          if (barHeight > 190) {
+            barColor = "#D72323";
+          } else if (barHeight > 175) {
+            barColor = "#F4A442";
           } else {
-            canvasContext.value.lineTo(x, y);
+            barColor = "#3E7C17";
           }
-          x += sliceWidth;
+
+          canvasContext.value.fillStyle = barColor;
+          canvasContext.value.fillRect(
+              x,
+              canvasHeight - barHeight,
+              barWidth,
+              barHeight
+          );
         }
-        canvasContext.value.lineTo(canvasWidth, canvasHeight / 2);
-        canvasContext.value.stroke();
+
         requestAnimationFrame(draw);
       };
       draw();
