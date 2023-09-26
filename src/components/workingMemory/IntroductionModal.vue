@@ -1,14 +1,14 @@
 <template>
   <LInfo :show="show">
     <template #title>
-      <h1 class="self-center">
+      <h1 class="self-center text-4xl">
         Welcome to the
         Memory game!
       </h1>
     </template>
     <template #body>
       <div class="flex justify-center w-full">
-        <ol class="!text-left k1:text-md text- list-disc">
+        <ol class="!text-left k1:text-md text- list-disc listing">
           <li class="pb-2"> Colorful squares will appear one at a time. Pay close attention.</li>
           <li class="pb-2"> You have to keep track of the last location of each color.</li>
           <li class="pb-2"> At the end, you will be asked where each color last appeared.</li>
@@ -26,8 +26,7 @@
 </template>
 
 <script>
-import LInfo from "@/components/layout/LInfo.vue";
-
+import LInfo from "@/components/workingMemory/LInfo.vue";
 export default {
   name: "IntroductionModal",
   emits: [
@@ -52,5 +51,9 @@ export default {
 </script>
 
 <style scoped>
-
+@media (min-width: 1000px) {
+  .listing {
+    font-size: 1rem; /* Equivalent to k1:text-md */
+  }
+}
 </style>

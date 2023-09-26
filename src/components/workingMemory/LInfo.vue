@@ -32,5 +32,12 @@ export default {
 </script>
 
 <style scoped>
-
+@media (min-width: 1000px) {
+  .fixed {
+    padding: 3rem; /* Equivalent to k1:p-12 */
+    width: 50%; /* Equivalent to k1:w-1/2 */
+    background-color: rgba(31, 41, 55, 0.75); /* Equivalent to bg-slate-700 bg-opacity-75 */
+    backdrop-filter: blur(1rem) brightness(1.25); /* Equivalent to backdrop-blur-2xl backdrop-brightness-125 */
+  }
+}
 </style>
