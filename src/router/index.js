@@ -6,6 +6,7 @@ import MentalSpeed from "@/views/MentalSpeed.vue";
 import SpeechRecognition from "@/views/SpeechRecognition.vue";
 import RecordTwo from "@/components/RecordTwo.vue";
 import RecordThree from "@/components/RecordThree.vue";
+import WorkingMemoryGame from "@/components/workingMemory/WorkingMemoryGame.vue";
 
 const routes = [
   {
@@ -40,6 +41,11 @@ const routes = [
     path: '/RecordThree',
     name: 'RecordThree',
     component: RecordThree
+  },
+  {
+    path: '/WorkingMemoryGame',
+    name: 'WorkingMemoryGame',
+    component: WorkingMemoryGame
   },
 
   {

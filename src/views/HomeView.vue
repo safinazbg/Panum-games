@@ -21,7 +21,7 @@
     >
       <div class="col1 md:border-r-2 border-black"></div>
 
-      <div @click="workingMemory"
+      <div @click="findColor"
         class="col2 border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
@@ -92,7 +92,8 @@
           </button>
         </div>
       </div>
-      
+
+<!--      game 5-->
         <div
         class="col3 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
       >
@@ -162,7 +163,11 @@ export default {
       router.push("/SpeechRecognition");
     };
 
-    return { router, attention, speak, workingMemory };
+    const findColor = () => {
+      router.push("/WorkingMemoryGame");
+    };
+
+    return { router, attention, speak, workingMemory, findColor };
   },
 };
 </script>
