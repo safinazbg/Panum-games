@@ -6,24 +6,21 @@
         class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20 space-y-2 leading-6"
     >
       <h1 class="font-semibold text-xl">
-        Welcome to the Speech recognition game!
+        Welcome to the Voice game!
       </h1>
       <h5 class="font-semibold text-base">
-        Your task is just to record yourself speaking freely and then reading a
-        text aloud for 1 minute.
+        In this game, you will record yourself talking and reading.
+
       </h5>
       <p>
-        Please ensure that you are in a quiet environment when playing the game.
+        Please ensure that you are in a quiet environment. You should just speak like you naturally would without thinking too much about it.
       </p>
-      <p>Otherwise, just speak naturally and clearly.</p>
-      <p>
-        You can redo the recording if you are not satisfied with the result.
-      </p>
+      <p>If anything goes wrong, you can redo the recording.</p>
       <p>Click 'Start game' to start playing! :)</p>
     </div>
     <div class="flex mt-10 items-center justify-center w-full">
       <button
-          class="px-10 py-7 border-4 border-black bg-opacity-80 rounded-xl font-bold text-lg"
+          class="px-10 py-7 bg-green-600 border-4 border-black bg-opacity-80 rounded-xl font-bold text-lg"
           @click="startGame"
       >
         Start Game
@@ -45,7 +42,7 @@
         <p> 2. Click 'allow' if you see a question in the
           browser.
         </p>
-        <p> 3. The line should move when you talk into the mic!
+        <p> 3. Speak into the microphone. The lines should be in the green area!
         </p>
       </div>
       <!-- Mic Record -->
