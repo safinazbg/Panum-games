@@ -1,4 +1,5 @@
 <template>
+  <PanumNavigation />
   <div
       class="flex flex-col items-center justify-center max-w-3xl mx-auto text-center mt-40"
   >
@@ -51,10 +52,12 @@
 <script>
 import QuestionAll from "@/components/declarativeKnowledge/QuestionAll.vue";
 import { ref } from "vue";
+import PanumNavigation from "@/components/PanumNavigation.vue";
 
 export default {
   name: "DeclarativeKnowledge",
   components: {
+    PanumNavigation,
     QuestionAll,
   },
   setup() {
