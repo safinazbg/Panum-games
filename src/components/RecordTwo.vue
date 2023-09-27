@@ -12,6 +12,7 @@
         <p class="text-center">
           Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.
         </p>
+        {{secondsLeft}}
 
       </div>
       <!-- Mic Record -->
@@ -75,6 +76,17 @@ export default {
         window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
 
+    const recordingLength = 10
+    const secondsLeft = ref(0)
+
+    const countDownSecond = () => {
+      setTimeout(() => {
+        if (!secondsLeft.value) return
+        secondsLeft.value--
+        countDownSecond()
+      }, 1000)
+    }
+
     onMounted(() => {
       sr.continuous = true;
       sr.interimResults = true;
@@ -82,6 +94,7 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
+
         setTimeout(() => {
           sr.stop();
           if (audioContextStarted.value) {
@@ -90,10 +103,12 @@ export default {
 
           if (isRecording.value) {
             showMicWorkingMessage.value = true;
+            secondsLeft.value = recordingLength-1
+            countDownSecond()
           } else {
             showMicError.value = true;
           }
-        }, 15000);
+        }, recordingLength.value * 1000);
       };
 
       sr.onend = () => {
@@ -230,6 +245,7 @@ export default {
       canvasRef,
       audioContextStarted,
       toggleAudioContext: startAudioContext,
+      secondsLeft,
       showMicWorkingMessage,
       showMicError,
     };

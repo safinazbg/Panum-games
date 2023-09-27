@@ -46,6 +46,7 @@
         <p> 3. Speak into the microphone. The lines should be in the green area!
         </p>
       </div>
+
       <!-- Mic Record -->
       <div class="recordMicContainer justify-center">
         <button @click="ToggleMic">
@@ -83,7 +84,6 @@
     </RouterLink>
 
 
-
   </div>
 </template>
 
@@ -108,9 +108,18 @@ export default {
     const showMicWorkingMessage = ref(false);
     const showMicError = ref(false);
 
-    const Recognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
+    const recordingLength = 10
+    const secondsLeft = ref(0)
+
+    const countDownSecond = () => {
+      setTimeout(() => {
+        if (!secondsLeft.value) return
+        secondsLeft.value--
+        countDownSecond()
+      }, 1000)
+    }
 
     onMounted(() => {
       sr.continuous = true;
@@ -119,6 +128,7 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
+
         setTimeout(() => {
           sr.stop();
           if (audioContextStarted.value) {
@@ -127,10 +137,12 @@ export default {
 
           if (isRecording.value) {
             showMicWorkingMessage.value = true;
+            secondsLeft.value = recordingLength-1
+            countDownSecond()
           } else {
             showMicError.value = true;
           }
-        }, 10000);
+        }, recordingLength.value * 1000);
       };
 
       sr.onend = () => {
@@ -278,6 +290,7 @@ export default {
       toggleAudioContext: startAudioContext,
       firstPage,
       secondPage,
+      secondsLeft,
       startGame,
       showMicWorkingMessage,
       showMicError,
