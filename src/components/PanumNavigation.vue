@@ -1,11 +1,14 @@
 <template>
     <div class="container mx-auto w-full flex border-b-2 border-black">
     <div class="w-4/5 h-16 md:ml-44 mx-4">
-        <RouterLink to="/">
-            <p class="w-1/2 text-2xl font-bold">Panum</p>
+
+
+      <RouterLink to="/">
+<!--        <img src="../assets/appLogo.png" class="h-16 w-16"/>-->
+        <p class="w-1/2 text-2xl font-bold">Cognitive Games</p>
         </RouterLink>
       
-      <p class="text-sm text-gray-500">Designed to train your brain</p>
+      <p class="text-sm text-gray-500">Game suite in progress</p>
     </div>
     <div
       class="w-32 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"

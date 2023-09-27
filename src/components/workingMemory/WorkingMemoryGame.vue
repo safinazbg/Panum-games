@@ -1,4 +1,5 @@
 <template>
+  <PanumNavigation></PanumNavigation>
   <IntroductionModal :show="!tutorialStarted && !gameStarted" @start="startTutorial"/>
   <div class="" v-if="!gameStarted" :class="{ 'blur-xl': !tutorialStarted }">
     <TutorialGame @tutorialEnd="showGameModal"/>
@@ -18,6 +19,7 @@ import {ref} from "vue";
 import TutorialGame from "@/components/workingMemory/Tutorial.vue";
 import GameModal from "@/components/workingMemory/GameModal.vue";
 import DoneGameModal from "@/components/workingMemory/DoneGameModal.vue";
+import PanumNavigation from "@/components/PanumNavigation.vue";
 
 export default {
   name: 'WorkingMemoryGame',
@@ -26,7 +28,8 @@ export default {
     GameModal,
     TutorialGame,
     IntroductionModal,
-    MemoryGameGrid
+    MemoryGameGrid,
+    PanumNavigation
   },
   setup() {
     const gameStarted = ref(false);

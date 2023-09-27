@@ -33,8 +33,8 @@
 
       <div v-if="showResult" class="space-y-4">
         <p class="text-3xl">
-          You got <strong>{{ questions.length }}</strong> out of
-          <strong> {{ correctAnswer }} </strong> correct answer!
+          You got <strong> {{ correctAnswer }}</strong> out of
+          <strong> {{ questions.length }}</strong> correct answers!
         </p>
         <p class="text-2xl">Thank you for playing !</p>
         <button

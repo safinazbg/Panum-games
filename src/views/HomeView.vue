@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto w-full flex border-b-2 border-black">
     <div class="w-4/5 h-16 md:ml-44 mx-4">
-      <p class="w-1/2 text-2xl font-bold">Panum</p>
-      <p class="text-sm text-gray-500">Designed to train your brain</p>
+      <p class="w-1/2 text-2xl font-bold">Cognitive Games</p>
+      <p class="text-sm text-gray-500">Game suite in progress</p>
     </div>
     <div
       class="w-32 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"
@@ -22,7 +22,7 @@
       <div class="col1 md:border-r-2 border-black"></div>
 
       <div @click="findColor"
-        class="col2 border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center"
+        class="col2 border-b-2 md:border-b-0 md:border-r-2 p-8 border-black flex items-end justify-center hover:bg-gray-200"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <gridIcon class="w-12 h-12" />
@@ -37,7 +37,7 @@
       </div>
 
       <div
-        class="col3 md:border-r-2 md:border-b-0 p-8 border-black hover:bg-gray-100 flex items-end justify-center border-b-2"
+        class="col3 md:border-r-2 md:border-b-0 p-8 border-black hover:bg-gray-200 flex items-end justify-center border-b-2"
        >
       <RouterLink to="MentalSpeed">
         <div class="icon flex flex-col items-center space-y-5">
@@ -55,7 +55,7 @@
 
       <div
         @click="attention"
-        class="col4 md:border-r-2 p-8 border-black flex items-end justify-center cursor-pointer hover:bg-gray-100"
+        class="col4 md:border-r-2 p-8 border-black flex items-end justify-center cursor-pointer hover:bg-gray-200"
       >
         <div class="icon flex flex-col items-center justify-center space-y-2">
           <MindIcon class="w-12 h-12"></MindIcon>
@@ -79,7 +79,7 @@
 
       <div
         @click="speak"
-          class="col2 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
+          class="col2 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center hover:bg-gray-200"
       >
         <div class="icon flex flex-col items-center space-y-5">
           <SpeechIcon class="w-12 h-12"></SpeechIcon>
@@ -95,10 +95,12 @@
 
 <!--      game 5-->
         <div
-        class="col3 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center"
+            @click="declarativeKnowledge"
+        class="col3 md:border-r-2 md:border-b-0 border-b-2 p-8 border-black flex items-end justify-center hover:bg-gray-200"
       >
       
         <div class="icon flex flex-col items-center space-y-5">
+          <QuizIcon class="w-12 h-12"></QuizIcon>
           <p class="font-semibold">Declarative Knowledge</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
@@ -144,9 +146,10 @@ import peopleIcon from "@/components/Icons/peopleIcon.vue";
 import { useRouter } from "vue-router";
 import MindIcon from "@/components/Icons/MindIcon.vue";
 import SpeechIcon from "@/components/Icons/SpeechIcon.vue";
+import QuizIcon from "@/components/Icons/QuizIcon.vue";
 
 export default {
-  components: {SpeechIcon, MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
+  components: {QuizIcon, SpeechIcon, MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
 
   setup() {
     const router = useRouter();
@@ -167,7 +170,11 @@ export default {
       router.push("/WorkingMemoryGame");
     };
 
-    return { router, attention, speak, workingMemory, findColor };
+    const declarativeKnowledge = () => {
+      router.push("/DeclarativeKnowledge");
+    };
+
+    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory,  };
   },
 };
 </script>

@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import CorrectIcon from "@/components/icons/CorrectIcon.vue";
-import InCorrectIcon from "@/components/icons/InCorrectIcon.vue";
+import CorrectIcon from "@/components/declarativeKnowledge/icons/CorrectIcon.vue";
+import InCorrectIcon from "@/components/declarativeKnowledge/icons/InCorrectIcon.vue";
 import { ref } from "vue";
 export default {
   components: {
