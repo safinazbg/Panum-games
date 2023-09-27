@@ -114,8 +114,8 @@ export default {
         answer: "Green",
       },
       {
-        text: 'Which animal lives in a place known as the "kingdom of birds"?',
-        options: ["Elephant", "Tortoise", "Kangaroo", "Owl"],
+        text: 'Which animal is from the "kingdom of birds"?',
+        options: ["Elephant", "Duck", "Kangaroo", "Owl"],
         answer: "Owl",
       },
       {
