@@ -1,6 +1,5 @@
 <template>
   <PanumNavigation/>
-  {{ view }}
   <!-- Start -->
   <div
       class="mentalSpeed"
@@ -10,21 +9,23 @@
       @keydown.right="next('right')"
   >
     <div
-        class="WelcomePage container mx-auto flex flex-col items-center h-screen fadeInAnimation"
+        class="WelcomePage container mx-auto flex flex-col items-center h-4/6 fadeInAnimation my-10
+        backdrop-blur-2xl backdrop-brightness-125
+      rounded-3xl shadow-gray-600 shadow-md"
     >
       <div
           v-if="view === 'welcome'"
-          class="title flex flex-col justify-evenly items-center h-full py-20">
-        <h1 class="text-4xl text-center">
+          class="title flex flex-col justify-evenly items-center h-full">
+        <h1 class="text-4xl text-center py-16">
           Welcome to the Mental speed game!
         </h1>
-        <p class="text-center w-1/2 text-lg">
+        <p class="text-center w-1/2 text-xl">
           You will play a <b>search minigame</b> and a <b>comparison minigame</b>.
           In both games, you have to answer as fast as you can.
           You will use the left and right arrow keys to respond.
         </p>
 
-        <img src="../assets/mental.png" height="200" width="200"/>
+        <img src="../assets/mental.png" height="150" width="150" class="my-8"/>
 
         <p class="text-lg">
           Click the button to go to the instructions for the first game.
@@ -40,22 +41,24 @@
 
       <div
           v-if="view === 'game1Intro'"
-          class="introPage container mx-auto flex flex-col items-center h-screen fadeInAnimation"
+          class="introPage container mx-auto flex flex-col items-center fadeInAnimation"
       >
-        <h2 class="text-2xl text-center">
+        <h2 class="text-3xl font-semibold text-center py-10">
           Search minigame
         </h2>
-        <p class="text-lg">Welcome to the search minigame!
-          A symbol (letter or number) will appear on your screen.
-          Using the left or right arrow key, you have to choose
-          the option that matches the symbol. Remember to be fast!
+        <p class="text-xl text-center mb-2">Welcome to the search minigame!</p>
+        <p class="text-xl text-center ">
+          A symbol (letter or number) will appear on your screen.</p>
+        <p class="text-xl text-center ">
+          Using the left or right arrow key, you have to choose the
+          <br> option that matches the symbol. Remember to be fast!
         </p>
-        <p class="text-lg">Good luck and have fun</p>
+        <p class="text-xl text-center mt-6">Good luck and have fun</p>
         <div class="flex flex-col">
-          <p class="text-center mb-14">
+          <p class="text-xl text-center mb-10">
             Press left or right arrow key to begin
           </p>
-          <div class="flex space-x-8">
+          <div class="flex space-x-8 my-14">
             <button
                 class="bg-green-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-green-400 duration-150 ease-linear"
                 @click="next"
