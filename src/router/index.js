@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/MentalSpeed',
     name: 'MentalSpeed',
-    component: MentalSpeed
+    component: MentalSpeed,
   },{
     path: '/WorkingMemory',
     name: 'WorkingMemory',
