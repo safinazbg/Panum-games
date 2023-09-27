@@ -59,7 +59,7 @@
       >
         <div class="icon flex flex-col items-center justify-center space-y-2">
           <MindIcon class="w-12 h-12"></MindIcon>
-          <p class="font-semibold text-lg"> Mind in the Eye</p>
+          <p class="font-semibold"> Mind in the Eye</p>
           <p class="mb-4">
             
           </p>
@@ -99,7 +99,7 @@
       >
       
         <div class="icon flex flex-col items-center space-y-5">
-          <p class="font-semibold">Game 5</p>
+          <p class="font-semibold">Declarative Knowledge</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
