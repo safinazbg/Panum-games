@@ -47,7 +47,7 @@
         </p>
       </div>
       <!-- Mic Record -->
-      <div class="recordMicContainer">
+      <div class="recordMicContainer justify-center">
         <button @click="ToggleMic">
           <MicActive v-if="isRecording" />
           <MicInActive v-if="!isRecording" />
@@ -318,7 +318,7 @@ export default {
 
 .canvas {
   border: 1px solid #000;
-  width: 400px;
+  width: 490px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
 }
