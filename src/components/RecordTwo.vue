@@ -9,10 +9,14 @@
           Record background noise
         </h1>
         <p class="text-center">Now let's record some background noise.</p>
-        <p class="text-center">
+        <p class="text-center mb-4">
           Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.
         </p>
-        {{secondsLeft}}
+                <div
+                    v-if="secondsLeft !== null"
+                    class="p-8 flex border-4 rounded-xl bg-gray-50 border-gray-700 w-8 h-8 items-center justify-center text-center text-2xl font-semibold ml-auto">
+                {{secondsLeft}}
+                </div>
 
       </div>
       <!-- Mic Record -->
@@ -74,10 +78,11 @@ export default {
 
     const Recognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
+
     const sr = new Recognition();
 
     const recordingLength = 10
-    const secondsLeft = ref(0)
+    const secondsLeft = ref(null)
 
     const countDownSecond = () => {
       setTimeout(() => {
@@ -94,21 +99,20 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
+        secondsLeft.value = recordingLength-1
+        countDownSecond()
 
         setTimeout(() => {
+          console.log('timeout')
           sr.stop();
-          if (audioContextStarted.value) {
-            startAudioContext();
-          }
+          stopAudioContext();
 
           if (isRecording.value) {
             showMicWorkingMessage.value = true;
-            secondsLeft.value = recordingLength-1
-            countDownSecond()
           } else {
             showMicError.value = true;
           }
-        }, recordingLength.value * 1000);
+        }, recordingLength * 1000);
       };
 
       sr.onend = () => {
@@ -128,17 +132,14 @@ export default {
     });
 
     const ToggleMic = () => {
+      console.log(32, 'toggle')
       showMicWorkingMessage.value = false;
       showMicError.value = false;
       if (isRecording.value) {
         sr.stop();
-        if (audioContextStarted.value) {
-          startAudioContext();
-        }
+        stopAudioContext();
       } else {
-        if (!audioContextStarted.value) {
-          startAudioContext();
-        }
+        startAudioContext();
         sr.start();
       }
     };
@@ -151,29 +152,30 @@ export default {
     const audioContextStarted = ref(false);
 
     const startAudioContext = async () => {
-      try {
-        if (!audioContextStarted.value) {
-          const stream = await navigator.mediaDevices.getUserMedia({
-            audio: true,
-          });
+      console.log(11.1)
+      if (!audioContextStarted.value) {
+        audioContextStarted.value = true;
 
-          audioContext.value = new (window.AudioContext ||
-              window.webkitAudioContext)();
-          analyser.value = audioContext.value.createAnalyser();
-          const source = audioContext.value.createMediaStreamSource(stream);
-          source.connect(analyser.value);
-          analyser.value.fftSize = 256;
+        console.log(11)
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+        });
+        audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
+        analyser.value = audioContext.value.createAnalyser();
+        const source = audioContext.value.createMediaStreamSource(stream);
+        source.connect(analyser.value);
+        analyser.value.fftSize = 256;
 
-          audioContextStarted.value = true;
-
-          drawSoundWave();
-        } else {
-          audioContext.value.close();
-          audioContextStarted.value = false;
-          canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
-        }
-      } catch (error) {
-        console.error("Microphone access denied:", error);
+        drawSoundWave();
+      }
+    };
+    const stopAudioContext = () => {
+      console.log(12.1)
+      if (audioContextStarted.value === true) {
+        console.log(12)
+        audioContext.value.close();
+        canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
+        audioContextStarted.value = false;
       }
     };
 
@@ -198,7 +200,6 @@ export default {
         canvasContext.value.fillRect(x, 0, barWidth, canvasHeight);
       }
     };
-
 
     const drawSoundWave = () => {
       const dataArray = new Uint8Array(analyser.value.frequencyBinCount);
@@ -238,13 +239,11 @@ export default {
       draw();
     };
 
-
     return {
       ToggleMic,
       isRecording,
       canvasRef,
       audioContextStarted,
-      toggleAudioContext: startAudioContext,
       secondsLeft,
       showMicWorkingMessage,
       showMicError,

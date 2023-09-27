@@ -139,8 +139,7 @@ export default {
             audio: true,
           });
 
-          audioContext.value = new (window.AudioContext ||
-            window.webkitAudioContext)();
+          audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
           analyser.value = audioContext.value.createAnalyser();
           const source = audioContext.value.createMediaStreamSource(stream);
           source.connect(analyser.value);
