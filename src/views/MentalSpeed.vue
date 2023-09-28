@@ -2,16 +2,16 @@
   <PanumNavigation/>
   <!-- Start -->
   <div
-      class="mentalSpeed"
+      class="mentalSpeed focus:outline-none overflow-hidden "
       tabindex="0"
       ref="game"
       @keydown.left="next('left')"
       @keydown.right="next('right')"
   >
     <div
-        class="WelcomePage container mx-auto flex flex-col items-center h-4/6 fadeInAnimation my-10
+        class="WelcomePage container mx-auto flex flex-col items-center !k1:mx-12 fadeInAnimation my-10
         backdrop-blur-2xl backdrop-brightness-125
-      rounded-3xl shadow-gray-600 shadow-md"
+      rounded-3xl shadow-md bg-slate-200"
     >
       <div
           v-if="view === 'welcome'"
@@ -25,13 +25,13 @@
           You will use the left and right arrow keys to respond.
         </p>
 
-        <img src="../assets/mental.png" height="150" width="150" class="my-8"/>
+        <img src="../assets/mental.png" height="150" width="150" class="my-8 "/>
 
         <p class="text-lg">
           Click the button to go to the instructions for the first game.
         </p>
         <button
-            class="bg-gray-300 px-4 py-6 text-lg bo rder-2 border-gray-800 rounded-md my-10 hover:bg-gray-400 ease-in-out duration-300"
+            class="bg-gray-300 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-400 ease-in-out duration-300"
             @click="next"
         >
           Go to search game
@@ -40,11 +40,11 @@
       </div>
 
       <div
-          v-if="view === 'game1Intro'"
+          v-if="view === 'trial1Intro'"
           class="introPage container mx-auto flex flex-col items-center fadeInAnimation"
       >
         <h2 class="text-3xl font-semibold text-center py-10">
-          Search minigame
+          Search minigame trial
         </h2>
         <p class="text-xl text-center mb-2">Welcome to the search minigame!</p>
         <p class="text-xl text-center ">
@@ -53,20 +53,24 @@
           Using the left or right arrow key, you have to choose the
           <br> option that matches the symbol. Remember to be fast!
         </p>
+        <p class="text-xl text-center ">
+          You will first have a short trial run to practice
+        </p>
         <p class="text-xl text-center mt-6">Good luck and have fun</p>
         <div class="flex flex-col">
-          <p class="text-xl text-center mb-10">
-            Press left or right arrow key to begin
+
+          <p class="text-center mt-10 mb-2">
+            Press left or right arrow key to begin trial round
           </p>
-          <div class="flex space-x-8 my-14">
+          <div class="flex justify-between gap-x-8 my-14">
             <button
-                class="bg-green-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-green-400 duration-150 ease-linear"
+                class="greenButton"
                 @click="next"
             >
               <chevronIcon class="w-8 rotate-180"/>
             </button>
             <button
-                class="bg-red-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-red-600 duration-150 ease-linear"
+                class="redButton"
                 @click="next"
             >
               <chevronIcon class="w-8"/>
@@ -74,18 +78,17 @@
           </div>
         </div>
       </div>
-
-      <div v-if="view === 'game1'" class="GamePage SelectedTask taskBox">
-        <div class="flex flex-col items-center justify-center h-screen">
+      <div v-if="view === 'trial1'" class="GamePage SelectedTask taskBox">
+        <div class="flex flex-col items-center justify-center pt-12 pb-6">
           <h1 class="text-4xl mb-14">
-            {{ currentTaskQuestion.index + 1 }}
+            Question:  {{ currentTaskQuestion.index + 1 }}
           </h1>
           <div
-              class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center"
+              class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center bg-white"
           >
             <p class="text-xl font-medium">
               {{ currentTaskQuestion.viewBox }}
-              <span v-if="currentTaskQuestion.index > 9" class="ml-8">{{
+              <span v-if="currentTaskQuestion.index > 11" class="ml-8">{{
                   currentTaskQuestion.viewBox2
                 }}</span>
             </p>
@@ -97,7 +100,83 @@
               </p>
               <button
                   @click="next('equals')"
-                  class="bg-green-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-green-400 duration-150 ease-linear"
+                  class="greenButton"
+              >
+                <chevronIcon class="w-8 rotate-180"/>
+              </button>
+            </div>
+            <div class="text-center">
+              <p class="mb-4 text-xl font-medium">
+                {{ currentTaskQuestion.btnRight }}
+              </p>
+
+
+
+              <button
+                  @click="next('notEquals')"
+                  class="redButton "
+              >
+                <chevronIcon class="w-8"/>
+              </button>
+            </div>
+          </div>
+            <div class="p-4 text-red-500 opacity-0"  :class="{'opacity-100' : isFalse }" >
+              Wrong answer try again
+            </div>
+        </div>
+      </div>
+      <div
+          v-if="view === 'game1Intro'"
+          class="introPage container mx-auto flex flex-col items-center fadeInAnimation"
+      >
+        <h2 class="text-3xl font-semibold text-center py-10">
+          Well done!        </h2>
+        <p class="text-xl text-center mt-6">Now the real challenge will begin</p>
+        <p class="text-xl text-center mt-6">Good luck and have fun</p>
+        <div class="flex flex-col">
+
+          <p class="text-center mt-10 mb-2">
+            Press left or right arrow key to begin
+          </p>
+          <div class="flex space-x-8 my-14">
+            <button
+                class="greenButton"
+                @click="next"
+            >
+              <chevronIcon class="w-8 rotate-180"/>
+            </button>
+            <button
+                class="redButton"
+                @click="next"
+            >
+              <chevronIcon class="w-8"/>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div v-if="view === 'game1'" class="GamePage SelectedTask taskBox">
+        <div class="flex flex-col items-center justify-center pt-12 pb-6">
+          <h1 class="text-4xl mb-14">
+            Question:  {{ currentTaskQuestion.index - 1 }}
+          </h1>
+          <div
+              class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center bg-white"
+          >
+            <p class="text-xl font-medium">
+              {{ currentTaskQuestion.viewBox }}
+              <span v-if="currentTaskQuestion.index > 11" class="ml-8">{{
+                  currentTaskQuestion.viewBox2
+                }}</span>
+            </p>
+          </div>
+          <div class="buttons flex space-x-8 mt-14">
+            <div class="text-center">
+              <p class="mb-4 text-xl font-medium">
+                {{ currentTaskQuestion.btnLeft }}
+              </p>
+              <button
+                  @click="next('equals')"
+                  class="greenButton"
               >
                 <chevronIcon class="w-8 rotate-180"/>
               </button>
@@ -108,7 +187,7 @@
               </p>
               <button
                   @click="next('notEquals')"
-                  class="bg-red-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-red-600 duration-150 ease-linear"
+                  class="redButton"
               >
                 <chevronIcon class="w-8"/>
               </button>
@@ -117,10 +196,10 @@
         </div>
       </div>
       <div
-          v-if="view === 'game2Intro'"
-          class="title flex flex-col justify-evenly items-center h-full py-20">
+          v-if="view === 'trial2Intro'"
+          class="title flex flex-col justify-evenly items-center h-full py-12">
         <h1 class="text-[min(10vw,3.75rem)] text-center">
-          game 2 - Comparison task
+          Game 2 - Comparison task trial
         </h1>
         <p class="text-center w-1/2 text-lg">
           Now you will be shown a pair of 3 stimuli on the screen, which are again
@@ -130,36 +209,36 @@
         <p class="text-lg">The first 2 rounds are trials again.</p>
         <p class="text-lg">Good luck and have fun!</p>
         <div class="flex flex-col">
-          <p class="text-center mb-14">
+          <p class="text-center mt-10 mb-2">
             Press left or right arrow key to continue
           </p>
           <div class="flex space-x-8">
             <button
                 @click="next"
-                class="bg-green-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-green-400 duration-150 ease-linear"
+                class="greenButton"
             >
               <chevronIcon class="w-8 rotate-180"/>
             </button>
             <button
                 @click="next"
-                class="bg-red-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-red-600 duration-150 ease-linear"
+                class="redButton"
             >
               <chevronIcon class="w-8"/>
             </button>
           </div>
         </div>
       </div>
-      <div v-if="view === 'game2'" class="GamePage SelectedTask taskBox">
-        <div class="flex flex-col items-center justify-center h-screen">
+      <div v-if="view === 'trial2'" class="GamePage SelectedTask taskBox">
+        <div class="flex flex-col items-center justify-center pt-12 pb-6">
           <h1 class="text-4xl mb-14">
-           {{ currentTaskQuestion.index + 1 }}
+            Question:  {{ currentTaskQuestion.index - 11 }}
           </h1>
           <div
-              class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center"
+              class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center bg-white"
           >
             <p class="text-xl font-medium">
               {{ currentTaskQuestion.viewBox }}
-              <span v-if="currentTaskQuestion.index > 9" class="ml-8">{{
+              <span v-if="currentTaskQuestion.index > 11" class="ml-8">{{
                   currentTaskQuestion.viewBox2
                 }}</span>
             </p>
@@ -171,7 +250,7 @@
               </p>
               <button
                   @click="next('different')"
-                  class="bg-green-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-green-400 duration-150 ease-linear"
+                  class="greenButton"
               >
                 <chevronIcon class="w-8 rotate-180"/>
               </button>
@@ -182,7 +261,79 @@
               </p>
               <button
                   @click="next('same')"
-                  class="bg-red-500 px-16 py-4 border-4 border-black rounded-xl hover:bg-red-600 duration-150 ease-linear"
+                  class="redButton"
+              >
+                <chevronIcon class="w-8"/>
+              </button>
+            </div>
+          </div>
+          <div class="p-4 text-red-500 opacity-0"  :class="{'opacity-100' : isFalse }" >
+            Wrong answer try again
+          </div>
+        </div>
+      </div>
+      <div
+          v-if="view === 'game2Intro'"
+          class="title flex flex-col justify-evenly items-center h-full py-20">
+        <h1 class="text-[min(10vw,3.75rem)] text-center">
+          Good Job!
+        </h1>
+        <p class="text-xl text-center mt-6">Now the real challenge will begin</p>
+        <p class="text-lg">Good luck and have fun!</p>
+        <div class="flex flex-col">
+          <p class="text-center mt-10 mb-2">
+            Press left or right arrow key to continue
+          </p>
+          <div class="flex space-x-8">
+            <button
+                @click="next"
+                class="greenButton"
+            >
+              <chevronIcon class="w-8 rotate-180"/>
+            </button>
+            <button
+                @click="next"
+                class="redButton"
+            >
+              <chevronIcon class="w-8"/>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div v-if="view === 'game2'" class="GamePage SelectedTask taskBox">
+        <div class="flex flex-col items-center justify-center pt-12 pb-6">
+          <h1 class="text-4xl mb-14">
+            Question: {{ currentTaskQuestion.index - 3 }}
+          </h1>
+          <div
+              class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center bg-white"
+          >
+            <p class="text-xl font-medium">
+              {{ currentTaskQuestion.viewBox }}
+              <span v-if="currentTaskQuestion.index > 11" class="ml-8">{{
+                  currentTaskQuestion.viewBox2
+                }}</span>
+            </p>
+          </div>
+          <div class="buttons flex space-x-8 mt-14">
+            <div class="text-center">
+              <p class="mb-4 text-xl font-medium">
+                {{ currentTaskQuestion.btnLeft }}
+              </p>
+              <button
+                  @click="next('different')"
+                  class="greenButton"
+              >
+                <chevronIcon class="w-8 rotate-180"/>
+              </button>
+            </div>
+            <div class="text-center">
+              <p class="mb-4 text-xl font-medium">
+                {{ currentTaskQuestion.btnRight }}
+              </p>
+              <button
+                  @click="next('same')"
+                  class="redButton"
               >
                 <chevronIcon class="w-8"/>
               </button>
@@ -193,7 +344,7 @@
       <!-- Game End -->
       <div
           v-if="view === 'gameCompleted'"
-          class="GameEnd container mx-auto flex flex-col items-center h-screen fadeInAnimation"
+          class="GameEnd container mx-auto flex flex-col items-center pt-12 pb-6 fadeInAnimation"
       >
         <div class="title flex flex-col justify-evenly items-center h-full py-20">
           <h1 class="text-[min(10vw,3.75rem)] text-center flex">
@@ -211,7 +362,7 @@
 
 <script>
 import mentalSpeed from "@/mentalSpeed.json";
-import {onMounted, reactive, ref, watchEffect} from "vue";
+import {onMounted, reactive, ref, watch, watchEffect} from "vue";
 
 import chevronIcon from "@/components/Icons/chevronIcon.vue";
 import {launchConfetti} from "@/confettiJs/confetti";
@@ -225,8 +376,12 @@ export default {
 
     const views = [
       'welcome',
+      'trial1Intro',
+      'trial1',
       'game1Intro',
       'game1',
+      'trial2Intro',
+      'trial2',
       'game2Intro',
       'game2',
       'gameCompleted'
@@ -234,11 +389,14 @@ export default {
     const view = ref(views[0])
     const game1Evaluation = ref({correctAnswers: 0})
     const game2Evaluation = ref({correctAnswers: 0})
+    const isFalse = ref(false)
 
     const loadNextTask = () => {
       currentTask.value++
       currentTaskQuestion.value = task[currentTask.value]
-      if (currentTask.value === 10) view.value = 'game2Intro'
+      if (currentTask.value === 2) view.value = 'game1Intro'
+      if (currentTask.value === 12) view.value = 'trial2Intro'
+      if (currentTask.value === 14) view.value = 'game2Intro'
       else if (currentTask.value === task.length - 1) view.value = 'gameCompleted'
     }
 
@@ -254,6 +412,25 @@ export default {
       if (answerIsCorrect) game1Evaluation.value.correctAnswers++
       loadNextTask()
     }
+
+    const loadSameTask = () => {
+      currentTaskQuestion.value = task[currentTask.value]
+      isFalse.value = true;
+    }
+    const onGame1TrialAnswer = answer => {
+      answer = answer === 'left' ? 'equals' : 'notEquals'
+      const question = currentTaskQuestion.value;
+
+      const {btnLeft, viewBox} = question
+      const answerIsCorrect = viewBox === btnLeft && answer === 'equals'
+          || viewBox !== btnLeft && answer === 'notEquals'
+
+      if (!answerIsCorrect) loadSameTask()
+      else if (answerIsCorrect) loadNextTask()
+    }
+
+
+
     const onGame2Answer = answer => {
       answer = answer === 'left' ? 'same' : 'different'
       const question = currentTaskQuestion.value
@@ -267,15 +444,38 @@ export default {
       if (answerIsCorrect) game2Evaluation.value.correctAnswers++
       loadNextTask()
     }
+    const onGame2TrialAnswer = answer => {
+      answer = answer === 'left' ? 'same' : 'different'
+      const question = currentTaskQuestion.value
+
+      const {viewBox, viewBox2} = question
+
+      console.log(33.1, answer)
+      const answerIsCorrect = viewBox === viewBox2 && answer === 'same'
+          || viewBox !== viewBox2 && answer === 'different'
+
+      if (!answerIsCorrect) loadSameTask()
+      else if (answerIsCorrect) loadNextTask()
+    }
     const next = answer => {
       const currentIndex = views.indexOf(view.value || views[0])
       if (currentIndex === views.length - 1) return
-
-      if (view.value === 'game1') onGame1Answer(answer)
+      if (view.value === 'trial1') onGame1TrialAnswer(answer)
+      else if (view.value === 'game1') onGame1Answer(answer)
+      else if (view.value === 'trial2') onGame2TrialAnswer(answer)
       else if (view.value === 'game2') onGame2Answer(answer)
       else view.value = views[currentIndex + 1]
       console.log(22, view.value, currentIndex)
     }
+
+
+    watch(isFalse, (newValue) => {
+      if (newValue !== null) {
+        setTimeout(() => {
+          isFalse.value = false;
+        }, 1000); // Change the time delay as needed (in milliseconds)
+      }
+    });
 
 
     const currentTask = ref(0);
@@ -296,6 +496,7 @@ export default {
       game2Evaluation,
       next,
       view,
+      isFalse
     };
   },
 };
@@ -329,5 +530,28 @@ export default {
 .taskBox {
   animation: slide-in 500ms;
   animation-fill-mode: backwards;
+}
+.button{
+  @apply
+   px-16 py-4 border-4 border-black rounded-xl duration-150 ease-linear
+}
+.redButton{
+  @apply
+  button
+  bg-red-500
+  hover:bg-red-600
+}
+.greenButton{
+  @apply
+  button
+  bg-green-500
+  hover:bg-green-600
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
 </style>
