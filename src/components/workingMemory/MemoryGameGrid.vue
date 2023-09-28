@@ -107,7 +107,7 @@
                 :class="{ 'disabledSecondaryButton' : !gameIsInProgress,  'buttonSecondary': gameIsInProgress }"
                 :disabled='!gameIsInProgress' @click="gameIsInProgress = false">Cancel
         </button>-->
-        <button class=" mb-4" :class="{ 'disabledButton' : gameIsInProgress || showLevelUp ,  'button': !gameIsInProgress }"
+        <button class=" mb-4 "  :class="{ 'disabledButton' : gameIsInProgress || showLevelUp ,  'button': !gameIsInProgress,'opacity-0': showLevelUp }"
                 :disabled='gameIsInProgress' @click="onStart">Start round {{currentRoundNumber}}
         </button>
       </div>

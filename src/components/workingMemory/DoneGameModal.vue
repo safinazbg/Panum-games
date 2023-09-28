@@ -6,14 +6,17 @@
       </h1>
     </template>
     <template #body>
+      <div class=" text-center">
+
       You finished all the levels - well done!
       This was your final score:
       <h1 class="font-bold py-4 text-4xl"> {{totalPoints}} / 12</h1>
       Thank you for playing!
+      </div>
     </template>
 
     <template #button>
-      <button @click="end" class="button ">
+      <button @click="end" class="button !w-72 ">
         Return to homepage
       </button>
     </template>
