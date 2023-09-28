@@ -111,15 +111,9 @@ export default {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
     const recordingLength = 10
-    const secondsLeft = ref(0)
+    const secondsLeft = ref(null)
 
-    const countDownSecond = () => {
-      setTimeout(() => {
-        if (!secondsLeft.value) return
-        secondsLeft.value--
-        countDownSecond()
-      }, 1000)
-    }
+
 
     onMounted(() => {
       sr.continuous = true;
@@ -130,19 +124,17 @@ export default {
         isRecording.value = true;
 
         setTimeout(() => {
+          console.log('timeout')
           sr.stop();
-          if (audioContextStarted.value) {
-            startAudioContext();
-          }
+          stopAudioContext();
 
           if (isRecording.value) {
             showMicWorkingMessage.value = true;
-            secondsLeft.value = recordingLength-1
-            countDownSecond()
+            startAudioContext();
           } else {
             showMicError.value = true;
           }
-        }, recordingLength.value * 1000);
+        }, recordingLength * 1000);
       };
 
       sr.onend = () => {
@@ -162,18 +154,15 @@ export default {
     });
 
     const ToggleMic = () => {
+      console.log("Toggle");
       showMicWorkingMessage.value = false;
       showMicError.value = false;
       if (isRecording.value) {
         sr.stop();
-        if (audioContextStarted.value) {
-          startAudioContext();
-        }
+        stopAudioContext();
       } else {
-        if (!audioContextStarted.value) {
-          startAudioContext();
-        }
-        sr.start();
+        startAudioContext();
+        sr.start()
       }
     };
 
@@ -211,6 +200,13 @@ export default {
       }
     };
 
+    const stopAudioContext = () => {
+      if (audioContextStarted.value === true) {
+        audioContext.value.close();
+        canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
+        audioContextStarted.value = false;
+      }
+    };
     const setupCanvas = () => {
       const canvas = canvasRef.value;
       if (!canvas) {
@@ -296,6 +292,7 @@ export default {
       showMicError,
       showGamePage,
       showFinalPage,
+
     };
   },
 };
