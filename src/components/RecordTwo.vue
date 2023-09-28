@@ -76,11 +76,9 @@ export default {
     const showMicWorkingMessage = ref(false);
     const showMicError = ref(false);
 
-    const Recognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
 
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
-
     const recordingLength = 10
     const secondsLeft = ref(null)
 
