@@ -18,7 +18,7 @@
       </div>
     </template>
     <template #button>
-      <button @click="start" class="button !w-60">
+      <button @click="start" class="button !w-60 !px-8">
         Start practice round
       </button>
     </template>

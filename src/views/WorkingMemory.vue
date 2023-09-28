@@ -93,11 +93,11 @@
       </div>
 
       <div class="flex gap-8">
-        <button class=" mb-4"
+        <button class="mb-4 "
                 :class="{ 'disabledSecondaryButton' : !gameIsInProgress,  'buttonSecondary': gameIsInProgress }"
                 :disabled='!gameIsInProgress' @click="gameIsInProgress = false">Cancel
         </button>
-        <button class=" mb-4" :class="{ 'disabledButton' : gameIsInProgress,  'button': !gameIsInProgress }"
+        <button class=" mb-4 " :class="{ 'disabledButton' : gameIsInProgress,  'button': !gameIsInProgress }"
                 :disabled='gameIsInProgress' @click="onStart">Start level
         </button>
       </div>
@@ -318,8 +318,9 @@ export default {
 .button{
   width: 10rem;
   color: white;
-  border-radius: .25rem;
-  padding: .75rem;
+  border-radius: .25rem !important;
+  padding: 1rem 2rem !important;
+  white-space: nowrap;
   background-color: rgba(50, 205, 50, 1);
   transition: background-color;
   transition-duration: 200ms;
@@ -330,8 +331,8 @@ export default {
   background-color: lightgrey;
   width: 10rem;
   color: white;
-  border-radius: .25rem;
-  padding: .75rem;
+  border-radius: .25rem !important;
+  padding: 1rem 2rem !important;
   transition: background-color;
   transition-duration: 200ms;
   border: none;
