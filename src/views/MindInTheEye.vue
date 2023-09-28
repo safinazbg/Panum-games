@@ -5,14 +5,6 @@
   >
     <div v-if="!testCompleted" class="max-w-5xl">
       <div class="topbar flex items-center w-full mb-4">
-        <div class="w-[40%] sm:w-[20%]">
-          <button
-              class="sm:px-6 px-4 py-1 text-slate-500 shadow-md bg-slate-50 border-slate-400 rounded-l-full sm:mr-2 hover:bg-white hover:text-black hover:border-slate-500 duration-300 ease-linear"
-              @click="goBack"
-          >
-            Go Back
-          </button>
-        </div>
         <div
             class="progresbar relative bg-slate-50 border border-slate-300 shadow-md w-[99%] sm:w-full h-8 rounded-r-full"
         >
@@ -23,7 +15,6 @@
             <div class="absolute top-1 left-2 sm:left-1/2 sm:-translate-x-1/2">
               <div class="flex space-x-2">
                 <p class="font-light">
-                  ITEM
 
                   <span class="font-bold">{{ currentItem + 1 }}</span>
                 </p>
@@ -31,8 +22,8 @@
                 <p class="font-light">OF 36</p>
 
                 <p class="">
-                  PROGRESS (<span class="font-bold">
-                    {{ progressPercentage }}%</span
+                   (<span class="font-bold">
+                    {{ progressPercentage }}</span
                 >)
                 </p>
               </div>

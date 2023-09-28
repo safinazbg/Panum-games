@@ -1,6 +1,6 @@
 <template>
   <button
-      class="w-24 h-24 bg-gray-600 rounded-2xl  relative"
+      class="w-24 h-24 bg-gray-100 border border-gray-300 rounded-2xl  relative"
       :style="{ backgroundColor: color }"
       :class="{ 'hover:bg-gray-700' :!disabled}"
       @click="emitChoice"

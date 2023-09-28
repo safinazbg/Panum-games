@@ -31,7 +31,7 @@
           Click the button to go to the instructions for the first game.
         </p>
         <button
-            class="bg-gray-300 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-400 ease-in-out duration-300"
+            class="bg-gray-300 px-4 py-6 text-lg bo rder-2 border-gray-800 rounded-md my-10 hover:bg-gray-400 ease-in-out duration-300"
             @click="next"
         >
           Go to search game
@@ -78,7 +78,7 @@
       <div v-if="view === 'game1'" class="GamePage SelectedTask taskBox">
         <div class="flex flex-col items-center justify-center h-screen">
           <h1 class="text-4xl mb-14">
-            {{ currentTaskQuestion.textName }} {{ currentTaskQuestion.index + 1 }}
+            {{ currentTaskQuestion.index + 1 }}
           </h1>
           <div
               class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center"
@@ -152,7 +152,7 @@
       <div v-if="view === 'game2'" class="GamePage SelectedTask taskBox">
         <div class="flex flex-col items-center justify-center h-screen">
           <h1 class="text-4xl mb-14">
-            {{ currentTaskQuestion.textName }} {{ currentTaskQuestion.index + 1 }}
+           {{ currentTaskQuestion.index + 1 }}
           </h1>
           <div
               class="w-44 h-24 border-2 rounded-xl border-black flex items-center justify-center"
