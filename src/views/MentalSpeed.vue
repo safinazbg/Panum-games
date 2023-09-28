@@ -7,11 +7,12 @@
       ref="game"
       @keydown.left="next('left')"
       @keydown.right="next('right')"
+
   >
     <div
         class="WelcomePage container mx-auto flex flex-col items-center !k1:mx-12 fadeInAnimation my-10
         backdrop-blur-2xl backdrop-brightness-125
-      rounded-3xl shadow-md bg-slate-200"
+      rounded-3xl "
     >
       <div
           v-if="view === 'welcome'"
@@ -27,11 +28,11 @@
 
         <img src="../assets/mental.png" height="150" width="150" class="my-8 "/>
 
-        <p class="text-lg">
+<!--        <p class="">
           Click the button to go to the instructions for the first game.
-        </p>
+        </p>-->
         <button
-            class="bg-gray-300 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-400 ease-in-out duration-300"
+            class="button w-auto text-lg rounded-md my-10 ease-in-out duration-300"
             @click="next"
         >
           Go to search game
@@ -43,7 +44,7 @@
           v-if="view === 'trial1Intro'"
           class="introPage container mx-auto flex flex-col items-center fadeInAnimation"
       >
-        <h2 class="text-3xl font-semibold text-center py-10">
+        <h2 class="text-4xl text-center py-10">
           Search minigame trial
         </h2>
         <p class="text-xl text-center mb-2">Welcome to the search minigame!</p>
@@ -62,7 +63,7 @@
           <p class="text-center mt-10 mb-2">
             Press left or right arrow key to begin trial round
           </p>
-          <div class="flex justify-between gap-x-8 my-14">
+          <div class="flex justify-between gap-x-8 mb-14">
             <button
                 class="greenButton"
                 @click="next"
@@ -138,7 +139,7 @@
           <p class="text-center mt-10 mb-2">
             Press left or right arrow key to begin
           </p>
-          <div class="flex space-x-8 my-14">
+          <div class="flex space-x-8 mb-14">
             <button
                 class="greenButton"
                 @click="next"
@@ -169,7 +170,7 @@
                 }}</span>
             </p>
           </div>
-          <div class="buttons flex space-x-8 mt-14">
+          <div class="buttons flex space-x-8 my-14">
             <div class="text-center">
               <p class="mb-4 text-xl font-medium">
                 {{ currentTaskQuestion.btnLeft }}
@@ -274,7 +275,7 @@
       </div>
       <div
           v-if="view === 'game2Intro'"
-          class="title flex flex-col justify-evenly items-center h-full py-20">
+          class="title flex flex-col justify-evenly items-center h-full py-20 gap-6">
         <h1 class="text-[min(10vw,3.75rem)] text-center">
           Good Job!
         </h1>
@@ -315,7 +316,7 @@
                 }}</span>
             </p>
           </div>
-          <div class="buttons flex space-x-8 mt-14">
+          <div class="buttons flex space-x-8 my-14">
             <div class="text-center">
               <p class="mb-4 text-xl font-medium">
                 {{ currentTaskQuestion.btnLeft }}
@@ -346,11 +347,11 @@
           v-if="view === 'gameCompleted'"
           class="GameEnd container mx-auto flex flex-col items-center pt-12 pb-6 fadeInAnimation"
       >
-        <div class="title flex flex-col justify-evenly items-center h-full py-20">
+        <div class="title flex flex-col justify-evenly items-center h-full py-20 ">
           <h1 class="text-[min(10vw,3.75rem)] text-center flex">
             Thank you for playing!
           </h1>
-          <p class="text-3xl mx-4">You have completed the game. Well done!</p>
+          <p class="text-3xl mx-4 my-12">You have completed the game. Well done!</p>
           <p>Game 1: {{game1Evaluation.correctAnswers}} of 10 were correct!</p>
           <p>Game 2: {{game2Evaluation.correctAnswers}} of 10 were correct!</p>
 
@@ -397,7 +398,7 @@ export default {
       if (currentTask.value === 2) view.value = 'game1Intro'
       if (currentTask.value === 12) view.value = 'trial2Intro'
       if (currentTask.value === 14) view.value = 'game2Intro'
-      else if (currentTask.value === task.length - 1) view.value = 'gameCompleted'
+      else if (currentTask.value === task.length ) view.value = 'gameCompleted'
     }
 
     const onGame1Answer = answer => {
@@ -496,7 +497,7 @@ export default {
       game2Evaluation,
       next,
       view,
-      isFalse
+      isFalse,
     };
   },
 };
@@ -547,11 +548,5 @@ export default {
   bg-green-500
   hover:bg-green-600
 }
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
+
 </style>
