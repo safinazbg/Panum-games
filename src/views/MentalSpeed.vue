@@ -352,8 +352,8 @@
             Thank you for playing!
           </h1>
           <p class="text-3xl mx-4 my-12">You have completed the game. Well done!</p>
-          <p>Game 1: {{game1Evaluation.correctAnswers}} of 10 were correct!</p>
-          <p>Game 2: {{game2Evaluation.correctAnswers}} of 10 were correct!</p>
+          <p class="text-2xl font-semibold">Game 1: {{game1Evaluation.correctAnswers}} of 10 were correct!</p>
+          <p class="text-2xl font-semibold">Game 2: {{game2Evaluation.correctAnswers}} of 10 were correct!</p>
 
         </div>
       </div>
