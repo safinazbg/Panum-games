@@ -1,16 +1,25 @@
 <template>
-  <PanumNavigation />
+  <PanumNavigation/>
   <div
       class="flex flex-col items-center justify-center max-w-3xl mx-auto text-center mt-40"
   >
     <div v-if="!gameStarted">
+      <div class="h-20 flex items-center relative w-full justify-between">
+<!--        <div class="bg-gray-500"></div>-->
+      <div class="w-full bg-green-500 h-5 rounded-md absolute" />
+        <div class="z-10" v-for="(style, view) in viewStyles" :key="view">
+          <img :src="style.image" alt="" class="w-12 h-12 z-40 absolute">
+          <div :class="['h-12 w-12 rounded-full', 'bg-' + style.color]">
+        </div>
+        </div>
+      </div>
       <h1 class="text-4xl my-4">Quiz - test your knowledge</h1>
       <p class="leading-relaxed text-lg">
-        Welcome to the quiz ! <br />
+        Welcome to the quiz ! <br/>
         This quiz consist of
-        <strong>{{ questions.length }}</strong>
-        question. <br />
-        Please answer each question without using any outside help. <br />
+        <strong>{{ totalQuestions }}</strong>
+        question. <br/>
+        Please answer each question without using any outside help. <br/>
         if you do not know the answer to a question, just go with your best
         guess.
       </p>
@@ -22,37 +31,48 @@
       </button>
     </div>
     <div v-if="gameStarted">
-      <h2 v-if="!showResult" class="text-3xl my-4">
-        Question <strong>{{ currentQuestionIndex + 1 }}</strong> of
-        <strong>{{ questions.length }}</strong>
-      </h2>
-      <hr v-if="!showResult" />
-      <QuestionAll
-          :question="questions[currentQuestionIndex]"
-          @answer="checkAnswer"
-      />
+      <div v-if="gameStarted && !showResult">
+        <h2 class="text-3xl my-4">
+          Question <strong>{{ currentQuestionIndex[currentView] + 1 }}</strong> of
+          <strong>{{ questionsPrRound }}</strong>
+        </h2>
+        <hr/>
+        <QuestionAll
+            :question="currentQuestion"
+            @answer="answerQuestion"
+        />
+      </div>
 
       <div v-if="showResult" class="space-y-4">
-        <p class="text-3xl">
-          You got <strong> {{ correctAnswer }}</strong> out of
-          <strong> {{ questions.length }}</strong> correct answers!
-        </p>
+
+        <div v-for="(evaluation, category) in evaluations" :key="evaluation">
+
+          <div v-if="evaluation.correctAnswers > 0">
+            <p class="text-2xl" :class="'text-' + viewStyles[currentView].color + '-500'">
+              {{ category }}: {{ evaluation.correctAnswers }} correct
+              answers
+            </p>
+          </div>
+        </div>
         <p class="text-2xl">Thank you for playing !</p>
         <button
-            class="bg-gray-400 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-500 ease-in-out duration-300"
+        class="bg-gray-400 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-500 ease-in-out duration-300"
             @click="resetGame"
         >
           Return to homepage
         </button>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import QuestionAll from "@/components/declarativeKnowledge/QuestionAll.vue";
-import { ref } from "vue";
+import {computed, reactive, ref} from "vue";
 import PanumNavigation from "@/components/PanumNavigation.vue";
+import questions from "@/questions.json";
+import CorrectIcon from "@/components/declarativeKnowledge/icons/CorrectIcon.vue";
 
 export default {
   name: "DeclarativeKnowledge",
@@ -62,96 +82,90 @@ export default {
   },
   setup() {
     const gameStarted = ref(false);
-    const currentQuestionIndex = ref(0);
     const correctAnswer = ref(0);
     const showResult = ref(false);
-    const questions = ref([
-      {
-        text: "What is the capital of Denmark ?",
-        options: ["Copenhagen", "Aarhus", "Odense", "Aalborg"],
-        answer: "Copenhagen",
-      },
-      {
-        text: "What is the longest river in the world?",
-        options: [
-          "Nile River",
-          "Amazon River",
-          "Mississippi River",
-          "Niger River",
-        ],
-        answer: "Nile River",
-      },
-      {
-        text: "Which planet is the largest in the Solar System?",
-        options: ["Mars", "Jupiter", "Venus", "Saturn"],
-        answer: "Jupiter",
-      },
-      {
-        text: "Who is the artist of the Mona Lisa painting?",
-        options: [
-          "Pablo Picasso",
-          "Vincent van Gogh",
-          "Leonardo da Vinci",
-          "Claude Monet",
-        ],
-        answer: "Leonardo da Vinci",
-      },
-      {
-        text: "What is the highest mountain on Earth?",
-        options: ["Everest", "K2", "Annapurna", "Kilimanjaro"],
-        answer: "Everest",
-      },
-      {
-        text: 'What is the chemical symbol for which element is "H"\'?',
-        options: ["Helium", "Hydrogen", "Hafnium", "Hahnium"],
-        answer: "Hydrogen",
-      },
-      {
-        text: "Which planet is the hottest in the Solar System?",
-        options: ["Merkury", "Venus", "Mars", "Jupiter"],
-        answer: "Venus",
-      },
-      {
-        text: "Which color is not one of the primary colors of a rainbow?",
-        options: ["Blue", "Green", "Yellow", "Red"],
-        answer: "Green",
-      },
-      {
-        text: 'Which animal is from the "kingdom of birds"?',
-        options: ["Elephant", "Duck", "Kangaroo", "Owl"],
-        answer: "Owl",
-      },
-      {
-        text: "What is the largest ocean on Earth?",
-        options: [
-          "Indian Ocean",
-          "Atlantic Ocean",
-          "Pacific Ocean",
-          "Arctic Ocean",
-        ],
-        answer: "Pacific Ocean",
-      },
-    ]);
 
-    const startGame = () => {
-      gameStarted.value = true;
+    const socialScienceQuestions = ref(questions['Social Science']);
+    const naturalScienceQuestions = ref(questions['Natural Science']);
+    const humanitiesQuestions = ref(questions['Humanities']);
+    const questionsPrRound = 10
+    const totalQuestions =  socialScienceQuestions.value.length + naturalScienceQuestions.value.length + humanitiesQuestions.value.length
+    const views = [
+      'Welcome',
+      'Social Science',
+      'Natural Science',
+      'Humanities',
+      'Feedback',
+    ]
+    const viewStyles =  {
+      'Welcome': { color: 'gray-500', image: CorrectIcon },
+      'Social Science': { color: 'red-500', image: CorrectIcon },
+      'Natural Science': { color: 'blue-500', image: CorrectIcon },
+      'Humanities': { color: 'yellow-500', image: CorrectIcon },
+      'Feedback': { color: 'gray-500', image: CorrectIcon },
+    }
+
+    const currentView = ref(views[0])
+    const currentQuestionIndex = reactive({
+      'Social Science': 0,
+      'Natural Science': 0,
+      'Humanities': 0,
+    });
+    const evaluations = reactive({
+      'Social Science': {correctAnswers: 0},
+      'Natural Science': {correctAnswers: 0},
+      'Humanities': {correctAnswers: 0},
+    });
+
+
+
+    const changeView = (newView) => {
+      currentView.value = newView;
+      currentQuestionIndex['Social Science'] = 0;
+      currentQuestionIndex['Natural Science'] = 0;
+      currentQuestionIndex['Humanities'] = 0;
+    };
+    const currentQuestion = computed(() => {
+      const category = currentView.value;
+      return questions[category][currentQuestionIndex[category]];
+    });
+    const answerQuestion = (isCorrect) => {
+      if (currentView.value === 'Feedback') {
+        showResult.value = true;
+        return;
+      }
+      const category = currentView.value;
+
+      if (isCorrect) {
+        evaluations[category].correctAnswers++;
+      }
+
+      currentQuestionIndex[category]++;
+
+      // If all questions in the category are answered, move to the next view
+      if (currentQuestionIndex[category] >= questions[category].length) {
+        const nextViewIndex = views.indexOf(currentView.value) + 1;
+        if (nextViewIndex < views.length) {
+          changeView(views[nextViewIndex]);
+        } else {
+          // All questions are answered in all categories, show result
+          showResult.value = true;
+        }
+      }
     };
 
-    const checkAnswer = (isCorrect) => {
-      if (isCorrect) {
-        correctAnswer.value++;
-      }
-      currentQuestionIndex.value++;
-      if (questions.value.length === currentQuestionIndex.value) {
-        showResult.value = true;
-      }
+
+    const startGame = () => {
+      currentView.value = 'Social Science';
+      gameStarted.value = true;
     };
 
     const resetGame = () => {
-      currentQuestionIndex.value = 0;
-      correctAnswer.value = 0;
+      gameStarted.value = false;
       showResult.value = false;
-      gameStarted.value = true;
+      correctAnswer.value = 0;
+      currentQuestionIndex.value = 0;
+      currentView.value = 'Social Science';
     };
 
     return {
@@ -160,9 +174,20 @@ export default {
       currentQuestionIndex,
       correctAnswer,
       showResult,
-      questions,
-      checkAnswer,
       resetGame,
+      currentView,
+      socialScienceQuestions,
+      naturalScienceQuestions,
+      humanitiesQuestions,
+      evaluations,
+      changeView,
+      answerQuestion,
+      questionsPrRound,
+      totalQuestions,
+      currentQuestion,
+      viewStyles,
+      views,
+      CorrectIcon
     };
   },
 };

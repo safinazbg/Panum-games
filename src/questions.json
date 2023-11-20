@@ -1,0 +1,190 @@
+{
+  "Social Science": [
+    {
+      "text": "Which of the following is a nuclear weapon state?",
+      "options": ["China", "Norway", "Canada", "Sweden"],
+      "answer": "China"
+    },
+    {
+      "text": "What is a petition?",
+      "options": [
+        "Request or complaint to an authority or people's representation",
+        "Filing of a lawsuit with the competent court",
+        "Candidacy for political or social office",
+        "Statement on a legal issue"
+      ],
+      "answer": "Request or complaint to an authority or people's representation"
+    },
+    {
+      "text": "In which sector of the economy are raw materials or intermediate products converted into goods?",
+      "options": ["Secondary sector", "Primary sector", "Tertiary sector", "Quaternary sector"],
+      "answer": "Secondary sector"
+    },
+    {
+      "text": "What is it called when a currency becomes worth less and less?",
+      "options": ["Inflation", "Deflation", "Hyperflation", "Hypoflation"],
+      "answer": "Inflation"
+    },
+    {
+      "text": "How many states are permanent members of the UN Security Council?",
+      "options": ["5", "10", "15", "20"],
+      "answer": "5"
+    },
+    {
+      "text": "A referendum is an example of",
+      "options": ["direct democracy", "representative democracy", "Autocracy", "parliamentary democracy"],
+      "answer": "direct democracy"
+    },
+    {
+      "text": "What is an atoll?",
+      "options": ["a ring-shaped coral reef", "a Greek deity", "an island with an active volcano", "a mountain lake"],
+      "answer": "a ring-shaped coral reef"
+    },
+    {
+      "text": "What is amber made of?",
+      "options": ["from fossil resin", "from volcanic magma", "from silicates", "From crystals"],
+      "answer": "from fossil resin"
+    },
+    {
+      "text": "Where did Socrates live?",
+      "options": ["in Greece", "in Mesopotamia", "in Italy", "in ancient Egypt"],
+      "answer": "in Greece"
+    },
+    {
+      "text": "Approximately when did life first develop on Earth?",
+      "options": ["~3.8 billion years ago", "~380 million years ago", "~38 million years ago", "~3.8 million years ago"],
+      "answer": "~3.8 billion years ago"
+    }
+  ],
+  "Natural Science": [
+    {
+      "text": "What is the approximate force of gravity (g)?",
+      "options": ["10 m/s²", "25 m/s²", "2 m/s²", "5 m/s²"],
+      "answer": "10 m/s²"
+    },
+    {
+      "text": "What are the characteristics of a diode?",
+      "options": [
+        "It allows the electric current to pass only in one direction.",
+        "It stores electrical charges.",
+        "It amplifies electrical signals.",
+        "It generates a magnetic field."
+      ],
+      "answer": "It allows the electric current to pass only in one direction."
+    },
+    {
+      "text": "What is the least common multiple of 6 and 4?",
+      "options": ["12", "24", "18", "6"],
+      "answer": "12"
+    },
+    {
+      "text": "What is the sum of all interior angles in a square?",
+      "options": ["360°", "180°", "400°", "240°"],
+      "answer": "360°"
+    },
+    {
+      "text": "What is the chemical formula for table salt?",
+      "options": ["NaCl", "CaCl", "NaS", "S2"],
+      "answer": "NaCl"
+    },
+    {
+      "text": "Which of the following is a noble gas?",
+      "options": ["Neon", "Oxygen", "Hydrogen", "Chlorine"],
+      "answer": "Neon"
+    },
+    {
+      "text": "Which of these animals is a mammal?",
+      "options": ["Dolphin", "Hammerhead shark", "Eagle", "Komodo dragon"],
+      "answer": "Dolphin"
+    },
+    {
+      "text": "What is the purpose of mitosis?",
+      "options": [
+        "Cell proliferation during growth processes",
+        "Reproduction",
+        "Metabolic regulation",
+        "Germ cell formation"
+      ],
+      "answer": "Cell proliferation during growth processes"
+    },
+    {
+      "text": "What is treated with antibiotics?",
+      "options": ["bacterial infections", "viral infections", "Poisonings", "Fungal infections"],
+      "answer": "bacterial infections"
+    },
+    {
+      "text": "Which symptoms are typical for epilepsy?",
+      "options": [
+        "Seizures and pauses in consciousness",
+        "Memory disorders and attention deficits",
+        "long-lasting pain in the limbs",
+        "Nausea, vomiting and mental confusion"
+      ],
+      "answer": "Seizures and pauses in consciousness"
+    }
+  ],
+  "Humanities": [
+    {
+      "text": "What are the core values of Confucius' teachings?",
+      "options": ["Order, harmony and balance", "Justice, equality and fraternity", "Assertiveness, willpower and courage", "Honesty, openness and respect"],
+      "answer": "Order, harmony and balance"
+    },
+    {
+      "text": "Which sequence characterizes the gain of knowledge through an experiment?",
+      "options": [
+        "Theory - Hypothesis - Conduction- Observation - Evaluation",
+        "Hypothesis - Conduction - Theory - Observation - Evaluation",
+        "Theory - Evaluation - Hypothesis - Conduction - Observation",
+        "Conduction - Observation - Evaluation - Hypothesis - Theory"
+      ],
+      "answer": "Hypothesis - Conduction - Theory - Observation - Evaluation"
+    },
+    {
+      "text": "In a famous painting by Dalí, 'melting clocks' are depicted. To which style should this painting be assigned?",
+      "options": ["Surrealism", "Impressionism", "Naturalism", "Romanticism"],
+      "answer": "Surrealism"
+    },
+    {
+      "text": "What is the 'Golden Section'?",
+      "options": [
+        "Distance or size ratio that allows for aesthetic proportions",
+        "Aristotle's treatise on the nature of the fine arts",
+        "specific type of lines in painting",
+        "Engraving technique in the Renaissance"
+      ],
+      "answer": "Distance or size ratio that allows for aesthetic proportions"
+    },
+    {
+      "text": "Which book is by Fyodor Mikhailovich Dostoevsky?",
+      "options": ["Crime and punishment", "Intrigue and love", "Sex and love", "Murder and Manslaughter"],
+      "answer": "Crime and punishment"
+    },
+    {
+      "text": "What is Don Quixote fighting against in Miguel de Cervantes' novel?",
+      "options": ["Windmills", "the British", "sea monster", "social injustice"],
+      "answer": "Windmills"
+    },
+    {
+      "text": "Which of the following is a woodwind instrument?",
+      "options": ["Saxophone", "Bugle", "Tuba", "Trumpet"],
+      "answer": "Saxophone"
+    },
+    {
+      "text": "Which musicians sit in the first rows (next to the conductor) in a symphony orchestra?",
+      "options": ["string players", "brass players", "percussionists", "woodwind players"],
+      "answer": "string players"
+    },
+    {
+      "text": "What is the most widely used building material in the world?",
+      "options": ["Concrete", "Wood", "Steel", "Brick"],
+      "answer": "Concrete"
+    },
+    {
+      "text": "What is the tallest building in the world?",
+      "options": ["Burj Khalifa in Dubai", "Shanghai Tower in Shanghai", "Makkah Royal Clock Tower in Mecca", "Ping An Finance 117 in Tianjin"],
+      "answer": "Burj Khalifa in Dubai"
+    }
+  ]
+}
+
+
