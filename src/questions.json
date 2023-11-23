@@ -132,8 +132,8 @@
     {
       "text": "Which sequence characterizes the gain of knowledge through an experiment?",
       "options": [
-        "Theory - Hypothesis - Conduction- Observation - Evaluation",
         "Hypothesis - Conduction - Theory - Observation - Evaluation",
+        "Theory - Hypothesis - Conduction- Observation - Evaluation",
         "Theory - Evaluation - Hypothesis - Conduction - Observation",
         "Conduction - Observation - Evaluation - Hypothesis - Theory"
       ],
