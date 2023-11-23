@@ -6,9 +6,9 @@
       </p>
       <hr />
       <div class="grid grid-cols-2 gap-6 my-6">
-      <div v-for="(option, index) in question && question.options" :key="index" >
+      <div v-for="(option, index) in question && shuffledOptions()" :key="index" >
         <button
-          class="gamifiedButton w-full h-24"
+          class="gamifiedButton w-full h-24 capitalize text-xl !text-neutral-800"
           @click="checkOption(option)"
         >
           {{ option }}
@@ -57,7 +57,26 @@ export default {
       // }, 2000);
     };
 
-    return { isCorrect, checkOption };
+    const shuffledOptions = () =>  {
+      // Fisher-Yates shuffle algorithm
+      let shuffled = [...props.question.options];
+      let currentIndex = shuffled.length;
+      let randomIndex;
+
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [shuffled[currentIndex], shuffled[randomIndex]] = [
+          shuffled[randomIndex],
+          shuffled[currentIndex]
+        ];
+      }
+      return shuffled;
+    }
+
+
+    return { isCorrect, checkOption, shuffledOptions };
     // return { showFeedback, isCorrect, checkOption };
   },
 };
