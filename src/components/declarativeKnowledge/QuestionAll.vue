@@ -8,7 +8,7 @@
       <div class="grid grid-cols-2 gap-6 my-6">
       <div v-for="(option, index) in question && shuffledOptions()" :key="index" >
         <button
-          class="gamifiedButton w-full h-24 capitalize text-xl !text-neutral-800"
+          class="gamifiedButton w-full h-24 capitalize text-xl text-white"
           @click="checkOption(option)"
         >
           {{ option }}

@@ -21,11 +21,13 @@
           <div class=" w-full shadow-md h-2 bg-slate-700 transition-all duration-500 ease-in-out"
                :style="{ width: progress && !isNaN(progress) ? progress + '%' : 0 + '%', backgroundColor: progress && !isNaN(progress) ? '#85dcf9' : '' }"></div>
         </div>
+
         <div class="  relative " v-for="(style, view) in viewStyles" :key="view">
-          <p class="absolute -top-6 text-gray-600 font-bold left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 duration-500 transition-opacity"
-             :class="[{'opacity-100': currentView === view}]">
+          <div class="absolute -top-10 before:absolute before:border-l-transparent before:border-r-transparent before:border-r-8 before:border-l-8 before:border-t-[8px] before:border-[#85dcf9] before:top-[95%] before:left-1/2 before:-translate-x-1/2  text-white p-1 px-2 rounded-lg bg-[#85dcf9] font-semibold left-1/2 translate-y-5 -translate-x-1/2 whitespace-nowrap opacity-0 duration-500 transition-all"
+             :class="[{'opacity-100 !translate-y-0': currentView === view}]">
             {{ view }}
-          </p>
+            <div class=""></div>
+          </div>
           <div
               :class="['h-12 w-12 rounded-full border-4 transition-all duration-500 delay-100 ', { ' border-[#85dcf9] bg-[#85dcf9]': isViewReached(view) }, { '!bg-white': !isViewReached(view) } ]">
             <component :is="style.image" alt=""
