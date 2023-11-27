@@ -6,3 +6,5 @@
 .gamifiedButton {
     @apply px-4 py-3 rounded-md  shadow-lg font-semibold text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
 }
+
+

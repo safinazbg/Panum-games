@@ -44,9 +44,7 @@
       </div>
 
       <div v-if="showResult" class="space-y-4">
-
         <div v-for="(evaluation, category) in evaluations" :key="evaluation">
-
           <div v-if="evaluation.correctAnswers > 0">
             <p class="text-2xl" :class="'text-' + viewStyles[currentView].color + '-500'">
               {{ category }}: {{ evaluation.correctAnswers }} correct
