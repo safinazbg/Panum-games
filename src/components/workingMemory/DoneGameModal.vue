@@ -1,9 +1,7 @@
 <template>
   <LInfo :show="show">
     <template #title>
-      <h1 class="self-center !text-6xl">
       Game End
-      </h1>
     </template>
     <template #body>
       <div class=" text-center">
@@ -15,8 +13,10 @@
     </template>
 
     <template #button>
-      <button @click="end" class="button !w-72 ">
-        Return to homepage
+      <button @click="end" class=" ">
+        <p class=" gamifiedh1 !text-yellow-200 !text-xl">
+          Return to homepage
+        </p>
       </button>
     </template>
   </LInfo>

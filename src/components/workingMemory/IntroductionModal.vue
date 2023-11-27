@@ -1,14 +1,14 @@
 <template>
   <LInfo :show="show">
     <template #title>
-      <h1 class="self-center text-4xl">
-        Welcome to the
-        Memory game!
+      <h1 class=" ">
+        Working Memory!
       </h1>
     </template>
     <template #body>
-      <div class="flex justify-center w-full">
-        <ol class="!text-left k1:text-md text- list-disc listing">
+      <div class="flex justify-center w-full text-center ">
+        <ol class="  list-decimal	">
+<!--        <ol class="  	">-->
           <li class="pb-2"> Colorful squares will appear one at a time. Pay close attention.</li>
           <li class="pb-2"> You have to keep track of the last location of each color.</li>
           <li class="pb-2"> At the end, you will be asked where each color last appeared.</li>
@@ -18,8 +18,10 @@
       </div>
     </template>
     <template #button>
-      <button @click="start" class="button !w-60 !px-8">
-        Start practice round
+      <button @click="start" class="">
+        <p class="gamifiedh1 !text-yellow-200 ">
+          Start !
+        </p>
       </button>
     </template>
   </LInfo>

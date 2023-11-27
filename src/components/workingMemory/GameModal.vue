@@ -1,9 +1,7 @@
 <template>
   <LInfo :show="show" class="text-center">
     <template #title>
-      <h1 class="self-center text-4xl">
         Well done!
-      </h1>
     </template>
     <template #body>
       Now you are ready to begin the game. <br>
@@ -19,8 +17,10 @@
     </template>
 
     <template #button>
-      <button @click="start" class="button ">
+      <button @click="start" class=" ">
+        <p class=" gamifiedh1 !text-yellow-200">
         Start
+        </p>
       </button>
     </template>
   </LInfo>

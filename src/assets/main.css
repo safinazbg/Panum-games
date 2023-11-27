@@ -7,4 +7,99 @@
     @apply px-4 py-3 rounded-md  shadow-lg font-semibold text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
 }
 
+.gamifiedh1 {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(106,78,58,1);
+    @apply text-white font-custom lg:text-5xl text-3xl tracking-wide drop-shadow-[-3px_4px_0px_rgba(106,78,58,1)]
+}
+.gamifiedButtonMemoryGame {
+    @apply  shadow-[-5px_4px_0px_rgba(106,78,58,1)] bg-gradient-to-r from-green-400 to-[#85DCF9]  border  border-[rgba(106,78,58,1)] active:transform active:scale-95 !rounded-2xl p-4 transition-all duration-200 ease-in-out
 
+}
+.gamifiedButtonMemoryGame:hover{
+    @apply shadow-[-8px_8px_0px_rgba(106,78,58,1)] transform translate-x-1 -translate-y-1
+
+}
+
+.mirrorEffectBig::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    transform:  skewX(-20deg);
+    left: 60%;
+    top: 0;
+    height: 97%;
+    width: 100px;
+    opacity: 0.4;
+    z-index: -1;
+}
+.mirrorEffectBig::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    transform:  skewX(40deg);
+    right: 35px;
+    top: 30px;
+    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+    opacity: 0.7;
+}
+.mirrorEffect::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    transform:  skewX(-20deg);
+    left: 66%;
+    top: 0;
+    height: 99%;
+    width: 8px;
+    opacity: 0.3;
+    animation: moveAround .8s ease-in-out ;
+}
+
+.mirrorEffect::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    transform:  skewX(-20deg);
+    left: 76%;
+    top: 0;
+    height: 99%;
+    width: 12px;
+    opacity: 0.3;
+    z-index:0;
+    animation: moveAround .8s ease-in-out ;
+}
+
+.gamifiedButtonMemoryGame:hover .mirrorEffect {
+    transform: translateX(50px) skewX(-20deg);
+    left: 86%;
+    background-color: limegreen;
+
+}
+.mirrorEffect::after:hover {
+    transform: translateX(50px) skewX(-20deg)
+}
+@keyframes moveAround {
+    0% {
+        transform: translateX(0) skewX(-20deg);
+    }
+
+    50% {
+        transform: translateX(20px) skewX(-20deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0) skewX(-20deg);
+    }
+}
+
+@font-face {
+    font-family: 'SuperComic';
+    src: url('./fonts/SuperComic.ttf') format('truetype');
+}
+
+.font-superComic {
+    font-family: 'SuperComic', sans;
+}
