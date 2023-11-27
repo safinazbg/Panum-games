@@ -8,6 +8,7 @@ import RecordTwo from "@/components/RecordTwo.vue";
 import RecordThree from "@/components/RecordThree.vue";
 import WorkingMemoryGame from "@/components/workingMemory/WorkingMemoryGame.vue";
 import DeclarativeKnowledge from "@/components/declarativeKnowledge/DeclarativeKnowledge.vue";
+import DeclarativeKnowledgeStyled from "@/components/declarativeKnowledge/DeclarativeKnowledgeStyled.vue";
 
 const routes = [
   {
@@ -52,6 +53,11 @@ const routes = [
     path: '/DeclarativeKnowledge',
     name: 'DeclarativeKnowledge',
     component: DeclarativeKnowledge
+  },
+  {
+    path: '/DeclarativeKnowledgeStyled',
+    name: 'DeclarativeKnowledgeStyled',
+    component: DeclarativeKnowledgeStyled
   },
 
   {
