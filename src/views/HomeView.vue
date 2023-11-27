@@ -114,6 +114,7 @@
       
       
       <div
+          @click="declarativeKnowledgeStyled"
         class="col3 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
@@ -173,8 +174,11 @@ export default {
     const declarativeKnowledge = () => {
       router.push("/DeclarativeKnowledge");
     };
+    const declarativeKnowledgeStyled = () => {
+      router.push("/DeclarativeKnowledgeStyled");
+    };
 
-    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory,  };
+    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory, declarativeKnowledgeStyled };
   },
 };
 </script>
