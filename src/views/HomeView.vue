@@ -114,11 +114,12 @@
       
       
       <div
-          @click="declarativeKnowledgeStyled"
+          @click="goToLinks"
         class="col3 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
-          <p class="font-semibold md:mt-24">Game 6</p>
+          <LinksIcon class="w-12 h-12"></LinksIcon>
+          <p class="font-semibold md:mt-24">Links Game</p>
           <button
             class="border-2 border-black rounded-full text-center w-36 h-8 flex justify-center items-center"
           >
@@ -148,9 +149,10 @@ import { useRouter } from "vue-router";
 import MindIcon from "@/components/Icons/MindIcon.vue";
 import SpeechIcon from "@/components/Icons/SpeechIcon.vue";
 import QuizIcon from "@/components/Icons/QuizIcon.vue";
+import LinksIcon from "@/components/Icons/LinksIcon.vue";
 
 export default {
-  components: {QuizIcon, SpeechIcon, MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
+  components: {LinksIcon, QuizIcon, SpeechIcon, MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
 
   setup() {
     const router = useRouter();
@@ -174,11 +176,13 @@ export default {
     const declarativeKnowledge = () => {
       router.push("/DeclarativeKnowledge");
     };
-    const declarativeKnowledgeStyled = () => {
-      router.push("/DeclarativeKnowledgeStyled");
+
+    const goToLinks = () => {
+      window.open("/https://links.scienceathome.org/index", "_blank");
     };
 
-    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory, declarativeKnowledgeStyled };
+
+    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory, goToLinks };
   },
 };
 </script>
