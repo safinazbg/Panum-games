@@ -1,10 +1,10 @@
 <template>
   <div class="flex justify-center items-center min-h-screen">
     <div class="flex flex-col gap-2 items-center">
-      <h2 class="headline k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold">Practice Round</h2>
+      <h2 class="headline k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold gamifiedh1">Practice Level</h2>
 
       <div class="w-36 flex justify-center items-center ">
-        <p class="transition-transform duration-200 transform font-bold text-2xl"
+        <p class="transition-transform duration-200 transform font-bold text-2xl "
         >
           Round: 1 / 1
         </p>
@@ -48,7 +48,7 @@
               :disabled='gameIsInProgress' @click="onStart" v-if="showTryAgain">
         Try Again
       </button>
-      <button v-if="!showTryAgain" class=" mb-4"
+      <button v-if="!showTryAgain" class=" mb-4 gamifiedButtonMemoryGame"
               :class="{ 'disabledButton' : gameIsInProgress ,  'button': !gameIsInProgress }"
               :disabled='gameIsInProgress' @click="onStart">
         Start level
