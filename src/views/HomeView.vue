@@ -5,14 +5,13 @@
       <p class="text-sm text-gray-500">in progress</p>
     </div>
     <div
-      class="w-32 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"
+      class="w-32 h-16 flex justify-center items-center md:mx-2"
     >
-      <button
+      <div
         class="border-2 border-black rounded-full text-center mx-2 w-36 h-8 flex justify-center items-center"
       >
-        Log in
-        <span class="ml-3"><arrowTop class="h-4 w-4"></arrowTop></span>
-      </button>
+       X
+      </div>
     </div>
   </div>
   <div class="container mx-auto w-full mt-14">
@@ -141,7 +140,6 @@
 </template>
 
 <script>
-import arrowTop from "@/components/Icons/arrowTop.vue";
 import arrowUp from "@/components/Icons/arrowUp.vue";
 import gridIcon from "@/components/Icons/gridIcon.vue";
 import peopleIcon from "@/components/Icons/peopleIcon.vue";
@@ -152,7 +150,7 @@ import QuizIcon from "@/components/Icons/QuizIcon.vue";
 import LinksIcon from "@/components/Icons/LinksIcon.vue";
 
 export default {
-  components: {LinksIcon, QuizIcon, SpeechIcon, MindIcon, arrowTop, gridIcon, arrowUp, peopleIcon },
+  components: {LinksIcon, QuizIcon, SpeechIcon, MindIcon, gridIcon, arrowUp, peopleIcon },
 
   setup() {
     const router = useRouter();
