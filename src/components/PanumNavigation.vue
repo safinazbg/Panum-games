@@ -13,20 +13,20 @@
     <div
       class="w-32 h-16 border-l-2 border-black flex justify-center items-center md:mx-2"
     >
-      <button
-        class="border-2 border-black rounded-full text-center mx-2 w-36 h-8 flex justify-center items-center"
+      <div
+        class="border-2 text-center mx-2 w-36 h-8 flex justify-center items-center"
       >
-        Log in
-        <span class="ml-3"><arrowTop class="h-4 w-4"></arrowTop></span>
-      </button>
+        X
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import arrowTop from './Icons/arrowTop.vue';
 
 export default {
-    components:{arrowTop}
+    components:{
+
+    }
 }
 </script>
