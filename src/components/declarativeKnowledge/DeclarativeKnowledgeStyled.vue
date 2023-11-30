@@ -1,66 +1,83 @@
-<template>
-  <PanumNavigation/>
-  <div
-      class="flex flex-col items-center justify-center max-w-3xl mx-auto text-center mt-40"
-  >
-    <div v-if="!gameStarted">
-      <div class="h-20 flex items-center relative w-full justify-between">
-<!--        <div class="bg-gray-500"></div>-->
-      <div class="w-full bg-green-500 h-5 rounded-md absolute" />
-        <div class="z-10" v-for="(style, view) in viewStyles" :key="view">
-          <img :src="style.image" alt="" class="w-12 h-12 z-40 absolute">
-          <div :class="['h-12 w-12 rounded-full', 'bg-' + style.color]">
-        </div>
-        </div>
-      </div>
-      <h1 class="text-6xl my-4 font-bold text-green-800">Quiz - test your knowledge</h1>
-      <p class="leading-relaxed text-lg">
-        Welcome to the quiz ! <br/>
-        This quiz consist of
-        <strong>{{ totalQuestions }}</strong>
-        question. <br/>
-        Please answer each question without using any outside help. <br/>
-        if you do not know the answer to a question, just go with your best
-        guess.
-      </p>
-      <button
-          class="bg-gray-300 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-400 ease-in-out duration-300"
-          @click="startGame"
-      >
-        Start the quiz
-      </button>
-    </div>
-    <div v-if="gameStarted">
-      <div v-if="gameStarted && !showResult">
-        <h2 class="text-3xl my-4">
-          Question <strong>{{ currentQuestionIndex[currentView] + 1 }}</strong> of
-          <strong>{{ questionsPrRound }}</strong>
-        </h2>
-        <hr/>
-        <QuestionAll
-            :question="currentQuestion"
-            @answer="answerQuestion"
-        />
-      </div>
 
-      <div v-if="showResult" class="space-y-4">
-        <div v-for="(evaluation, category) in evaluations" :key="evaluation">
-          <div v-if="evaluation.correctAnswers > 0">
-            <p class="text-2xl" :class="'text-' + viewStyles[currentView].color + '-500'">
-              {{ category }}: {{ evaluation.correctAnswers }} correct
-              answers
-            </p>
+<template>
+  <div class="min-h-screen flex flex-col ">
+    <PanumNavigation/>
+    <div
+        class="  max-w-3xl mx-auto text-center my-16 w-full  flex-grow flex flex-col justify-between"
+    >
+      <Progressbar :current-view="currentView" :is-view-reached="isViewReached(view)" :progress="progress"
+                   :view-styles="viewStyles"/>
+
+
+      <div v-if="!gameStarted" class="flex-grow flex my-8 flex-col items-center justify-between ">
+        <h1 class="text-4xl font-bold"> 🚀 Challenge Your Knowledge! 🚀 <br> <span
+            class="text-neutral-600 font-semibold text-2xl">Quiz Time</span>
+        </h1>
+        <p class="leading-relaxed text-lg text-neutral-600">
+          Buckle up for
+          <strong>{{ totalQuestions }}</strong>
+          exciting questions that will put your knowledge to the test.
+          <br>
+          Remember, no peeking – let's see how well you know your stuff! 🧠💻. <br/>
+        </p>
+        <div class="flex text-neutral-600 flex-col items-center gap-1">
+          Are you ready? Let's dive in! 🚀🌐
+
+          <button
+              class="gamifiedButton w-40 text-xl"
+              @click="startGame"
+          >
+            Start Quiz
+          </button>
+        </div>
+      </div>
+      <div v-if="gameStarted" class="flex-grow flex  my-8 flex-col justify-between">
+        <div v-if="!showResult" class="">
+          <h2 class="text-3xl my-2 !text-neutral-700">
+            Question <strong>{{ currentQuestionIndex[currentView] + 1 }}</strong> of
+            <strong>{{ questionsPrRound }}</strong>
+          </h2>
+          <hr/>
+          <QuestionAll
+              :question="currentQuestion"
+              @answer="answerQuestion"
+          />
+        </div>
+        <div v-if="showResult" class="space-y-4 my-6 flex-grow flex flex-col h-full justify-between ">
+          <p class="text-4xl pb-8">🔍⚡️ Knowledge Mastery Unleashed! ⚡️🌍
+          </p>
+          <div v-for="(evaluation, category) in evaluations" :key="evaluation">
+            <div>
+              <p class="text-xl" :class="'text-' + viewStyles[currentView].color + '-500'">
+              <span v-if="category === 'Social Science'" class="">
+                🧠 Social Science: <strong>{{ evaluation.correctAnswers }} Correct Answers! </strong>
+              </span>
+                <span v-if="category === 'Natural Science' " class="">
+                🌿 Natural Science:  <strong>{{ evaluation.correctAnswers }}
+ Correct Answers!</strong>
+
+              </span>
+                <span v-if="category === 'Humanities' " class="">
+📜 Humanities:  <strong>{{ evaluation.correctAnswers }} Correct Answers!</strong>
+
+
+              </span>
+                <!--              {{ category }}: {{ evaluation.correctAnswers }} correct-->
+                <!--              answers-->
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <p class="text-md">🙌 Thank you for playing and embracing the adventure of knowledge!🌍</p>
+            <button class="gamifiedButton"
+                    @click="resetGame"
+            >
+              Return to homepage
+            </button>
           </div>
         </div>
-        <p class="text-2xl">Thank you for playing !</p>
-        <button
-        class="bg-gray-400 px-4 py-6 text-lg border-2 border-gray-800 rounded-md my-10 hover:bg-gray-500 ease-in-out duration-300"
-            @click="resetGame"
-        >
-          Return to homepage
-        </button>
-      </div>
 
+      </div>
     </div>
   </div>
 </template>
@@ -70,11 +87,13 @@ import QuestionAll from "@/components/declarativeKnowledge/QuestionAll.vue";
 import {computed, reactive, ref} from "vue";
 import PanumNavigation from "@/components/PanumNavigation.vue";
 import questions from "@/questions.json";
-import CorrectIcon from "@/components/declarativeKnowledge/icons/CorrectIcon.vue";
+import StarIcon from "@/components/declarativeKnowledge/icons/StarIcon.vue";
+import Progressbar from "@/components/Progressbar.vue";
 
 export default {
   name: "DeclarativeKnowledge",
   components: {
+    Progressbar,
     PanumNavigation,
     QuestionAll,
   },
@@ -87,7 +106,7 @@ export default {
     const naturalScienceQuestions = ref(questions['Natural Science']);
     const humanitiesQuestions = ref(questions['Humanities']);
     const questionsPrRound = 10
-    const totalQuestions =  socialScienceQuestions.value.length + naturalScienceQuestions.value.length + humanitiesQuestions.value.length
+    const totalQuestions = socialScienceQuestions.value.length + naturalScienceQuestions.value.length + humanitiesQuestions.value.length
     const views = [
       'Welcome',
       'Social Science',
@@ -95,13 +114,14 @@ export default {
       'Humanities',
       'Feedback',
     ]
-    const viewStyles =  {
-      'Welcome': { color: 'gray-500', image: CorrectIcon },
-      'Social Science': { color: 'red-500', image: CorrectIcon },
-      'Natural Science': { color: 'blue-500', image: CorrectIcon },
-      'Humanities': { color: 'yellow-500', image: CorrectIcon },
-      'Feedback': { color: 'gray-500', image: CorrectIcon },
+    const viewStyles = {
+      'Welcome': {color: 'gray-500', image: StarIcon},
+      'Social Science': {color: 'red-500', image: StarIcon},
+      'Natural Science': {color: 'blue-500', image: StarIcon},
+      'Humanities': {color: 'yellow-500', image: StarIcon},
+      'Feedback': {color: 'gray-500', image: StarIcon},
     }
+
 
     const currentView = ref(views[0])
     const currentQuestionIndex = reactive({
@@ -115,7 +135,20 @@ export default {
       'Humanities': {correctAnswers: 0},
     });
 
+    const progress = computed(() => {
+      const viewIndex = views.indexOf(currentView.value);
+      const answeredQuestions = currentQuestionIndex[currentView.value] ? currentQuestionIndex[currentView.value] : 0;
+      const totalQuestions = questionsPrRound;
+      const totalProgress = Math.min((viewIndex * 25) + 3 + (answeredQuestions / totalQuestions * 20), 100)
+      // Calculate progress as a percentage
+      return totalProgress;
+    });
 
+    const isViewReached = (view) => {
+      const currentViewIndex = views.indexOf(currentView.value);
+      const targetViewIndex = views.indexOf(view);
+      return currentViewIndex >= targetViewIndex;
+    };
 
     const changeView = (newView) => {
       currentView.value = newView;
@@ -125,6 +158,9 @@ export default {
     };
     const currentQuestion = computed(() => {
       const category = currentView.value;
+      if (!questions[category] || !questions[category][currentQuestionIndex[category]]) {
+        return null;
+      }
       return questions[category][currentQuestionIndex[category]];
     });
     const answerQuestion = (isCorrect) => {
@@ -145,13 +181,12 @@ export default {
         const nextViewIndex = views.indexOf(currentView.value) + 1;
         if (nextViewIndex < views.length) {
           changeView(views[nextViewIndex]);
-        } else {
-          // All questions are answered in all categories, show result
-          showResult.value = true;
+          if (currentView.value === 'Feedback') {
+            showResult.value = true;
+          }
         }
       }
     };
-
 
     const startGame = () => {
       currentView.value = 'Social Science';
@@ -163,7 +198,10 @@ export default {
       showResult.value = false;
       correctAnswer.value = 0;
       currentQuestionIndex.value = 0;
-      currentView.value = 'Social Science';
+      for (const key in evaluations) {
+        evaluations[key].correctAnswers = 0;
+      }
+      currentView.value = 'Welcome';
     };
 
     return {
@@ -185,10 +223,10 @@ export default {
       currentQuestion,
       viewStyles,
       views,
-      CorrectIcon
+      progress,
+      isViewReached
     };
   },
 };
 </script>
 
-<style></style>

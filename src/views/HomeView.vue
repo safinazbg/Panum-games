@@ -113,7 +113,7 @@
       
       
       <div
-          @click="goToLinks"
+          @click="declarativeKnowledgeStyled"
         class="col3 md:border-r-2 p-8 border-black flex items-end justify-center"
       >
         <div class="icon flex flex-col items-center space-y-5">
@@ -174,13 +174,16 @@ export default {
     const declarativeKnowledge = () => {
       router.push("/DeclarativeKnowledge");
     };
+    const declarativeKnowledgeStyled = () => {
+      router.push("/DeclarativeKnowledge");
+    };
 
     const goToLinks = () => {
       window.open("/https://links.scienceathome.org/index", "_blank");
     };
 
 
-    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory, goToLinks };
+    return { router, attention, declarativeKnowledge, findColor, speak, workingMemory, goToLinks, declarativeKnowledgeStyled };
   },
 };
 </script>
