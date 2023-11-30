@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "LInfo",
+  name: "LInfoTest",
   props: {
     show: {
       type: Boolean,

@@ -18,16 +18,14 @@
 
     <template #button>
       <button @click="start" class=" ">
-        <p class=" gamifiedh1 !text-yellow-200">
         Start
-        </p>
       </button>
     </template>
   </LInfo>
 </template>
 
 <script>
-import LInfo from "@/components/workingMemory/LInfo.vue";
+import LInfo from "@/components/LInfo.vue";
 
 export default {
   name: "GameModal",

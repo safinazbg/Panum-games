@@ -1,11 +1,9 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen">
-    <div class="flex flex-col gap-2 items-center">
-
-      <h2 class="k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold">Current Level: {{ level }}</h2>
-
-      <div class="w-36 flex justify-center items-center ">
-        <p class="transition-transform duration-200 transform font-bold text-2xl"
+  <div class="flex justify-center items-center font-custom">
+    <div class="flex flex-col items-center">
+      <h2 class="k1:text-5xl text-4xl mt-2  font-bold">Current Level: {{ level }}</h2>
+      <div class=" flex justify-center items-center ">
+        <p class="transition-transform duration-200 transform text-2xl"
             :class="{ '-translate-y-0' : totalRounds }">
           Round: {{currentRoundNumber}} / {{ totalRounds}}
         </p>
@@ -16,22 +14,21 @@
              :class="`bg-${color}-500`"></div>
       </div>
       <div class="flex flex-col k1:flex-row gap-4 h-full relative">
-        <div class="w-40 flex flex-col justify-center items-center ">
-          <div class="flex justify-between text-md font-bold w-40">
-          <p class="transition-transform duration-200 transform font-bold text-2xl"
-              > Score:
-          </p>
-          <p class="transition-transform duration-200 transform font-bold text-2xl"
-              :class="{ '-translate-y-2': scoreChanged }"> {{ score }} / {{ totalRounds }}
-          </p>
-
-          </div>
-          <div class="flex justify-between text-md font-bold w-40">
-
-          <h2 class="">Total Score : </h2>
+        <div class=" flex flex-col justify-center items-center ">
+          <div class="flex justify-between gap-2 text-md font-bold">
+          <h2 class="">Total Score:  </h2>
             <h2>
               {{ scoreTotal}} / 12
             </h2>
+          </div>
+          <div class="flex justify-between gap-2 text-md">
+            <p class="transition-transform duration-200 transform font-bold"
+            > Score:
+            </p>
+            <p class="transition-transform duration-200 transform font-bold"
+               :class="{ '-translate-y-2': scoreChanged }"> {{ score }} / {{ totalRounds }}
+            </p>
+
           </div>
         </div>
         <div class="grid grid-cols-3 gap-3">
@@ -63,14 +60,19 @@
               Lv Up {{level + 1}}
             </button>
 
-            <!--            <button :class="level === 6 ? 'disabledSecondaryButton' : 'buttonSecondary'" @click=" levelUp
+            <div class="fixed right-0 top-0">
+              <button :class="level === 6 ? 'disabledSecondaryButton' : 'buttonSecondary'" @click=" levelUp
                     ">Level Up
-                        </button>-->
+              </button>
+              <button class="h-full self-end"
+                      :class="{ 'disabledSecondaryButton': level === 2, 'buttonSecondary': level !== 2 }"
+                      @click="levelDown">Level Down
+              </button>
           </div>
-          <!--          <button class="h-full self-end"
-                            :class="{ 'disabledSecondaryButton': level === 2, 'buttonSecondary': level !== 2 }"
-                            @click="levelDown">Level Down
-                    </button>-->
+
+          </div>
+
+
 <!--          <div class="flex flex-col items-center gap-1">
             <button class="flex-col flex items-center"
                     :class="{ 'text-gray-200': level === 1, 'text-gray-800': level !== 1 }">
@@ -85,8 +87,6 @@
             </button>
 
           </div>-->
-
-          <!--        :disabled=" gamesBeforeLevel3> 4"-->
         </div>
 
       </div>
@@ -107,7 +107,7 @@
                 :class="{ 'disabledSecondaryButton' : !gameIsInProgress,  'buttonSecondary': gameIsInProgress }"
                 :disabled='!gameIsInProgress' @click="gameIsInProgress = false">Cancel
         </button>-->
-        <button class=" mb-4 "  :class="{ 'disabledButton' : gameIsInProgress || showLevelUp ,  'button': !gameIsInProgress,'opacity-0': showLevelUp }"
+        <button class=" mb-4 "  :class="{ 'gamifiedButtonDisabled' : gameIsInProgress || showLevelUp ,  'gamifiedButton': !gameIsInProgress,'opacity-0': showLevelUp }"
                 :disabled='gameIsInProgress' @click="onStart">Start round {{currentRoundNumber}}
         </button>
       </div>
@@ -125,7 +125,7 @@ import Square from '@/components/workingMemory/MemoryGameSquare.vue';
 
 export default {
   name: 'MemoryGameGrid',
- emits: ['end'],
+ emits: ['end', 'levelUp'],
   components: {
     Square
   },
@@ -141,7 +141,7 @@ export default {
     const scoreTotal = ref(0)
     const showLevelUp = ref(false)
     const totalRounds = 3
-    const totalLevel = 3
+    const totalLevel = 4
     const timeOut = ref(2000);
     const chosenIndex = ref(-1)
     const allColors = ['red', 'blue', 'green', 'yellow', 'purple']; // All possible colors
@@ -187,6 +187,7 @@ export default {
 
     function levelUp() {
       if (level.value < totalLevel) {
+        emit('levelUp', level.value)
         level.value++;
         score.value = 0
         currentRoundNumber.value = 1

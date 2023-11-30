@@ -5,7 +5,7 @@
     <div
         class="  max-w-3xl mx-auto text-center my-16 w-full  flex-grow flex flex-col justify-between"
     >
-      <Progressbar :current-view="currentView" :is-view-reached="isViewReached(view)" :progress="progress"
+      <Progressbar :current-view="currentView"  :progress="progress"
                    :view-styles="viewStyles"/>
 
 
@@ -88,7 +88,7 @@ import {computed, reactive, ref} from "vue";
 import PanumNavigation from "@/components/PanumNavigation.vue";
 import questions from "@/questions.json";
 import StarIcon from "@/components/declarativeKnowledge/icons/StarIcon.vue";
-import Progressbar from "@/components/Progressbar.vue";
+import Progressbar from "@/components/declarativeKnowledge/Progressbar.vue";
 
 export default {
   name: "DeclarativeKnowledge",

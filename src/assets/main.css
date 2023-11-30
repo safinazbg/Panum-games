@@ -4,13 +4,16 @@
 
 
 .gamifiedButton {
-    @apply px-4 py-3 rounded-md  shadow-lg font-semibold text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
+    @apply px-5 py-3 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
 }
 
 .gamifiedh1 {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgb(106,78,58,1);
     @apply text-white font-custom lg:text-5xl text-3xl tracking-wide drop-shadow-[-3px_4px_0px_rgba(106,78,58,1)]
+}
+.gamifiedButtonDisabled{
+    @apply px-5 py-3 rounded-md  shadow-lg font-semibold text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  opacity-50 cursor-not-allowed
 }
 .gamifiedButtonMemoryGame {
     @apply  shadow-[-5px_4px_0px_rgba(106,78,58,1)] bg-gradient-to-r from-green-400 to-[#85DCF9]  border  border-[rgba(106,78,58,1)] active:transform active:scale-95 !rounded-2xl p-4 transition-all duration-200 ease-in-out

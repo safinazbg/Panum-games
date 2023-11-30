@@ -5,7 +5,7 @@
     </template>
     <template #body>
       <div class=" text-center">
-      You finished all the levels - well done!
+      You finished all the levels - well done! <br>
       This was your final score:
       <h1 class="font-bold py-4 text-4xl"> {{totalPoints}} / 12</h1>
       Thank you for playing!
@@ -14,16 +14,14 @@
 
     <template #button>
       <button @click="end" class=" ">
-        <p class=" gamifiedh1 !text-yellow-200 !text-xl">
           Return to homepage
-        </p>
       </button>
     </template>
   </LInfo>
 </template>
 
 <script>
-import LInfo from "@/components/workingMemory/LInfo.vue";
+import LInfo from "@/components/LInfo.vue";
 import router from "@/router";
 
 export default {
@@ -44,9 +42,7 @@ export default {
   },
   setup() {
     const end = () => {
-      //GO back to homepage here
       router.push('/');
-      console.log("go home here", )
     }
     return {
       end

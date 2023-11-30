@@ -1,7 +1,7 @@
 <template>
   <LInfo :show="show">
     <template #title>
-      <h1 class=" ">
+      <h1 class="font-custom">
         Working Memory!
       </h1>
     </template>
@@ -19,16 +19,14 @@
     </template>
     <template #button>
       <button @click="start" class="">
-        <p class="gamifiedh1 !text-yellow-200 ">
           Start !
-        </p>
       </button>
     </template>
   </LInfo>
 </template>
 
 <script>
-import LInfo from "@/components/workingMemory/LInfo.vue";
+import LInfo from "@/components/LInfo.vue";
 export default {
   name: "IntroductionModal",
   emits: [

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-20 flex items-center relative w-full justify-between">
+  <div class="h-20 flex items-center relative w-full justify-between max-w-3xl ">
     <!--        <div class="border-gray-500"></div>-->
     <!--        <div class="border-red-500"></div>-->
     <!--        <div class="border-blue-500"></div>-->
@@ -25,10 +25,10 @@
         <div class=""></div>
       </div>
       <div
-          :class="['h-12 w-12 rounded-full border-4 transition-all duration-500 delay-100 ', { ' border-[#85dcf9] bg-[#85dcf9]': isViewReached }, { '!bg-white': !isViewReached } ]">
+          :class="['h-12 w-12 rounded-full border-4 transition-all duration-500 delay-100 ', { ' border-[#85dcf9] bg-[#85dcf9]': isViewReached(view) }, { '!bg-white': !isViewReached(view) } ]">
         <component :is="style.image" alt=""
                    class=" z-40 grid  h-full place-items-center transition-all duration-500"
-                   :class="{ '!opacity-30 bounce': !isViewReached }"/>
+                   :class="{ '!opacity-30 bounce': !isViewReached(view) }"/>
       </div>
     </div>
   </div>
@@ -38,9 +38,20 @@ export default {
   name: 'ProgressbarItem',
   props: {
     currentView: {},
-    isViewReached: {},
     progress: {},
     viewStyles: {}
+  },
+  setup(props){
+    const isViewReached = (view) => {
+      const views = Object.keys(props.viewStyles);
+      const currentViewIndex = views.indexOf(props.currentView);
+      const targetViewIndex = views.indexOf(view);
+      return currentViewIndex >= targetViewIndex;
+    }
+
+    return {
+        isViewReached
+    }
   }
 }
 </script>

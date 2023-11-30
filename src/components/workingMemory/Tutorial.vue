@@ -1,58 +1,66 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center font-custom">
     <div class="flex flex-col gap-2 items-center">
-      <h2 class="headline k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold gamifiedh1">Practice Level</h2>
 
-      <div class="w-36 flex justify-center items-center ">
-        <p class="transition-transform duration-200 transform font-bold text-2xl "
-        >
-          Round: 1 / 1
-        </p>
-      </div>
-        <div class="bg-red-500"></div>
-        <div class="bg-blue-500"></div>
-        <div class="bg-green-500"></div>
-        <div class="bg-yellow-500"></div>
-        <div class="bg-purple-500"></div>
-      <div class="flex gap-2 items-center py-4 ">
-        <h2>Current colors:</h2>
-        <div  v-for="(color, index) in colors" :key="index" class="w-8 h-8 rounded-md  "
-             :class="{[`bg-${color}-500`] : true}">
+      <div class="flex justify-center items-center flex flex-col ">
+<!--        <p class="transition-transform duration-200 transform font-bold text-2xl ">-->
+<!--        </p>-->
+<!--      <h2 class="headline k1:text-5xl text-4xl k1:mt-0 mt-6 font-bold gamifiedh1">Practice Level</h2>-->
+        <h2 class="headline k1:text-5xl text-4xl k1:mt-0  mt-2 ">Practice Level</h2>
+        <div class=" flex justify-center items-center ">
+          <p class="transition-transform duration-200 transform  text-2xl"
+          >
+            Round: 1 / 1
+          </p>
         </div>
-      </div>
-      <div class="grid grid-cols-3 gap-3">
-        <Square
-            v-for="(tileColor, index) in squares"
-            :key="index"
-            :color="tileColor"
-            :index="index"
-            @choice="onChoice(index)"
-            :disabled="squaresDisabled"
-            :isCorrect="isCorrect"
-            :isFalse="isFalse"
-            :chosenIndex="chosenIndex"
-        />
-      </div>
-      <div class="flex w-full h-16 justify-center align-middle py-4">
-        <div v-if="chooseColor && !showTryAgain" class="flex items-center gap-4">
-          <div class="">Where did you last see this color?</div>
-          <div class="w-12 h-12 rounded-xl"
-               :class="['bg-' + Object.keys(lastColorIndex)[currentColorGuess] + '-500']"></div>
+        <!--        <div class="bg-red-500"></div>-->
+        <!--        <div class="bg-blue-500"></div>-->
+        <!--        <div class="bg-green-500"></div>-->
+        <!--        <div class="bg-yellow-500"></div>-->
+        <!--        <div class="bg-purple-500"></div>-->
+        <div class="flex gap-2 items-center py-4 ">
+          <h2>Current colors:</h2>
+          <div v-for="(color, index) in colors" :key="index" class="w-8 h-8 rounded-md  "
+               :class="{[`bg-${color}-500`] : true}">
+          </div>
         </div>
-        <div class="flex items-center gap-4" v-if="showTryAgain">
-          <h1 class="text-lg text-red-500">Oh no, that’s not right! Try again.</h1>
+        <div class="grid grid-cols-3 gap-3">
+          <Square
+              v-for="(tileColor, index) in squares"
+              :key="index"
+              :color="tileColor"
+              :index="index"
+              @choice="onChoice(index)"
+              :disabled="squaresDisabled"
+              :isCorrect="isCorrect"
+              :isFalse="isFalse"
+              :chosenIndex="chosenIndex"
+          />
         </div>
-      </div>
+        <div class="flex w-full h-16 justify-center align-middle py-4">
+          <div v-if="chooseColor && !showTryAgain" class="flex items-center gap-4">
+            <div class="">Where did you last see this color?</div>
+            <div class="w-12 h-12 rounded-xl"
+                 :class="['bg-' + Object.keys(lastColorIndex)[currentColorGuess] + '-500']"></div>
+          </div>
+          <div class="flex items-center gap-4" v-if="showTryAgain">
+            <h1 class="text-lg text-red-500">Oh no, that’s not right! Try again.</h1>
+          </div>
+        </div>
 
-      <button class=" mb-4" :class="{ 'disabledButton' : gameIsInProgress,  'button': !gameIsInProgress }"
-              :disabled='gameIsInProgress' @click="onStart" v-if="showTryAgain">
-        Try Again
-      </button>
-      <button v-if="!showTryAgain" class=" mb-4 gamifiedButtonMemoryGame"
-              :class="{ 'disabledButton' : gameIsInProgress ,  'button': !gameIsInProgress }"
-              :disabled='gameIsInProgress' @click="onStart">
-        Start level
-      </button>
+        <button class=" mb-4 "
+                :class="{ 'gamifiedButtonDisabled' : gameIsInProgress,  'gamifiedButton': !gameIsInProgress }"
+                :disabled='gameIsInProgress' @click="onStart" v-if="showTryAgain">
+          Try Again
+        </button>
+<!--        <button v-if="!showTryAgain" class=" mb-4 gamifiedButtonMemoryGame"-->
+<!--                :class="{ 'disabledButton' : gameIsInProgress ,  'button': !gameIsInProgress }"></button>-->
+        <button v-if="!showTryAgain" class=" mb-4 text-xl"
+                :class="{ 'gamifiedButtonDisabled' : gameIsInProgress ,  'gamifiedButton': !gameIsInProgress }"
+                :disabled='gameIsInProgress' @click="onStart">
+          Start level
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -84,8 +92,6 @@ export default {
     const onChoice = (index) => {
       chosenIndex.value = index;
       let currentColorIndex = Object.values(lastColorIndex.value)[currentColorGuess.value]
-      
-
 
 
       if (currentColorIndex === index) {
@@ -230,7 +236,6 @@ export default {
 <style scoped>
 @media (min-width: 1000px) {
   .headline { /* replaces k1:mt-8 */
-    margin-top: 2rem;
     font-size: 3rem; /* 48px */
     line-height: 1;
   }
