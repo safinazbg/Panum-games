@@ -2,16 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/** {*/
+/*    @apply font-custom*/
+/*}*/
+
+
+.gamifiedButtonMentalSpeedRed {
+    @apply px-5 select-none py-3 bg-red-500 w-40 flex justify-center rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95
+}
+.gamifiedButtonMentalSpeedGreen {
+    @apply px-5 select-none py-3 flex justify-center bg-green-500 w-40 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95
+}
 
 .gamifiedButton {
-    @apply px-5 py-3 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
+    @apply px-5 select-none py-3 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
 }
 
 .gamifiedh1 {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgb(106,78,58,1);
-    @apply text-white font-custom lg:text-5xl text-3xl tracking-wide drop-shadow-[-3px_4px_0px_rgba(106,78,58,1)]
+
+    @apply text-[#89f2f2] font-custom lg:text-5xl text-3xl tracking-wide
 }
+/*-webkit-text-stroke-width: 1px;*/
+/*-webkit-text-stroke-color: rgb(106,78,58,1);*/
+/*drop-shadow-[-3px_4px_0px_rgba(106,78,58,1)]*/
 .gamifiedButtonDisabled{
     @apply px-5 py-3 rounded-md  shadow-lg font-semibold text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  opacity-50 cursor-not-allowed
 }

@@ -1,14 +1,14 @@
 <template>
   <div>
 <!--    <div v-if="!showFeedback">-->
-      <p class="text-3xl my-4 h-16 grid place-items-center">
+      <p class="text-2xl my-4 h-16 grid place-items-center">
         {{ question && question.text }}
       </p>
       <hr />
       <div class="grid grid-cols-2 gap-6 my-6">
       <div v-for="(option, index) in question && shuffledOptions()" :key="index" >
         <button
-          class="gamifiedButton w-full h-24 capitalize text-xl text-white"
+          class="gamifiedButton w-full h-24 leading-tight capitalize text-lg text-white"
           @click="checkOption(option)"
         >
           {{ option }}

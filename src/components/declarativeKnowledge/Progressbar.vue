@@ -1,5 +1,5 @@
 <template>
-  <div class="h-20 flex items-center relative w-full justify-between max-w-3xl ">
+  <div class="h-20 flex items-center relative w-full font-custom justify-between max-w-3xl ">
     <!--        <div class="border-gray-500"></div>-->
     <!--        <div class="border-red-500"></div>-->
     <!--        <div class="border-blue-500"></div>-->
@@ -19,7 +19,7 @@
 
     <div class="  relative " v-for="(style, view) in viewStyles" :key="view">
       <div
-          class="absolute -top-10 before:absolute before:border-l-transparent before:border-r-transparent before:border-r-8 before:border-l-8 before:border-t-[8px] before:border-[#85dcf9] before:top-[95%] before:left-1/2 before:-translate-x-1/2  text-white p-1 px-2 rounded-lg bg-[#85dcf9] font-semibold left-1/2 translate-y-5 -translate-x-1/2 whitespace-nowrap opacity-0 duration-500 transition-all"
+          class="absolute -top-10 text-sm before:absolute before:border-l-transparent before:border-r-transparent before:border-r-8 before:border-l-8 before:border-t-[8px] before:border-[#85dcf9] before:top-[95%] before:left-1/2 before:-translate-x-1/2  text-white p-1 px-2 rounded-lg bg-[#85dcf9]  left-1/2 translate-y-5 -translate-x-1/2 whitespace-nowrap opacity-0 duration-500 transition-all"
           :class="[{'opacity-100 !translate-y-0': currentView === view}]">
         {{ view }}
         <div class=""></div>

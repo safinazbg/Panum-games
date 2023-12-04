@@ -9,10 +9,10 @@
 
 
       <div v-if="!gameStarted" class="flex-grow flex my-8 flex-col items-center justify-between ">
-        <h1 class="text-4xl font-bold"> 🚀 Challenge Your Knowledge! 🚀 <br> <span
-            class="text-neutral-600 font-semibold text-2xl">Quiz Time</span>
+        <h1 class="text-3xl "> 🚀 Challenge Your Knowledge! 🚀 <br> <span
+            class="text-neutral-600 font-semibold text-xl">Quiz Time</span>
         </h1>
-        <p class="leading-relaxed text-lg text-neutral-600">
+        <p class="leading-relaxed text-md text-neutral-600">
           Buckle up for
           <strong>{{ totalQuestions }}</strong>
           exciting questions that will put your knowledge to the test.
@@ -23,7 +23,7 @@
           Are you ready? Let's dive in! 🚀🌐
 
           <button
-              class="gamifiedButton w-40 text-xl"
+              class="gamifiedButton  text-xl"
               @click="startGame"
           >
             Start Quiz
@@ -43,7 +43,7 @@
           />
         </div>
         <div v-if="showResult" class="space-y-4 my-6 flex-grow flex flex-col h-full justify-between ">
-          <p class="text-4xl pb-8">🔍⚡️ Knowledge Mastery Unleashed! ⚡️🌍
+          <p class="text-2xl pb-8">🔍⚡️ Knowledge Mastery Unleashed! ⚡️🌍
           </p>
           <div v-for="(evaluation, category) in evaluations" :key="evaluation">
             <div>

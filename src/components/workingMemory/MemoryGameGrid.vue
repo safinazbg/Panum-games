@@ -60,15 +60,16 @@
               Lv Up {{level + 1}}
             </button>
 
-            <div class="fixed right-0 top-0">
-              <button :class="level === 6 ? 'disabledSecondaryButton' : 'buttonSecondary'" @click=" levelUp
-                    ">Level Up
-              </button>
-              <button class="h-full self-end"
-                      :class="{ 'disabledSecondaryButton': level === 2, 'buttonSecondary': level !== 2 }"
-                      @click="levelDown">Level Down
-              </button>
-          </div>
+<!--            <div class="fixed right-0 top-0">-->
+<!--              <button :class="level === 6 ? 'disabledSecondaryButton' : 'buttonSecondary'" @click=" levelUp-->
+<!--                    ">Level Up-->
+<!--              </button>-->
+<!--              <button class="h-full self-end"-->
+<!--                      :class="{ 'disabledSecondaryButton': level === 2, 'buttonSecondary': level !== 2 }"-->
+<!--                      @click="levelDown">Level Down-->
+<!--              </button>-->
+<!--            </div>-->
+
 
           </div>
 

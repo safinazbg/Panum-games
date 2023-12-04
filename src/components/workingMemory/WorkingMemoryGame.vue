@@ -9,8 +9,8 @@
   <div class="" v-if="!gameStarted" :class="{ 'blur-xl': !tutorialStarted }">
     <TutorialGame @tutorialEnd="showGameModal"/>
   </div>
-  <div class="absolute inset-0 button h-fit" @click="showGameModal">Skip turorial</div>
-  <div class="absolute top-12 button bg-blue-500 h-fit" @click="endGame">Skip level4</div>
+<!--  <div class="absolute inset-0 button h-fit" @click="showGameModal">Skip turorial</div>-->
+<!--  <div class="absolute top-12 button bg-blue-500 h-fit" @click="endGame">Skip level4</div>-->
 
   <GameModal :show="isShowGameModal" @start="startGame"/>
   <div v-if="gameStarted" :class="{ 'blur-xl': isShowGameModal || isEndGame  }">

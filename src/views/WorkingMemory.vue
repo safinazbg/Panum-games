@@ -3,7 +3,7 @@
   <div class="flex justify-center items-center min-h-screen">
     <div class="flex flex-col gap-2 items-center">
 
-      <h2 class="text-5xl font-bold">Current Level: {{ level }}</h2>
+      <h2 class="text-5xl ">Current Level: {{ level }}</h2>
       <div class="flex gap-2 items-center pt-4">
         <h2>Current colors:</h2>
 

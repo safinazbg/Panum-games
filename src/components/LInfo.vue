@@ -6,7 +6,7 @@
       <div class="text-center rounded-xl font-custom pb-12 text-5xl bg-opacity-50 text-[#89f2f2] ">
         <slot name="title"></slot>
       </div>
-      <div class="pb-8 text-lg text-md font-custom px-10">
+      <div class="pb-8 text-md font-custom px-10">
         <slot name="body"></slot>
       </div>
       <div class="flex gamifiedButton self-center w-fit justify-center text-xl font-custom">

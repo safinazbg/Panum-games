@@ -21,7 +21,7 @@
     </div>
     <div class="flex mt-10 items-center justify-center w-full">
       <button
-          class="px-10 py-7 bg-green-600 border-4 border-black bg-opacity-80 rounded-xl font-bold text-lg"
+          class="gamifiedButton"
           @click="startGame"
       >
         Start Game

@@ -8,7 +8,6 @@
     <template #body>
       <div class="flex justify-center w-full text-center ">
         <ol class="  list-decimal	">
-<!--        <ol class="  	">-->
           <li class="pb-2"> Colorful squares will appear one at a time. Pay close attention.</li>
           <li class="pb-2"> You have to keep track of the last location of each color.</li>
           <li class="pb-2"> At the end, you will be asked where each color last appeared.</li>
