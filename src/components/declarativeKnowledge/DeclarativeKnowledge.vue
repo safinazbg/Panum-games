@@ -9,8 +9,8 @@
 
 
       <div v-if="!gameStarted" class="flex-grow flex my-8 flex-col items-center justify-between ">
-        <h1 class="text-3xl "> 🚀 Challenge Your Knowledge! 🚀 <br> <span
-            class="text-neutral-600 font-semibold text-xl">Quiz Time</span>
+        <h1 class="gamifiedh1"> Challenge Your Knowledge!<br> <span
+            class="gamifiedh2">Quiz Time</span>
         </h1>
         <p class="leading-relaxed text-md text-neutral-600">
           Buckle up for
@@ -43,7 +43,7 @@
           />
         </div>
         <div v-if="showResult" class="space-y-4 my-6 flex-grow flex flex-col h-full justify-between ">
-          <p class="text-2xl pb-8">🔍⚡️ Knowledge Mastery Unleashed! ⚡️🌍
+          <p class="gamifiedh1">🔍⚡️ Well Done ⚡️🌍
           </p>
           <div v-for="(evaluation, category) in evaluations" :key="evaluation">
             <div>
@@ -68,11 +68,10 @@
           </div>
           <div class="flex flex-col items-center gap-2">
             <p class="text-md">🙌 Thank you for playing and embracing the adventure of knowledge!🌍</p>
-            <button class="gamifiedButton"
-                    @click="resetGame"
-            >
-              Return to homepage
-            </button>
+              <button @click="end" class="gamifiedButton">
+                Return to homepage
+              </button>
+
           </div>
         </div>
 
@@ -88,6 +87,7 @@ import PanumNavigation from "@/components/PanumNavigation.vue";
 import questions from "@/questions.json";
 import StarIcon from "@/components/declarativeKnowledge/icons/StarIcon.vue";
 import Progressbar from "@/components/declarativeKnowledge/Progressbar.vue";
+import router from "@/router";
 
 export default {
   name: "DeclarativeKnowledge",
@@ -113,6 +113,10 @@ export default {
       'Humanities',
       'Feedback',
     ]
+    const end = () => {
+      resetGame()
+      router.push('/');
+    }
     const viewStyles = {
       'Welcome': {color: 'gray-500', image: StarIcon},
       'Social Science': {color: 'red-500', image: StarIcon},
@@ -221,6 +225,7 @@ export default {
       totalQuestions,
       currentQuestion,
       viewStyles,
+      end,
       views,
       progress,
       isViewReached

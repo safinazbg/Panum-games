@@ -4,11 +4,12 @@ import MindInTheEye from '../views/MindInTheEye.vue'
 import WorkingMemory from "@/views/WorkingMemory.vue";
 import MentalSpeed from "@/views/MentalSpeed.vue";
 import SpeechRecognition from "@/views/SpeechRecognition.vue";
-import RecordTwo from "@/components/RecordTwo.vue";
-import RecordThree from "@/components/RecordThree.vue";
+import RecordTwo from "@/components/speechRecognition/RecordTwo.vue";
+import RecordThree from "@/components/speechRecognition/RecordThree.vue";
 import WorkingMemoryGame from "@/components/workingMemory/WorkingMemoryGame.vue";
 import DeclarativeKnowledge from "@/components/declarativeKnowledge/DeclarativeKnowledge.vue";
 import DeclarativeKnowledgeStyled from "@/components/declarativeKnowledge/DeclarativeKnowledgeStyled.vue";
+import HowDoYouFeel from "@/components/speechRecognition/HowDoYouFeel.vue";
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/RecordThree',
     name: 'RecordThree',
     component: RecordThree
+  },
+  {
+    path: '/howDoYouFeel',
+    name: 'howDoYouFeel',
+    component: HowDoYouFeel
   },
   {
     path: '/WorkingMemoryGame',

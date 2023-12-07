@@ -1,6 +1,7 @@
 <template>
   <svg
     version="1.1"
+    class="stroke-amber-500"
     id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"

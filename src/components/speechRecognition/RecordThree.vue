@@ -1,76 +1,101 @@
 <template>
+  <PanumNavigation></PanumNavigation>
   <div
-      v-if="showGamePage"
-      class="GamePage container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
+      class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
   >
     <div class="Recording-Wave flex flex-col justify-center">
-      <div class="Record-text space-y-2 leading-6">
-        <p>Now please read the following text aloud</p>
-        <p>"insert some text that participant can read"</p>
-        <p>
-          Press the mic button when you're ready, and press the stop button when
-          you are done
+      <div class="Record-text space-y-2 justify-center max-w-3xl leading-6">
+        <h1 class="gamifiedh1 text-center">
+          Time to talk
+        </h1>
+        <h2 class="gamifiedh2">your morning routine</h2>
+        <p class="text-center">
+          Your task is to speak about<b> your morning routine</b>. Think about a typical morning and describe what you
+          do. For example, you can talk about:
         </p>
+
+        <div class="flex flex-wrap items-center justify-center text-white gap-2  ">
+          <div class="bg-gray-600 rounded-lg p-2" v-for="things in thingsToTalkAbout" :key="things">
+            <p class="text-center">
+              {{ things }}
+            </p>
+          </div>
+        </div>
+
+        <p class="text-center">
+          There is no right and wrong - just talk about your experiences. Try your best to keep talking without taking
+          long breaks.
+        </p>
+        <p class="text-center">
+          Press the microphone button when you are ready to speak. The recording will stop automatically after 90
+          seconds.
+        </p>
+        <RouterLink to="/howDoYouFeel" >
+          <div class="next-btn">
+            <button
+                class="gamifiedButton "
+            >
+              How Do You Feel test
+            </button>
+          </div>
+        </RouterLink>
       </div>
       <!-- Mic Record -->
       <div class="recordMicContainer">
         <button @click="ToggleMic">
-          <MicActive v-if="isRecording" />
-          <MicInActive v-if="!isRecording" />
+          <MicActive v-if="isRecording"/>
+          <MicInActive v-if="!isRecording"/>
         </button>
       </div>
       <!-- Sound Wave -->
       <div class="sound-wave">
         <canvas ref="canvas" class="canvas mx-auto"></canvas>
       </div>
-      <div class="mic-check my-6">
+      <div class="mic-check my-6  flex justify-center text-center">
+        <p v-if="showMicWorkingMessage">
+          Recording done! Click the button below to continue.
+        </p>
         <p v-if="showMicError">
-          Oh, no! Your mic appears to have some problems :( <br />
+          Oh, no! Your mic appears to have some problems :( <br/>
           Please try again!
         </p>
       </div>
     </div>
-  </div>
-  <!-- Final Page -->
-  <div class="mt-20 FinalPage" v-if="showFinalPage">
-    <h1 class="text-4xl">Thank you for playing!</h1>
-    <div class="button mt-10">
-      <router-link to="/about">
+
+
+    <router-link to="/recordfour">
+      <div class="next-btn">
         <button
-            class="px-10 py-7 border-4 border-black bg-gray-400 bg-opacity-80 rounded-xl font-bold text-lg"
+            v-if="showMicWorkingMessage"
+            class="gamifiedButton"
         >
-          Return to <br />
-          homepage
+          Next
         </button>
-      </router-link>
-    </div>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
-import MicActive from "@/components/icons/MicActive.vue";
-import MicInActive from "@/components/icons/MicInActive.vue";
+import {ref, onMounted} from "vue";
+import MicInActive from "@/components/Icons/MicInActive.vue";
+import MicActive from "@/components/Icons/MicActive.vue";
+import PanumNavigation from "@/components/PanumNavigation.vue";
 
 export default {
-  name: "SoundBar",
   components: {
     MicActive,
     MicInActive,
+    PanumNavigation
   },
   setup() {
+    const thingsToTalkAbout = ['Alarm clock', 'Waking up', 'Breakfast', 'Brushing teeth', 'Putting on clothes', 'Packing a bag', 'Leaving the house']
     const isRecording = ref(false);
+
     const canvasRef = ref(null);
+
     const showMicWorkingMessage = ref(false);
     const showMicError = ref(false);
-    const showGamePage = ref(true);
-    const showFinalPage = ref(false);
-    const audioContext = ref(null);
-    const analyser = ref(null);
-    const canvasContext = ref(null);
-    const canvasWidth = 900;
-    const canvasHeight = 200;
-    const audioContextStarted = ref(false);
 
     const Recognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -83,6 +108,18 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
+        setTimeout(() => {
+          sr.stop();
+          if (audioContextStarted.value) {
+            startAudioContext();
+          }
+
+          if (isRecording.value) {
+            showMicWorkingMessage.value = true;
+          } else {
+            showMicError.value = true;
+          }
+        }, 60000);
       };
 
       sr.onend = () => {
@@ -95,28 +132,34 @@ export default {
 
       canvasRef.value = document.querySelector("canvas");
       if (!canvasRef.value) {
-        console.error("Canvas elementi bulunamadı.");
+        console.error("Canvas element not found.");
       } else {
         setupCanvas();
       }
     });
 
     const ToggleMic = () => {
+      showMicWorkingMessage.value = false;
       showMicError.value = false;
-
-      if (!isRecording.value) {
-        showMicWorkingMessage.value = true;
+      if (isRecording.value) {
+        sr.stop();
+        if (audioContextStarted.value) {
+          startAudioContext();
+        }
+      } else {
         if (!audioContextStarted.value) {
           startAudioContext();
         }
         sr.start();
-      } else {
-        sr.stop();
-        showGamePage.value = false;
-        showFinalPage.value = true;
       }
-      isRecording.value = !isRecording.value;
     };
+
+    const audioContext = ref(null);
+    const analyser = ref(null);
+    const canvasContext = ref(null);
+    const canvasWidth = 900;
+    const canvasHeight = 200;
+    const audioContextStarted = ref(false);
 
     const startAudioContext = async () => {
       try {
@@ -125,8 +168,7 @@ export default {
             audio: true,
           });
 
-          audioContext.value = new (window.AudioContext ||
-              window.webkitAudioContext)();
+          audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
           analyser.value = audioContext.value.createAnalyser();
           const source = audioContext.value.createMediaStreamSource(stream);
           source.connect(analyser.value);
@@ -155,7 +197,6 @@ export default {
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
 
-      // 12 adet çubuğu çiz
       const barCount = 60;
       const barWidth = 10;
       const barSpacing = 5;
@@ -184,12 +225,12 @@ export default {
           const barHeight = (dataArray[i] / 255) * maxBarHeight;
 
           let barColor = "B2B1B9";
-          if (i < 40) {
-            barColor = "#3E7C17";
-          } else if (i < 55) {
+          if (barHeight > 190) {
+            barColor = "#D72323";
+          } else if (barHeight > 175) {
             barColor = "#F4A442";
           } else {
-            barColor = "#D72323";
+            barColor = "#3E7C17";
           }
 
           canvasContext.value.fillStyle = barColor;
@@ -214,14 +255,13 @@ export default {
       toggleAudioContext: startAudioContext,
       showMicWorkingMessage,
       showMicError,
-      showGamePage,
-      showFinalPage,
+      thingsToTalkAbout
     };
   },
 };
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .recordMicContainer {
   display: flex;
   flex-direction: column;
@@ -250,10 +290,9 @@ export default {
 }
 
 .canvas {
-  /* border: 1px solid #000; */
+  border: 1px solid #000;
   width: 400px;
   border-radius: 10px;
-  height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: rgba(255, 255, 255, 0.5);
 }
 </style>

@@ -1,17 +1,15 @@
 <template>
-  <PanumNavigation></PanumNavigation>
   <div
-    class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
+      v-if="showGamePage"
+      class="GamePage container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
   >
     <div class="Recording-Wave flex flex-col justify-center">
       <div class="Record-text space-y-2 leading-6">
-        <h1 class="font-semibold text-xl text-center">
-          Talk about x
-        </h1>
-        <p class="text-center">Now you will speak for <b>1 minute</b> about <b>x (/narrate video?)</b></p>
-        <p class="text-center">
-          Press the microphone button when you are ready. The recording will
-          stop automatically after 1 minute.
+        <p>Now please read the following text aloud</p>
+        <p>"insert some text that participant can read"</p>
+        <p>
+          Press the mic button when you're ready, and press the stop button when
+          you are done
         </p>
       </div>
       <!-- Mic Record -->
@@ -26,50 +24,56 @@
         <canvas ref="canvas" class="canvas mx-auto"></canvas>
       </div>
       <div class="mic-check my-6">
-        <p v-if="showMicWorkingMessage">
-          Recording done! Click the button below to continue.
-        </p>
         <p v-if="showMicError">
           Oh, no! Your mic appears to have some problems :( <br />
           Please try again!
         </p>
       </div>
     </div>
-    <router-link to="/recordfour">
-      <div class="next-btn mt-6">
+  </div>
+  <!-- Final Page -->
+  <div class="mt-20 FinalPage" v-if="showFinalPage">
+    <h1 class="text-4xl">Thank you for playing!</h1>
+    <div class="button mt-10">
+      <router-link to="/about">
         <button
-          v-if="showMicWorkingMessage"
-          class="bg-[#3498db] px-4 py-2 rounded-md text-white hover:bg-[#3190d0]"
+            class="px-10 py-7 border-4 border-black bg-gray-400 bg-opacity-80 rounded-xl font-bold text-lg"
         >
-          Next →
+          Return to <br />
+          homepage
         </button>
-      </div>
-    </router-link>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
-import MicInActive from "@/components/Icons/MicInActive.vue";
 import MicActive from "@/components/Icons/MicActive.vue";
-import PanumNavigation from "@/components/PanumNavigation.vue";
+import MicInActive from "@/components/Icons/MicInActive.vue";
 
 export default {
+  name: "SoundBar",
   components: {
     MicActive,
     MicInActive,
-    PanumNavigation
   },
   setup() {
     const isRecording = ref(false);
-
     const canvasRef = ref(null);
-
     const showMicWorkingMessage = ref(false);
     const showMicError = ref(false);
+    const showGamePage = ref(true);
+    const showFinalPage = ref(false);
+    const audioContext = ref(null);
+    const analyser = ref(null);
+    const canvasContext = ref(null);
+    const canvasWidth = 900;
+    const canvasHeight = 200;
+    const audioContextStarted = ref(false);
 
     const Recognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+        window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
 
     onMounted(() => {
@@ -79,18 +83,6 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
-        setTimeout(() => {
-          sr.stop();
-          if (audioContextStarted.value) {
-            startAudioContext();
-          }
-
-          if (isRecording.value) {
-            showMicWorkingMessage.value = true;
-          } else {
-            showMicError.value = true;
-          }
-        }, 60000);
       };
 
       sr.onend = () => {
@@ -103,34 +95,28 @@ export default {
 
       canvasRef.value = document.querySelector("canvas");
       if (!canvasRef.value) {
-        console.error("Canvas element not found.");
+        console.error("Canvas elementi bulunamadı.");
       } else {
         setupCanvas();
       }
     });
 
     const ToggleMic = () => {
-      showMicWorkingMessage.value = false;
       showMicError.value = false;
-      if (isRecording.value) {
-        sr.stop();
-        if (audioContextStarted.value) {
-          startAudioContext();
-        }
-      } else {
+
+      if (!isRecording.value) {
+        showMicWorkingMessage.value = true;
         if (!audioContextStarted.value) {
           startAudioContext();
         }
         sr.start();
+      } else {
+        sr.stop();
+        showGamePage.value = false;
+        showFinalPage.value = true;
       }
+      isRecording.value = !isRecording.value;
     };
-
-    const audioContext = ref(null);
-    const analyser = ref(null);
-    const canvasContext = ref(null);
-    const canvasWidth = 900;
-    const canvasHeight = 200;
-    const audioContextStarted = ref(false);
 
     const startAudioContext = async () => {
       try {
@@ -139,7 +125,8 @@ export default {
             audio: true,
           });
 
-          audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
+          audioContext.value = new (window.AudioContext ||
+              window.webkitAudioContext)();
           analyser.value = audioContext.value.createAnalyser();
           const source = audioContext.value.createMediaStreamSource(stream);
           source.connect(analyser.value);
@@ -168,6 +155,7 @@ export default {
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
 
+      // 12 adet çubuğu çiz
       const barCount = 60;
       const barWidth = 10;
       const barSpacing = 5;
@@ -196,12 +184,12 @@ export default {
           const barHeight = (dataArray[i] / 255) * maxBarHeight;
 
           let barColor = "B2B1B9";
-          if (barHeight > 190) {
-            barColor = "#D72323";
-          } else if (barHeight > 175) {
+          if (i < 40) {
+            barColor = "#3E7C17";
+          } else if (i < 55) {
             barColor = "#F4A442";
           } else {
-            barColor = "#3E7C17";
+            barColor = "#D72323";
           }
 
           canvasContext.value.fillStyle = barColor;
@@ -226,12 +214,14 @@ export default {
       toggleAudioContext: startAudioContext,
       showMicWorkingMessage,
       showMicError,
+      showGamePage,
+      showFinalPage,
     };
   },
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
 .recordMicContainer {
   display: flex;
   flex-direction: column;
@@ -260,9 +250,10 @@ export default {
 }
 
 .canvas {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   width: 400px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  /* background-color: rgba(255, 255, 255, 0.5); */
 }
 </style>

@@ -44,7 +44,7 @@
           />
         </div>
         <div v-if="showResult" class="space-y-4 my-6 flex-grow flex flex-col h-full justify-between ">
-          <p class="text-4xl pb-8">🔍⚡️ Knowledge Mastery Unleashed! ⚡️🌍
+          <p class="gamifiedh1">️ Well done!
           </p>
           <div v-for="(evaluation, category) in evaluations" :key="evaluation">
             <div>

@@ -8,19 +8,26 @@
 
 
 .gamifiedButtonMentalSpeedRed {
-    @apply px-5 select-none py-3 bg-red-500 w-40 flex justify-center rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95
+    @apply px-3 select-none  py-4  bg-red-500 w-40 flex justify-center rounded-md  shadow-lg  transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95
 }
 .gamifiedButtonMentalSpeedGreen {
-    @apply px-5 select-none py-3 flex justify-center bg-green-500 w-40 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95
+    @apply px-3 select-none py-4 flex justify-center bg-green-500 w-40 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95
 }
 
 .gamifiedButton {
-    @apply px-5 select-none py-3 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
+    @apply px-5 select-none font-custom py-3 rounded-md  shadow-lg  text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-blue-400 to-[#85DCF9]  hover:opacity-80 active:transform active:scale-95
 }
 
 .gamifiedh1 {
-
     @apply text-[#89f2f2] font-custom lg:text-5xl text-3xl tracking-wide
+}
+.gamifiedh2 {
+    @apply text-xl text-center text-gray-600 font-custom
+}
+
+.gamifiedp{
+    @apply text-gray-600 font-custom text-sm
+
 }
 /*-webkit-text-stroke-width: 1px;*/
 /*-webkit-text-stroke-color: rgb(106,78,58,1);*/
@@ -118,4 +125,33 @@
 
 .font-superComic {
     font-family: 'SuperComic', sans;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeInAnimation {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(100%);
+        opacity: 0.25;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.taskBox {
+    animation: slide-in 500ms;
+    animation-fill-mode: backwards;
 }

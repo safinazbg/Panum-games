@@ -5,11 +5,11 @@
   >
     <div class="Recording-Wave flex flex-col justify-center">
       <div class="Record-text space-y-2 leading-6">
-        <h1 class="font-semibold text-xl text-center">
+        <h1 class="gamifiedh1">
           Record background noise
         </h1>
-        <p class="text-center">Now let's record some background noise.</p>
-        <p class="text-center mb-4">
+        <p class="text-center gamifiedh2">Now let's record some background noise.</p>
+        <p class="text-center mb-4 gamifiedp">
           Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.
         </p>
                 <div
@@ -30,7 +30,7 @@
       <div class="sound-wave ">
         <canvas ref="canvas" class="canvas mx-auto"></canvas>
       </div>
-      <div class="mic-check my-6">
+      <div class="mic-check my-6 flex justify-center text-center">
         <p v-if="showMicWorkingMessage">
           Recording done! Click the microphone button to redo
           <br>
@@ -44,11 +44,11 @@
       </div>
     </div>
     <RouterLink to="/recordthree" v-if="showMicWorkingMessage">
-      <div class="next-btn mt-2">
+      <div class="next-btn">
         <button
-            class="bg-[#3498db] px-4 py-2 rounded-md text-white hover:bg-[#3190d0]"
+            class="gamifiedButton"
         >
-          Next →
+          Next
         </button>
       </div>
     </RouterLink>
