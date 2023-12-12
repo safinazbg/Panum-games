@@ -1,137 +1,189 @@
 <template>
   <!-- Welcome Page -->
-  <div class="min-h-screen flex flex-col ">
-  <PanumNavigation/>
-  <div class="welcome-page flex-grow grid place-content-center" v-if="firstPage">
-    <div
-        class="container mx-auto max-w-5xl  flex flex-col items-center justify-center  space-y-2 leading-6"
-    >
-      <h1 class="font-semibold text-xl gamifiedh1">
-        Welcome to the Voice game!
-      </h1>
-      <h5 class="font-semibold text-base gamifiedh2 ">
-        In this game, you will record yourself talking and reading.
-
-      </h5>
-      <ol class="gamifiedp list-decimal max-w-xl py-16">
-          <li>
-            Please ensure that you are in a quiet environment.
-          </li>
-          <li>
-            You should just speak like you naturally would without thinking too much about it.
-          </li>
-          <li>
-            If anything goes wrong, you can redo the recording.
-          </li>
-      </ol>
-
+  <div class="min-h-screen flex flex-col">
+    <PanumNavigation/>
+    <div class=" w-full flex justify-center">
+      <ProgressbarItem :current-view="currentView" :is-view-reached="currentViewIndex" :progress="progress"
+                       :view-styles="viewStyles"/>
     </div>
-    <div class="flex flex-col items-center justify-center w-full">
+    <div class="fixed flex flex-col gap-2 top-0 right-0">
       <button
-          class="gamifiedButton"
-          @click="startGame"
+          class="gamifiedButton "
+          @click="handleNext()"
       >
-        Start Game
+        Next button TEST
       </button>
-    </div>
-  </div>
-  <!-- Second Page -->
-  <div
-      class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
-      v-show="secondPage"
-  >
-    <div class="Recording-Wave">
-      <div class="Record-text space-y-2 leading-6 flex flex-col items-center ">
-        <h1 class="text-center gamifiedh1">
-          Before we start
-        </h1>
-        <h2 class="gamifiedh2">
-          let's test your microphone!
-        </h2>
-<!--        <h2 class="font-semibold text-center text-lg !mb-12 gamifiedp">Please follow these instructions:</h2>-->
-        <ol class="gamifiedp list-decimal max-w-xl py-12">
-          <li>
-            Click the 'mic test' button.
-          </li>
-          <li>
-            Click 'allow' if you see a question in the
-            browser.
-          </li>
-          <li>
-            Speak into the microphone. The lines should be in the green area!
-          </li>
-        </ol>
-      </div>
-
-      <!-- Mic Record -->
-      <div class="recordMicContainer flex justify-center">
-        <button @click="ToggleMic">
-          <MicActive v-if="isRecording" />
-          <MicInActive v-if="!isRecording" />
-        </button>
-      </div>
-      <!-- Sound Wave -->
-      <div class="sound-wave flex justify-center ">
-        <canvas ref="canvas" class="canvas"></canvas>
-      </div>
-      <div class="mic-check my-4 flex justify-center text-center">
-        <p v-if="showMicWorkingMessage"
-        class="text-green-800">
-          Sounds good - your microphone is working!
-          <br />
-          Please click the ‘Next’ button to continue.
-        </p>
-        <p v-if="showMicError"
-        class="text-red-700 text-center">
-          Oh, no! Your mic appears to have some problems :( <br />
-          Please try again!
-        </p>
-      </div>
-    </div>
-
-    <RouterLink to="recordtwo"  v-if="showMicWorkingMessage" >
-      <div class="next-btn">
+      <RouterLink to="/howDoYouFeel">
         <button
             class="gamifiedButton"
         >
-<!--            class="bg-[#3498db] gamifiedButton px-4 py-2 rounded-md text-white hover:bg-[#3190d0]"-->
-          Next →
+          How Do You Feel test
+        </button>
+      </RouterLink>
+    </div>
+    <div class="welcome-page flex-grow mt-6" v-show="currentView === 'Welcome'">
+      <div
+          class="container mx-auto max-w-5xl  flex flex-col items-center justify-center  space-y-2 leading-6"
+      >
+        <h1 class="font-semibold text-xl gamifiedh1">
+          Welcome to the Voice game!
+        </h1>
+        <h5 class="font-semibold text-base gamifiedh2 ">
+          In this game, you will record yourself talking and reading.
+
+        </h5>
+        <LInfoBox class="py-16">
+          <template #first>
+            Please ensure that you are in a quiet environment.
+          </template>
+          <template #second>
+            You should just speak like you naturally would without thinking too much about it.
+          </template>
+          <template #third>
+            If anything goes wrong, you can redo the recording.
+          </template>
+        </LInfoBox>
+      </div>
+      <div class="flex flex-col items-center justify-center w-full">
+        <button
+            class="gamifiedButton"
+            @click="handleNext()"
+        >
+          Start Game
         </button>
       </div>
-    </RouterLink>
+    </div>
+    <!-- Second Page -->
+    <div
+        class="container mx-auto max-w-5xl flex flex-col items-center justify-center"
+        v-show="currentView === 'Test'"
+    >
+      <div class="Recording-Wave">
+        <div class="Record-text space-y-2 leading-6 flex flex-col items-center ">
+          <h1 class="text-center gamifiedh1 mt-6">
+            Before we start
+          </h1>
+          <h2 class="gamifiedh2">
+            let's test your microphone!
+          </h2>
+          <LInfoBox class="pt-6">
+            <template #first>
+              Click the 'mic test' button.
+            </template>
+            <template #second>
+              Click 'allow' if you see a question in the
+              browser.
+            </template>
+            <template #third>
+              Speak into the microphone. The lines should be in the green area!
+            </template>
+          </LInfoBox>
+        </div>
 
+        <!-- Mic Record -->
+        <div class="recordMicContainer flex justify-center">
+          <button @click="ToggleMic" >
+            <MicActive v-if="isRecording"/>
+            <MicInActive v-if="!isRecording" class="micStyle"/>
+          </button>
+        </div>
+        <!-- Sound Wave -->
+        <div class="sound-wave flex justify-center ">
+          <canvas ref="canvas" class="canvas"></canvas>
+        </div>
+        <div class="mic-check my-4 flex justify-center text-center">
+          <p v-if="showMicWorkingMessage"
+             class="text-green-800">
+            Sounds good - your microphone is working!
+            <br/>
+            Please click the ‘Next’ button to continue.
+          </p>
+          <p v-if="showMicError"
+             class="text-red-700 text-center">
+            Oh, no! Your mic appears to have some problems :( <br/>
+            Please try again!
+          </p>
+        </div>
+      </div>
+      <button
+          class="gamifiedButton"
+          @click="handleNext()"
+          v-if="showMicWorkingMessage"
+      >
+        Next
+      </button>
+    </div>
+    <!-- Third Page -->
+    <div
+        class="container mx-auto max-w-5xl flex flex-col items-center justify-center"
+        v-show="currentView === 'Background Noise'"
+    >
+      <BackgroundNoise @next="handleNext()"/>
+    </div>
+    <!-- Fourth Page -->
+    <div
+        class="container mx-auto max-w-5xl flex flex-col items-center justify-center"
+        v-show="currentView === 'Talk'"
+    >
+      <TalkSpeechRecognition @next="handleNext()"/>
+    </div>
 
-  </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import {ref, onMounted, computed} from "vue";
 import MicActive from "@/components/Icons/MicActive.vue";
 import MicInActive from "@/components/Icons/MicInActive.vue";
 import PanumNavigation from "@/components/PanumNavigation.vue";
+import StarIcon from "@/components/declarativeKnowledge/icons/StarIcon.vue";
+import ProgressbarItem from "@/components/declarativeKnowledge/Progressbar.vue";
+import BackgroundNoise from "@/components/speechRecognition/BackgroundNoise.vue";
+import TalkSpeechRecognition from "@/components/speechRecognition/TalkSpeechRecognition.vue";
+import LInfoBox from "@/components/speechRecognition/LInfoBox.vue";
 
 export default {
   components: {
+    LInfoBox,
+    BackgroundNoise,
     MicActive,
     MicInActive,
-    PanumNavigation
+    PanumNavigation,
+    ProgressbarItem,
+    TalkSpeechRecognition,
+
   },
   setup() {
     const isRecording = ref(false);
-    const showGamePage = ref(true);
-    const showFinalPage = ref(false);
     const canvasRef = ref(null);
-
     const showMicWorkingMessage = ref(false);
     const showMicError = ref(false);
-
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
     const recordingLength = 10
     const secondsLeft = ref(null)
+    const currentViewIndex = ref(0);
+    const handleNext = () => {
+      currentViewIndex.value = (currentViewIndex.value + 1) % views.length;
+    };
 
+    const views = ['Welcome', 'Test', 'Background Noise', 'Talk'];
 
+    const viewStyles = {
+      'Welcome': {color: 'gray-500', image: StarIcon},
+      'Test': {color: 'gray-500', image: StarIcon},
+      'Background Noise': {color: 'red-500', image: StarIcon},
+      'Talk': {color: 'blue-500', image: StarIcon},
+    }
+
+    const currentView = computed(() => {
+      return views[currentViewIndex.value];
+    });
+
+    const progress = computed(() => {
+      const progressValue = currentViewIndex.value * 33;
+      return progressValue;
+    })
 
     onMounted(() => {
       sr.continuous = true;
@@ -286,15 +338,6 @@ export default {
       draw();
     };
 
-    const firstPage = ref(true);
-    const secondPage = ref(false);
-
-    const startGame = () => {
-      firstPage.value = false;
-      secondPage.value = true;
-    };
-
-
 
     return {
       ToggleMic,
@@ -302,15 +345,14 @@ export default {
       canvasRef,
       audioContextStarted,
       toggleAudioContext: startAudioContext,
-      firstPage,
-      secondPage,
       secondsLeft,
-      startGame,
       showMicWorkingMessage,
       showMicError,
-      showGamePage,
-      showFinalPage,
-
+      viewStyles,
+      currentViewIndex,
+      currentView,
+      handleNext,
+      progress,
     };
   },
 };
@@ -323,6 +365,8 @@ export default {
   align-items: center;
   text-align: center;
   padding: 20px;
+  height: 120px;
+
 }
 
 .mic {
@@ -347,6 +391,7 @@ export default {
 .canvas {
   border: 1px solid #000;
   width: 490px;
+  height: 110px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
 }

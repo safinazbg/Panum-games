@@ -4,8 +4,6 @@ import MindInTheEye from '../views/MindInTheEye.vue'
 import WorkingMemory from "@/views/WorkingMemory.vue";
 import MentalSpeed from "@/views/MentalSpeed.vue";
 import SpeechRecognition from "@/views/SpeechRecognition.vue";
-import RecordTwo from "@/components/speechRecognition/RecordTwo.vue";
-import RecordThree from "@/components/speechRecognition/RecordThree.vue";
 import WorkingMemoryGame from "@/components/workingMemory/WorkingMemoryGame.vue";
 import DeclarativeKnowledge from "@/components/declarativeKnowledge/DeclarativeKnowledge.vue";
 import DeclarativeKnowledgeStyled from "@/components/declarativeKnowledge/DeclarativeKnowledgeStyled.vue";
@@ -36,15 +34,15 @@ const routes = [
     name: 'SpeechRecognition',
     component: SpeechRecognition
   },
-  {
-    path: '/RecordTwo',
-    name: 'RecordTwo',
-    component: RecordTwo
-  },{
-    path: '/RecordThree',
-    name: 'RecordThree',
-    component: RecordThree
-  },
+  // {
+  //   path: '/RecordTwo',
+  //   name: 'RecordTwo',
+  //   component: RecordTwo
+  // },{
+  //   path: '/RecordThree',
+  //   name: 'RecordThree',
+  //   component: RecordThree
+  // },
   {
     path: '/howDoYouFeel',
     name: 'howDoYouFeel',

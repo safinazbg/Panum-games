@@ -6,6 +6,11 @@
 /*    @apply font-custom*/
 /*}*/
 
+.micStyle{
+    border: black 6px solid;
+    border-radius: 50%;
+    padding: 4px;
+}
 
 .gamifiedButtonMentalSpeedRed {
     @apply px-3 select-none  py-4  bg-red-500 w-40 flex justify-center rounded-md  shadow-lg  transition-all duration-200 ease-in-out hover:opacity-80 active:transform active:scale-95

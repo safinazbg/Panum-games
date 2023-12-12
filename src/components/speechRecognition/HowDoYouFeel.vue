@@ -37,7 +37,7 @@ export default {
 <template>
   <PanumNavigation/>
   <div
-      class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
+      class="container mx-auto max-w-5xl flex flex-col items-center justify-center"
   >
     <h1 class="gamifiedh1 text-center">
       How are you feeling RIGHT AT THIS MOMENT?
@@ -70,8 +70,8 @@ export default {
 
         <div class="grid grid-cols-9 gap-[1px] ">
           <div v-for="row in 9" :key="row" class="flex gap-[1px] flex-col">
-            <div v-for="col in 9" :key="col" class="grid-cell w-10 h-10 bg-slate-300 hover:bg-slate-400"
-                 :class="{'!bg-green-600': clickedCell.row === row  && clickedCell.col === col}"
+            <div v-for="col in 9" :key="col" class="grid-cell w-10 h-10 bg-slate-100 active:scale-90 hover:bg-slate-200"
+                 :class="{'!bg-[#89f2f2]': clickedCell.row === row  && clickedCell.col === col}"
                  @click="handleCellClick(row, col)">
               {{ grid[row - 1][col - 1] }}
             </div>

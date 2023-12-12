@@ -1,59 +1,45 @@
 <template>
-  <PanumNavigation></PanumNavigation>
   <div
-      class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-20"
+      class="container mx-auto max-w-5xl flex flex-col items-center justify-center mt-6"
   >
     <div class="Recording-Wave flex flex-col justify-center">
-      <div class="Record-text space-y-2 justify-center max-w-3xl leading-6">
-        <h1 class="gamifiedh1 text-center">
-          Time to talk
+      <div class="Record-text space-y-2 leading-6">
+        <h1 class="gamifiedh1">
+          Record background noise
         </h1>
-        <h2 class="gamifiedh2">your morning routine</h2>
-        <p class="text-center">
-          Your task is to speak about<b> your morning routine</b>. Think about a typical morning and describe what you
-          do. For example, you can talk about:
-        </p>
+        <p class="text-center gamifiedh2">Now let's record some background noise.</p>
+        <LInfoBox class="">
+          <template #first>
+            Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.
+          </template>
+        </LInfoBox>
+<!--        <p class="text-center mb-4 gamifiedp">-->
+<!--          Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.-->
+<!--        </p>-->
+                <div
+                    v-if="secondsLeft !== null"
+                    class="p-8 flex border-4 rounded-xl bg-gray-50 border-gray-700 w-8 h-8 items-center justify-center text-center text-2xl font-semibold ml-auto">
+                {{secondsLeft}}
+                </div>
 
-        <div class="flex flex-wrap items-center justify-center text-white gap-2  ">
-          <div class="bg-gray-600 rounded-lg p-2" v-for="things in thingsToTalkAbout" :key="things">
-            <p class="text-center">
-              {{ things }}
-            </p>
-          </div>
-        </div>
-
-        <p class="text-center">
-          There is no right and wrong - just talk about your experiences. Try your best to keep talking without taking
-          long breaks.
-        </p>
-        <p class="text-center">
-          Press the microphone button when you are ready to speak. The recording will stop automatically after 90
-          seconds.
-        </p>
-        <RouterLink to="/howDoYouFeel" >
-          <div class="next-btn">
-            <button
-                class="gamifiedButton "
-            >
-              How Do You Feel test
-            </button>
-          </div>
-        </RouterLink>
       </div>
       <!-- Mic Record -->
       <div class="recordMicContainer">
-        <button @click="ToggleMic">
+        <button @click="ToggleMic" >
           <MicActive v-if="isRecording"/>
-          <MicInActive v-if="!isRecording"/>
+          <MicInActive v-if="!isRecording" class="micStyle"/>
         </button>
       </div>
       <!-- Sound Wave -->
-      <div class="sound-wave">
+      <div class="sound-wave ">
         <canvas ref="canvas" class="canvas mx-auto"></canvas>
       </div>
-      <div class="mic-check my-6  flex justify-center text-center">
+      <div class="mic-check my-6 flex justify-center text-center">
         <p v-if="showMicWorkingMessage">
-          Recording done! Click the button below to continue.
+          Recording done! Click the microphone button to redo
+          <br>
+          the recording, or click the button below to continue.
+
         </p>
         <p v-if="showMicError">
           Oh, no! Your mic appears to have some problems :( <br/>
@@ -61,18 +47,13 @@
         </p>
       </div>
     </div>
-
-
-    <router-link to="/recordfour">
-      <div class="next-btn">
         <button
             v-if="showMicWorkingMessage"
+            @click="$emit('next')"
             class="gamifiedButton"
         >
           Next
         </button>
-      </div>
-    </router-link>
   </div>
 </template>
 
@@ -80,26 +61,32 @@
 import {ref, onMounted} from "vue";
 import MicInActive from "@/components/Icons/MicInActive.vue";
 import MicActive from "@/components/Icons/MicActive.vue";
-import PanumNavigation from "@/components/PanumNavigation.vue";
+import LInfoBox from "@/components/speechRecognition/LInfoBox.vue";
 
 export default {
+    name: 'BackgroundNoise',
   components: {
+    LInfoBox,
     MicActive,
     MicInActive,
-    PanumNavigation
   },
   setup() {
-    const thingsToTalkAbout = ['Alarm clock', 'Waking up', 'Breakfast', 'Brushing teeth', 'Putting on clothes', 'Packing a bag', 'Leaving the house']
     const isRecording = ref(false);
-
     const canvasRef = ref(null);
-
     const showMicWorkingMessage = ref(false);
     const showMicError = ref(false);
-
-    const Recognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
+    const recordingLength = 10
+    const secondsLeft = ref(null)
+
+    const countDownSecond = () => {
+      setTimeout(() => {
+        if (!secondsLeft.value) return
+        secondsLeft.value--
+        countDownSecond()
+      }, 1000)
+    }
 
     onMounted(() => {
       sr.continuous = true;
@@ -108,18 +95,20 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
+        secondsLeft.value = recordingLength-1
+        countDownSecond()
+
         setTimeout(() => {
+          console.log('timeout')
           sr.stop();
-          if (audioContextStarted.value) {
-            startAudioContext();
-          }
+          stopAudioContext();
 
           if (isRecording.value) {
             showMicWorkingMessage.value = true;
           } else {
             showMicError.value = true;
           }
-        }, 60000);
+        }, recordingLength * 1000);
       };
 
       sr.onend = () => {
@@ -139,17 +128,14 @@ export default {
     });
 
     const ToggleMic = () => {
+      console.log(32, 'toggle')
       showMicWorkingMessage.value = false;
       showMicError.value = false;
       if (isRecording.value) {
         sr.stop();
-        if (audioContextStarted.value) {
-          startAudioContext();
-        }
+        stopAudioContext();
       } else {
-        if (!audioContextStarted.value) {
-          startAudioContext();
-        }
+        startAudioContext();
         sr.start();
       }
     };
@@ -162,28 +148,30 @@ export default {
     const audioContextStarted = ref(false);
 
     const startAudioContext = async () => {
-      try {
-        if (!audioContextStarted.value) {
-          const stream = await navigator.mediaDevices.getUserMedia({
-            audio: true,
-          });
+      console.log(11.1)
+      if (!audioContextStarted.value) {
+        audioContextStarted.value = true;
 
-          audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
-          analyser.value = audioContext.value.createAnalyser();
-          const source = audioContext.value.createMediaStreamSource(stream);
-          source.connect(analyser.value);
-          analyser.value.fftSize = 256;
+        console.log(11)
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+        });
+        audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
+        analyser.value = audioContext.value.createAnalyser();
+        const source = audioContext.value.createMediaStreamSource(stream);
+        source.connect(analyser.value);
+        analyser.value.fftSize = 256;
 
-          audioContextStarted.value = true;
-
-          drawSoundWave();
-        } else {
-          audioContext.value.close();
-          audioContextStarted.value = false;
-          canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
-        }
-      } catch (error) {
-        console.error("Microphone access denied:", error);
+        drawSoundWave();
+      }
+    };
+    const stopAudioContext = () => {
+      console.log(12.1)
+      if (audioContextStarted.value === true) {
+        console.log(12)
+        audioContext.value.close();
+        canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
+        audioContextStarted.value = false;
       }
     };
 
@@ -252,10 +240,9 @@ export default {
       isRecording,
       canvasRef,
       audioContextStarted,
-      toggleAudioContext: startAudioContext,
+      secondsLeft,
       showMicWorkingMessage,
       showMicError,
-      thingsToTalkAbout
     };
   },
 };
@@ -291,8 +278,10 @@ export default {
 
 .canvas {
   border: 1px solid #000;
-  width: 400px;
+  width: 490px;
+  height: 110px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
 }
 </style>
+              
