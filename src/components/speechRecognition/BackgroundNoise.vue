@@ -16,19 +16,25 @@
 <!--        <p class="text-center mb-4 gamifiedp">-->
 <!--          Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.-->
 <!--        </p>-->
-                <div
-                    v-if="secondsLeft !== null"
-                    class="p-8 flex border-4 rounded-xl bg-gray-50 border-gray-700 w-8 h-8 items-center justify-center text-center text-2xl font-semibold ml-auto">
-                {{secondsLeft}}
-                </div>
+
 
       </div>
       <!-- Mic Record -->
-      <div class="recordMicContainer">
-        <button @click="ToggleMic" >
-          <MicActive v-if="isRecording"/>
-          <MicInActive v-if="!isRecording" class="micStyle"/>
-        </button>
+      <div class="recordMicContainer relative">
+        <div class="flex relative h-full">
+
+          <button @click="ToggleMic" >
+            <MicActive v-if="isRecording" />
+            <MicInActive v-if="!isRecording" class="micStyle"/>
+          </button>
+          <div class="h-full absolute -right-full flex items-center ">
+            <div
+                v-if="seconds !== null"
+                class="p-6 flex border-4 border-black h-8 w-8  rounded-full bg-gray-50  items-center justify-center text-center text-xl font-semibold">
+              {{seconds}}
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Sound Wave -->
       <div class="sound-wave ">
@@ -58,7 +64,7 @@
 </template>
 
 <script>
-import {ref, onMounted} from "vue";
+import {ref, onMounted, onUnmounted} from "vue";
 import MicInActive from "@/components/Icons/MicInActive.vue";
 import MicActive from "@/components/Icons/MicActive.vue";
 import LInfoBox from "@/components/speechRecognition/LInfoBox.vue";
@@ -78,15 +84,32 @@ export default {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const sr = new Recognition();
     const recordingLength = 10
-    const secondsLeft = ref(null)
 
-    const countDownSecond = () => {
-      setTimeout(() => {
-        if (!secondsLeft.value) return
-        secondsLeft.value--
-        countDownSecond()
-      }, 1000)
-    }
+    const counting = ref(false);
+    const seconds = ref(10);
+    let timer;
+
+    const startCountdown = () => {
+      counting.value = true;
+      timer = setInterval(() => {
+        if (seconds.value > 0) {
+          seconds.value--;
+        } else {
+          stopCountdown();
+        }
+      }, 1000);
+    };
+
+    const stopCountdown = () => {
+      counting.value = false;
+      clearInterval(timer);
+      seconds.value = 10;
+    };
+
+    onUnmounted(() => {
+      clearInterval(timer);
+    });
+
 
     onMounted(() => {
       sr.continuous = true;
@@ -95,8 +118,6 @@ export default {
       sr.onstart = () => {
         console.log("SR Started");
         isRecording.value = true;
-        secondsLeft.value = recordingLength-1
-        countDownSecond()
 
         setTimeout(() => {
           console.log('timeout')
@@ -131,6 +152,11 @@ export default {
       console.log(32, 'toggle')
       showMicWorkingMessage.value = false;
       showMicError.value = false;
+      if (counting.value) {
+        stopCountdown();
+      }else {
+        startCountdown()
+      }
       if (isRecording.value) {
         sr.stop();
         stopAudioContext();
@@ -238,9 +264,12 @@ export default {
     return {
       ToggleMic,
       isRecording,
+      counting,
+      seconds,
+      startCountdown,
+      stopCountdown,
       canvasRef,
       audioContextStarted,
-      secondsLeft,
       showMicWorkingMessage,
       showMicError,
     };

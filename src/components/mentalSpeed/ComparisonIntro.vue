@@ -8,7 +8,7 @@
     <p class="text-xl text-center mt-6">Now the real challenge will begin</p>
     <p class="text-lg">Good luck and have fun!</p>
     <div class="flex flex-col">
-      <p class="text-center mt-10 mb-2">
+      <p class="text-center mt-10 mb-2 gamifiedp !text-xs">
         Press left or right arrow key to continue
       </p>
       <div class="flex space-x-8 justify-center">

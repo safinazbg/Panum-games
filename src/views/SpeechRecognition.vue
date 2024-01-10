@@ -32,7 +32,7 @@
           In this game, you will record yourself talking and reading.
 
         </h5>
-        <LInfoBox class="py-16">
+        <LInfoBox class="">
           <template #first>
             Please ensure that you are in a quiet environment.
           </template>

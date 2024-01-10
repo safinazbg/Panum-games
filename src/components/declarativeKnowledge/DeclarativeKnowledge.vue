@@ -32,7 +32,7 @@
       </div>
       <div v-if="gameStarted" class="flex-grow flex  my-8 flex-col justify-between">
         <div v-if="!showResult" class="">
-          <h2 class="text-3xl my-2 !text-neutral-700">
+          <h2 class="!text-3xl my-2 !text-neutral-700 gamifiedp  mb-14 ">
             Question <strong>{{ currentQuestionIndex[currentView] + 1 }}</strong> of
             <strong>{{ questionsPrRound }}</strong>
           </h2>
