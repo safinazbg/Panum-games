@@ -1,11 +1,11 @@
 <template>
   <div
       v-if="view === 'ComparisonIntro'"
-      class="title flex flex-col justify-evenly items-center h-full py-20 gap-6">
+      class="title flex flex-col justify-evenly items-center h-full py-20 gap-6 gamifiedp">
     <h1 class="gamifiedh1 text-center">
       Good Job!
     </h1>
-    <p class="text-xl text-center mt-6">Now the real challenge will begin</p>
+    <p class="text-xl text-center mt-6 ">Now the real challenge will begin</p>
     <p class="text-lg">Good luck and have fun!</p>
     <div class="flex flex-col">
       <p class="text-center mt-10 mb-2 gamifiedp !text-xs">

@@ -1,7 +1,7 @@
 <template>
   <div
       v-if="view === 'Feedback'"
-      class="GameEnd container mx-auto flex flex-col items-center pt-12 pb-6 fadeInAnimation"
+      class="GameEnd container mx-auto flex flex-col items-center pt-12 pb-6 fadeInAnimation gamifiedp"
   >
     <div class="title flex flex-col justify-evenly items-center h-full py-20 ">
       <h1 class="gamifiedh1 text-center flex">

@@ -62,7 +62,7 @@
       <SearchIntro :next="next" :view="view"/>
       <div v-if="view === 'Search'" class="GamePage SelectedTask taskBox">
         <div class="flex flex-col items-center justify-center pt-12 pb-6">
-          <h1 class="text-4xl mb-14">
+          <h1 class="!text-4xl mb-14 gamifiedp">
             Question:  {{ currentTaskQuestion.index - 1 }}
           </h1>
           <div
@@ -104,7 +104,7 @@
       <ComparisonTrialIntro :next="next" :view="view"/>
       <div v-if="view === 'Comparison Trial'" class="GamePage SelectedTask taskBox">
         <div class="flex flex-col items-center justify-center pt-12 pb-6">
-          <h1 class="text-4xl mb-14">
+          <h1 class="!text-4xl mb-14 gamifiedp">
             Question:  {{ currentTaskQuestion.index - 11 }}
           </h1>
           <div
@@ -149,7 +149,7 @@
       <ComparisonIntro :next="next" :view="view"/>
       <div v-if="view === 'Comparison'" class="GamePage SelectedTask taskBox">
         <div class="flex flex-col items-center justify-center pt-12 pb-6">
-          <h1 class="text-4xl mb-14">
+          <h1 class="!text-4xl mb-14 gamifiedp">
             Question: {{ currentTaskQuestion.index - 3 }}
           </h1>
           <div

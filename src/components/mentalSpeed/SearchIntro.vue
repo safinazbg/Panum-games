@@ -5,7 +5,7 @@
   >
     <h2 class="gamifiedh1 text-center py-10 ">
       Well done! </h2>
-    <p class="text-lg text-center mt-6">Now the real challenge will begin</p>
+    <p class="text-lg  text-center mt-6">Now the real challenge will begin</p>
     <p class="text-lg text-center mt-2">Good luck and have fun</p>
     <div class="flex flex-col">
 
