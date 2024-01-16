@@ -21,14 +21,14 @@
         </button>
       </RouterLink>
     </div>
-    <div class="welcome-page flex-grow mt-6" v-show="currentView === 'Welcome'">
+    <div class="welcome-page flex-grow mt-6 h-full flex flex-col" v-show="currentView === 'Welcome'">
       <div
           class="container mx-auto max-w-5xl  flex flex-col items-center justify-center  space-y-2 leading-6"
       >
         <h1 class="font-semibold text-xl gamifiedh1">
           Welcome to the Voice game!
         </h1>
-        <h5 class="font-semibold text-base gamifiedh2 ">
+        <h5 class="font-semibold text-base gamifiedh2 pb-8 ">
           In this game, you will record yourself talking and reading.
 
         </h5>
@@ -44,7 +44,7 @@
           </template>
         </LInfoBox>
       </div>
-      <div class="flex flex-col items-center justify-center w-full">
+      <div class="flex flex-col items-center justify-center w-full pt-4">
         <button
             class="gamifiedButton"
             @click="handleNext()"
@@ -91,19 +91,7 @@
         <div class="sound-wave flex justify-center ">
           <canvas ref="canvas" class="canvas"></canvas>
         </div>
-        <div class="mic-check my-4 flex justify-center text-center">
-          <p v-if="showMicWorkingMessage"
-             class="text-green-800">
-            Sounds good - your microphone is working!
-            <br/>
-            Please click the ‘Next’ button to continue.
-          </p>
-          <p v-if="showMicError"
-             class="text-red-700 text-center">
-            Oh, no! Your mic appears to have some problems :( <br/>
-            Please try again!
-          </p>
-        </div>
+        <MicStatusMessage :show-mic-error="showMicError" :show-mic-working-message="showMicWorkingMessage"/>
       </div>
       <button
           class="gamifiedButton"
@@ -141,9 +129,11 @@ import ProgressbarItem from "@/components/declarativeKnowledge/Progressbar.vue";
 import BackgroundNoise from "@/components/speechRecognition/BackgroundNoise.vue";
 import TalkSpeechRecognition from "@/components/speechRecognition/TalkSpeechRecognition.vue";
 import LInfoBox from "@/components/speechRecognition/LInfoBox.vue";
+import MicStatusMessage from "@/components/speechRecognition/MicStatusMessage.vue";
 
 export default {
   components: {
+    MicStatusMessage,
     LInfoBox,
     BackgroundNoise,
     MicActive,
@@ -359,40 +349,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.recordMicContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  height: 120px;
 
-}
-
-.mic {
-  padding: 10px 20px;
-  background-color: #3498db;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.mic.recording {
-  background-color: #e74c3c;
-}
-
-.wave {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.canvas {
-  border: 1px solid #000;
-  width: 490px;
-  height: 110px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
 </style>

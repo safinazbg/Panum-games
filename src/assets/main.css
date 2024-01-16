@@ -6,6 +6,24 @@
 /*    @apply font-custom*/
 /*}*/
 
+.recordMicContainer {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.canvas {
+    border: 1px solid #000;
+    width: 490px;
+    height: 110px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
 .micStyle{
     border: black 6px solid;
     border-radius: 50%;

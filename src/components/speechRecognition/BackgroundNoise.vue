@@ -10,19 +10,14 @@
         <p class="text-center gamifiedh2">Now let's record some background noise.</p>
         <LInfoBox class="">
           <template #first>
-            Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.
+            Press the "mic" button to begin. Do not talk or make any noise for 7 seconds.
           </template>
         </LInfoBox>
-<!--        <p class="text-center mb-4 gamifiedp">-->
-<!--          Press the "mic" button to begin. Do not talk or make any noise for 10 seconds.-->
-<!--        </p>-->
-
 
       </div>
       <!-- Mic Record -->
       <div class="recordMicContainer relative">
         <div class="flex relative h-full">
-
           <button @click="ToggleMic" >
             <MicActive v-if="isRecording" />
             <MicInActive v-if="!isRecording" class="micStyle"/>
@@ -36,22 +31,13 @@
           </div>
         </div>
       </div>
+
+
       <!-- Sound Wave -->
-      <div class="sound-wave ">
+      <div class="sound-wave">
         <canvas ref="canvas" class="canvas mx-auto"></canvas>
       </div>
-      <div class="mic-check my-6 flex justify-center text-center">
-        <p v-if="showMicWorkingMessage">
-          Recording done! Click the microphone button to redo
-          <br>
-          the recording, or click the button below to continue.
-
-        </p>
-        <p v-if="showMicError">
-          Oh, no! Your mic appears to have some problems :( <br/>
-          Please try again!
-        </p>
-      </div>
+      <MicStatusMessage :show-mic-error="showMicError" :show-mic-working-message="showMicWorkingMessage"/>
     </div>
         <button
             v-if="showMicWorkingMessage"
@@ -64,14 +50,16 @@
 </template>
 
 <script>
-import {ref, onMounted, onUnmounted} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import MicInActive from "@/components/Icons/MicInActive.vue";
 import MicActive from "@/components/Icons/MicActive.vue";
 import LInfoBox from "@/components/speechRecognition/LInfoBox.vue";
+import MicStatusMessage from "@/components/speechRecognition/MicStatusMessage.vue";
 
 export default {
     name: 'BackgroundNoise',
   components: {
+    MicStatusMessage,
     LInfoBox,
     MicActive,
     MicInActive,
@@ -86,7 +74,7 @@ export default {
     const recordingLength = 10
 
     const counting = ref(false);
-    const seconds = ref(10);
+    const seconds = ref(7);
     let timer;
 
     const startCountdown = () => {
@@ -103,7 +91,7 @@ export default {
     const stopCountdown = () => {
       counting.value = false;
       clearInterval(timer);
-      seconds.value = 10;
+      seconds.value = 7;
     };
 
     onUnmounted(() => {
@@ -174,11 +162,8 @@ export default {
     const audioContextStarted = ref(false);
 
     const startAudioContext = async () => {
-      console.log(11.1)
       if (!audioContextStarted.value) {
         audioContextStarted.value = true;
-
-        console.log(11)
         const stream = await navigator.mediaDevices.getUserMedia({
           audio: true,
         });
@@ -187,14 +172,11 @@ export default {
         const source = audioContext.value.createMediaStreamSource(stream);
         source.connect(analyser.value);
         analyser.value.fftSize = 256;
-
         drawSoundWave();
       }
     };
     const stopAudioContext = () => {
-      console.log(12.1)
       if (audioContextStarted.value === true) {
-        console.log(12)
         audioContext.value.close();
         canvasContext.value.clearRect(0, 0, canvasWidth, canvasHeight);
         audioContextStarted.value = false;
@@ -277,40 +259,3 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-.recordMicContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-}
-
-.mic {
-  padding: 10px 20px;
-  background-color: #3498db;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.mic.recording {
-  background-color: #e74c3c;
-}
-
-.wave {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.canvas {
-  border: 1px solid #000;
-  width: 490px;
-  height: 110px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-</style>
-              

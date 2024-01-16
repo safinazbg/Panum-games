@@ -7,7 +7,6 @@
         <h1 class="gamifiedh1 text-center">
           Time to talk
         </h1>
-
         <h2 class="gamifiedh2">your morning routine</h2>
         <LInfoBox class="pt-6">
           <template #first>
@@ -37,7 +36,6 @@
       <!-- Mic Record -->
       <div class="recordMicContainer relative">
         <div class="flex relative h-full">
-
         <button @click="ToggleMic" >
           <MicActive v-if="isRecording" />
           <MicInActive v-if="!isRecording" class="micStyle"/>
@@ -55,15 +53,7 @@
       <div class="sound-wave">
         <canvas ref="canvas" class="canvas mx-auto"></canvas>
       </div>
-      <div class="mic-check my-6  flex justify-center text-center">
-        <p v-if="showMicWorkingMessage">
-          Recording done! Click the button below to continue.
-        </p>
-        <p v-if="showMicError">
-          Oh, no! Your mic appears to have some problems :( <br/>
-          Please try again!
-        </p>
-      </div>
+      <MicStatusMessage :show-mic-error="showMicError" :show-mic-working-message="showMicWorkingMessage"/>
     </div>
     <button
         v-if="showMicWorkingMessage"
@@ -80,10 +70,12 @@ import {ref, onMounted, onUnmounted} from "vue";
 import MicInActive from "@/components/Icons/MicInActive.vue";
 import MicActive from "@/components/Icons/MicActive.vue";
 import LInfoBox from "@/components/speechRecognition/LInfoBox.vue";
+import MicStatusMessage from "@/components/speechRecognition/MicStatusMessage.vue";
 
 export default {
   name: 'TalkSpeechRecognition',
   components: {
+    MicStatusMessage,
     LInfoBox,
     MicActive,
     MicInActive,
@@ -297,39 +289,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.recordMicContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
 
-.mic {
-  padding: 10px 20px;
-  background-color: #3498db;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.mic.recording {
-  background-color: #e74c3c;
-}
-
-.wave {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.canvas {
-  border: 1px solid #000;
-  width: 490px;
-  height: 110px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
 </style>
